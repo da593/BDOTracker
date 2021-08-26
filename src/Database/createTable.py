@@ -15,6 +15,5 @@ def createTable(cnx,cursor,TABLES):
         else:
             print("OK")
 
-    cursor.close()
-    cnx.close()
+    return cnx,cursor
 
