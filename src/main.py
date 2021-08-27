@@ -5,6 +5,7 @@ from Database.upsertData import upsertData
 from RequestAPI.getResponse import getResponse
 from RequestAPI.parseResponse import parseMarketplaceItem
 
+
 #Must change hardcoded username and password. Testing purposes
 cnx, mycursor = createConnection("root","BDOProject")
 
@@ -54,11 +55,14 @@ headers = {
     "cookie": "visid_incap_2504216=1c%2FH2VetS%2FeZihDG6z7E9QIIoWAAAAAAQUIPAAAAAAA6X8M83f1Phv%2BPRqqkMjF%2F; nlbi_2504216=w0WTY261IhfxWhLpoDFtLwAAAACqkRKdV1p2v7vzexYYoVQg; incap_ses_876_2504216=G054LgVtC39mlu5grS0oDAIIoWAAAAAAHal%2FMOTTzoq4I6krrEwXCQ%3D%3D"
 }
 
-#Get all items in marketplace based on mainkey. Guess and check since item names are not given from API.
-for i in range(0,100000):
+#Get all item ids from database and update it from API information using mainkey.
+# **Must change below code to either search API or update from API**
+mycursor.execute("SELECT item_id FROM marketplace_items ")
+item_ids = mycursor.fetchall()
+for i in item_ids:
     payload = {
         "keyType": 0,
-        "mainKey": i
+        "mainKey": i[0]
     }
 
     #Get response from API, parse it, then upsert it into database
@@ -70,7 +74,7 @@ for i in range(0,100000):
         for item in items:
 
             upsertData(cnx,mycursor,add_item,tuple(item))
-    print("Mainkey",i,"Data has been upserted")
+    print("Item ID",i[0],"has been upserted")
 
 
 
