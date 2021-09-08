@@ -1,15 +1,13 @@
 #This file scrapes bdodatabase for item names if it is null by comparing the item id
 #Run this script if the game is updated and new items are added to update database
 
-from Database.connectToMySql import createConnection
-from Database.createDatabase import createDatabase
+from Database.MarketPlaceDB import MarketPlaceDB
 import requests
 from bs4 import BeautifulSoup
 import time
 
 
-cnx, mycursor = createConnection("root","BDOProject")
-cnx, mycursor = createDatabase(cnx,mycursor,"marketplacedb")
+db = MarketPlaceDB()
 
 #Make request seem like a browser
 headers = {
@@ -21,8 +19,8 @@ headers = {
     }
 
 #Get all item ids in the database and find the item name for it
-mycursor.execute("SELECT item_id FROM marketplace_items WHERE item_name = '' ")
-item_ids = mycursor.fetchall()
+sql = ("SELECT item_id FROM marketplace_items WHERE item_name = '' ")
+item_ids = db.fetchAll(sql)
 
 #Loop through all ids and parse the html for item name
 #having a 1 second pause between each iteration to prevent heavy request load
@@ -31,5 +29,6 @@ for item_id in item_ids:
     response = requests.get(url,headers)
 
     html_ref = str(BeautifulSoup(response.text,"html.parser").find("title")).split("|")
-    print(html_ref)
+    sql = "UPDATE marketplace_items SET item_name = %s WHERE item_id = %s"%(html_ref[0],item_id[0])
+    db.execute(sql)
 

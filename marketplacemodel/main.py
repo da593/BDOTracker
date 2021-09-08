@@ -10,10 +10,10 @@ db = MarketPlaceDB()
 #db.updateAll()
 
 #Find ids to add to database
-findItemIDsResponse(340000,350000)
+#findItemIDsResponse(340000,350000)
 
 #Update volatile items (every 16 minutes to match API)
-#db.updateVolatileItems()
+db.updateVolatileItems()
 
 
 
