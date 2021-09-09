@@ -20,13 +20,13 @@
     <div class="navbar">
         <nav class = "navClass">
                 <ul>
-                    <li><a class='current' href={%url 'home'%}> Home</a></li>
+                    <li><a href={%url 'home'%}> Home</a></li>
                     <li><a href={%url 'pearlmarket'%}> Pearl Market</a></li>
-                    <li> Life Skills 
+                    <li class='current'> Life Skills 
                         <ul class="lifeskill-categories">
                             <li><a href={%url 'cooking'%}>Imperial Cooking</a></li>
                             <li><a href={%url 'alchemy'%}>Imperial Alchemy</a></li>
-                            <li><a href={%url 'farming'%}>Farming</a></li>
+                            <li><a class='current' href={%url 'farming'%}>Farming</a></li>
                         </ul>
                         <span class="arrow">&#9660;</span>
                     </li>
@@ -35,11 +35,9 @@
         </nav>
     </div>
 </header>
-<div class="home-content">
-    <p class="home-title">Welcome!<br></p>
-    <p class='home-description'>
-    BDO Tracker is a tool to help Black Desert Online players keep track of various activities including boss timers, life skill profitability, pearl market sales, and more. 
-    Register an account today to save your configurations so that you do not have to setup your alerts or life skill settings all over again!</p>
+<div class='content'>
+    <p class='title'>Farming</p>
+    <p class='description'>Determine marketplace profit from your own farm</p>
 </div>
 
 <div class="footer-container">
@@ -48,6 +46,5 @@
         <li><a href="">Feedback</a></li>
     </ul>
 </div>
-
 </body>
 </html>

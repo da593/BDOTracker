@@ -20,5 +20,5 @@ from marketplaceapp import views
 urlpatterns = [
     path('marketplaceapp/', include('marketplaceapp.urls')),
     path('admin/', admin.site.urls),
-    path("",views.index)
+   
 ]

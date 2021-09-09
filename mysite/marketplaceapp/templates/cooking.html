@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" type ="text/css" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="logo-container">
+<a class="logo" href={%url 'home'%}>BDO<br>Tracker</a>
+</div>
+
+<b class="platform">PC-NA</b>
+
+<header>
+    <div class="navbar">
+        <nav class = "navClass">
+                <ul>
+                    <li><a href={%url 'home'%}> Home</a></li>
+                    <li><a href={%url 'pearlmarket'%}> Pearl Market</a></li>
+                    <li class='current'> Life Skills 
+                        <ul class="lifeskill-categories">
+                            <li><a class='current' href={%url 'cooking'%}>Imperial Cooking</a></li>
+                            <li><a href={%url 'alchemy'%}>Imperial Alchemy</a></li>
+                            <li><a href={%url 'farming'%}>Farming</a></li>
+                        </ul>
+                        <span class="arrow">&#9660;</span>
+                    </li>
+                </ul>
+
+        </nav>
+    </div>
+</header>
+
+<div class='content'>
+    <p class='title'>Imperial Cooking</p>
+    <p class='description'>Determine profit from various meals based on marketplace value or total revenue</p>
+</div>
+
+<div class='input-content'>
+        <label for='mastery'> Mastery 
+        <input type="number" id="Mastery"  value=200 min=0 max= 2000>
+        </label>
+        
+
+        <label for='cp'> CP
+        <input type="number" id="cp" value=150 min=0 max= 5000>
+        </label>
+
+        <label for='instock'> In stock 
+        <input type="number" id="instock"  value=0 min=0 max= 1000000000>
+        </label>
+
+        <label for="profession-level">Profession Level
+            <select id="profession-level" name="profession-level" >
+                <option value="apprentice">Apprentice</option>
+                <option value="professional">Professional</option>
+                <option value="artisan">Artisan</option>
+                <option value="master">Master</option>
+                <option value="guru">Guru</option>
+        </label>
+        
+</div>
+
+<div class="database">
+<ul>
+{% for item in items %}
+    <li>{{ item.item_id}}</li>
+    
+    
+{% endfor %}
+</ul>
+</div>
+
+<div class="footer-container">
+    <ul>
+        <li><a href="">Contact Me</a></li>
+        <li><a href="">Feedback</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

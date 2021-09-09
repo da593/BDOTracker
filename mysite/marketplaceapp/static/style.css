@@ -8,7 +8,7 @@ body {
 
 /*Change color of navigation bar set as header of website*/
 header {
-    background-color:rgb(16, 16, 16)
+    background-color:rgb(24, 24, 24);
 }
 
 /*Fixes the container to fit content*/
@@ -18,6 +18,46 @@ header::after {
     clear:both;
 }
 
+.footer-container {
+    position:fixed;
+    left:0;
+    bottom:0;
+    width: 100%;
+    background-color: rgb(24, 24, 24);
+    text-align: center;
+}
+
+
+.footer-container > ul {
+    background-color:rgb(24,24,24);
+    color:white;
+    font-size: 18px;
+    font-family:sans-serif;
+    text-align:center;
+    margin: 0;
+    padding:0;
+}
+
+.footer-container > ul > li {
+    list-style-type: none;
+    display:inline-block;
+    position: relative;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.footer-container > ul > li > a {
+    color:white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.footer-container > ul > li + li:before {
+    content: " | ";
+    
+}
+
+
 /*Style the logo in the top left*/
 .logo {
     color: white;
@@ -25,12 +65,12 @@ header::after {
     text-align:center;
     font-size: 22px;
     font-family: "Open Sans",sans-serif;
-    background-color: #6b1424;
+    background-color: rgb(0,0,0);
     transform:skewX(0deg);
    -ms-transform:skewX(0deg);
    -webkit-transform:skewX(0deg);
-    padding-left:45px;
-    padding-right:45px;
+    padding-left:35px;
+    padding-right:35px;
     width: 120px;
     
 }
@@ -45,9 +85,9 @@ header::after {
     left: 0;
     z-index: -1;
 
-    background: #6b1424;
-    border-bottom: 3px solid #6b1424;
-    border-right: 20px solid #6b1424;
+    background: rgb(0,0,0);
+    border-bottom: 3px solid rgb(0,0,0);
+    border-right: 20px solid rgb(0,0,0);
     transform-origin: bottom left;
     -ms-transform: skew(-30deg, 0deg);
     -webkit-transform: skew(-30deg, 0deg);
@@ -67,7 +107,7 @@ header::after {
 }
 
 .logo:hover {
-    color:#55d6aa
+    color:#55d6aa;
 }
 
 /*Set logo link to have no decoration*/
@@ -85,7 +125,7 @@ a {
 
 /*Style child of navclass which is ul (unordered list)*/
 .navClass > ul {
-    background-color:rgb(16,16,16);
+    background-color:rgb(24,24,24);
     color:white;
     font-size: 18px;
     font-family:sans-serif;
@@ -100,7 +140,7 @@ a {
     list-style-type: none;
     display:inline-block;
     position: relative;
-    padding-top:15px;
+    padding-top:20px;
     margin-left: 35px;
 }
 
@@ -112,33 +152,24 @@ a {
     text-align: center;
 }
 
-/*Highlight link when hovering*/
-.navClass > ul > li > a:hover {
-    color:#55d6aa
-}
-
-
 
 /*Style dropdown menu*/
 ul.lifeskill-categories {
     position: absolute;
-    background-color: rgb(16, 16, 16);
+    background-color: rgb(24, 24, 24);
     list-style-type: none;
     opacity: 1;
-    width:125px;
-    padding-left: 0px;
-    margin-left:-25px;
+    width:200px;
     padding-top: 5px;
     opacity: 0;
-    
+    padding-left:0px;
 }
 
 /*Style list elements of dropdown menu*/
 ul.lifeskill-categories > li {
-    padding-left:25px;
     padding-top:5px;
     padding-bottom: 5px;
-    
+    position:relative;
 }
 
 /*Style dropdown menu text links*/
@@ -152,9 +183,119 @@ ul.lifeskill-categories > li > a{
     opacity:1;
 }
 
+/*Highlight link when hovering*/
+.navClass > ul > li > a:hover {
+    color:#55d6aa;
+}
+
+/*Highlight dropdown element when hovering*/
+.navClass > ul > li:hover {
+    color:#55d6aa;
+}
+/*Color dropdown menu links on hover*/
 ul.lifeskill-categories > li > a:hover {
     color:#55d6aa
 }
 
+/*Color current page*/
+.navClass .current {
+    color: #ff3644;
+}
 
+/*Color current page for dropdown menu*/
+.navClass > ul.lifeskill-categories > li > a.current {
+    color: #ff3644;
+}
+
+.home-title {
+    text-align:center;
+    color:white;
+    font-family:sans-serif;
+    font-size: 24px;
+    padding-top:15px;
+}
+
+.home-description {
+    text-align:left;
+    color:white;
+    font-family:sans-serif;
+    font-size: 18px;
+    padding-left:45px;
+    padding-right:45px;
+    padding-bottom:45px;
+    position:relative;
+}
+
+.home-content {
+    background-color: rgb(24, 24, 24);
+    width: 60%;
+    margin:auto;
+    margin-top:5%;
+    border-style:solid;
+    border-color:black;
+}
+
+.title {
+    text-align:center;
+    color:white;
+    font-family:sans-serif;
+    font-size: 28px;
+    margin:0;
+}
+
+.description {
+    text-align:center;
+    color:white;
+    font-family:sans-serif;
+    font-size: 16px;
+    margin:0;
+}
+
+.content {
+    width: 60%;
+    margin:auto;
+    margin-top:5%;
+
+}
+
+.input-content {
+    padding-top:15px;
+    text-align: center;
+ 
+}
+
+
+label {
+    display:inline-block;
+    color:white;
+    font-family:sans-serif;
+    text-align:left;
+}
+
+input,select {
+    display:block; 
+    width:150px;
+    background-color:rgb(24,24,24);
+    font-family: sans-serif;
+    font-size:16px;
+    color:white;
+    border-style:none;
+    padding: 10px 10px;
+    margin-right: 20px;
+    
+
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
