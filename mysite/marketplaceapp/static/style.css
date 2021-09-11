@@ -1,9 +1,13 @@
-
+html,body{
+    height:100%;
+}
 /*Set background color and margin*/
 body {
+    display:flex;
+    flex-direction:column;
     background-color: rgb(32, 32, 32);
     margin:0;
-    
+   
 }
 
 /*Change color of navigation bar set as header of website*/
@@ -18,13 +22,23 @@ header::after {
     clear:both;
 }
 
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1 0 auto;
+}
+
 .footer-container {
-    position:fixed;
+    flex-shrink: 0;
     left:0;
     bottom:0;
     width: 100%;
     background-color: rgb(24, 24, 24);
     text-align: center;
+    margin-top:5%;
 }
 
 
@@ -42,8 +56,8 @@ header::after {
     list-style-type: none;
     display:inline-block;
     position: relative;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 
 .footer-container > ul > li > a {
@@ -75,6 +89,8 @@ header::after {
     
 }
 
+
+
 .logo-container > a::after {
     content: " ";
     position: absolute;
@@ -84,7 +100,6 @@ header::after {
     top: 0;
     left: 0;
     z-index: -1;
-
     background: rgb(0,0,0);
     border-bottom: 3px solid rgb(0,0,0);
     border-right: 20px solid rgb(0,0,0);
@@ -142,6 +157,7 @@ a {
     position: relative;
     padding-top:20px;
     margin-left: 35px;
+   
 }
 
 
@@ -259,7 +275,7 @@ ul.lifeskill-categories > li > a:hover {
 }
 
 .input-content {
-    padding-top:15px;
+    padding-top:25px;
     text-align: center;
  
 }
@@ -283,9 +299,7 @@ input,select {
     padding: 10px 10px;
     margin-right: 20px;
     
-
 }
-
 
 
 input::-webkit-outer-spin-button,
@@ -299,3 +313,76 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.database {
+    font-family:sans-serif;
+    width:60%;
+    margin: auto;
+    
+}
+
+.database > .table-format {
+    text-align:left;
+    padding: 5px 15px 5px 15px;
+    margin-left:auto;
+    margin-right:auto;
+    border-style:black;
+
+}
+
+ td {
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-right:20px;  
+    font-size:18px;
+    color:white;
+}
+
+#data tr {
+    display: none;
+  }
+
+
+
+#searchbox {
+    background-image: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 25px;
+    width: 60%;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:30px;
+    border: 1px solid black;
+    margin-bottom: 12px;
+    margin: 0 auto;
+    margin-top: 55px;
+    font-size: 16px;
+    background-color:rgb(24,24,24)
+  }
+
+  #table-id_filter {
+    display:none;
+}
+
+
+
+#table-id_info {
+    color:white !important;
+}
+
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button
+ {
+    color:white !important;
+    background-color:rgb(16,16,16) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    color:white !important;
+    background-color:rgb(16,16,16) !important;
+}
+
+.ellipsis{
+    color:white !important;
+}

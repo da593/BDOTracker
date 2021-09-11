@@ -9,43 +9,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <div class="logo-container">
+        <a class="logo" href={%url 'home'%}>BDO<br>Tracker</a>
+        </div>
+        <b class="platform">PC-NA</b>
 
-<div class="logo-container">
-<a class="logo" href={%url 'home'%}>BDO<br>Tracker</a>
-</div>
+        <div class="navbar">
+            <nav class = "navClass">
+                    <ul>
+                        <li><a href={%url 'home'%}> Home</a></li>
+                        <li><a class='current' href={%url 'pearlmarket'%}> Pearl Market</a></li>
+                        <li> Life Skills 
+                            <ul class="lifeskill-categories">
+                                <li><a href={%url 'cooking'%}>Imperial Cooking</a></li>
+                                <li><a href={%url 'alchemy'%}>Imperial Alchemy</a></li>
+                                <li><a href={%url 'farming'%}>Farming</a></li>
+                            </ul>
+                            <span class="arrow">&#9660;</span>
+                        </li>
+                    </ul>
 
-<b class="platform">PC-NA</b>
-
-<header>
-    <div class="navbar">
-        <nav class = "navClass">
-                <ul>
-                    <li><a href={%url 'home'%}> Home</a></li>
-                    <li><a class='current' href={%url 'pearlmarket'%}> Pearl Market</a></li>
-                    <li> Life Skills 
-                        <ul class="lifeskill-categories">
-                            <li><a href={%url 'cooking'%}>Imperial Cooking</a></li>
-                            <li><a href={%url 'alchemy'%}>Imperial Alchemy</a></li>
-                            <li><a href={%url 'farming'%}>Farming</a></li>
-                        </ul>
-                        <span class="arrow">&#9660;</span>
-                    </li>
-                </ul>
-
-        </nav>
+            </nav>
+        </div>
+    </header>
+    <div class="content-wrapper">
+        <div class='content'>
+            <p class='title'>Pearl Market</p>
+            <p class='description'>Track the amount of pearl item sales for various periods to determine what is hot </p>
+        </div>
     </div>
-</header>
-<div class='content'>
-    <p class='title'>Pearl Market</p>
-    <p class='description'>Track the amount of pearl item sales for various periods to determine what is hot </p>
-</div>
-
-<div class="footer-container">
-    <ul>
-        <li><a href="">Contact Me</a></li>
-        <li><a href="">Feedback</a></li>
-    </ul>
-</div>
+    
+    <div class="footer-container">
+        <ul>
+            <li><a href="">Contact Me</a></li>
+            <li><a href="">Feedback</a></li>
+        </ul>
+    </div>
 
 </body>
 </html>

@@ -21,3 +21,4 @@ class MarketplaceItem(models.Model):
         db_table = 'marketplace_items'
         unique_together = (('item_id', 'min_enhance', 'max_enhance'),)
 
+

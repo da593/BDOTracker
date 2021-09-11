@@ -17,7 +17,9 @@ from django.contrib import admin
 from django.urls import path,include
 from marketplaceapp import views
 
+
 urlpatterns = [
+    path('',include('marketplaceapp.urls')),
     path('marketplaceapp/', include('marketplaceapp.urls')),
     path('admin/', admin.site.urls),
     
