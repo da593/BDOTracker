@@ -306,18 +306,6 @@ input[type=number] {
     color:white !important;
 }
 
-td[item_name_color='1'] { color: #b3ff7a;}
-td[item_name_color='2'] { color: #0391c4;}
-td[item_name_color='3'] { color: #f6c232;}
-td[item_name_color='4'] { color: #ff8315;}
-
-
-td[box_name_color='apprentice'] { color: #b3ff7a;}
-td[box_name_color='skilled'] { color: #0391c4;}
-td[box_name_color='professional'] { color: #f6c232;}
-td[box_name_color='artisan'] { color: #d42626;}
-td[box_name_color='master'] { color: #ad3495;}
-td[box_name_color='guru'] { color: #ff8315;}
 
 #option1 { color: #b3ff7a;}
 #option2 { color: #0391c4;}
@@ -326,6 +314,10 @@ td[box_name_color='guru'] { color: #ff8315;}
 #option5{ color: #ad3495;}
 #option6 { color: #ff8315;}
 
-select {
+#profession-level {
     color: #ff8315;
+}
+
+#table-id_length > option {
+    color:black;
 }
