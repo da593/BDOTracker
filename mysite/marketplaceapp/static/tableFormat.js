@@ -162,8 +162,21 @@ $.fn.dataTable.ext.search.push(
         return false;
     }
 );
+//mastery input range using attributes
+$(document).ready(function() {
+    $("#mastery").attr({
+        "max" : 2000,        
+        "min" : 0          
+    });
+});
 
-
+//cp input range using attributes
+$(document).ready(function() {
+    $("#cp").attr({
+        "max" : 5000,        
+        "min" : 0          
+    });
+});
 
 
 //Filter in stock whenever in stock input is changed
@@ -185,27 +198,71 @@ $(document).ready(function (){
      });
 });
 
-//Recalculate profit and revnue when cp changes by recalling data and recalculating
+//Recalculate profit and revnue when cp changes by recalling data and recalculating. Also validate input
 $(document).ready(function() {
     var table = $('#table-id').DataTable();
     $('#cp').on('keyup', function(){
+        $('#cp').val(parseInt($('#cp').val().toString()))
         if ($('#cp').val() > 5000) {
-            $('#cp').val() = 5000
+            $('#cp').val(5000)
         }
         table.clear().rows.add(parsedData()).draw();
        
      });
 });
 
-//Recalculate profit and revenue when mastery changes by recalling data and recalculating
+//Recalculate profit and revenue when mastery changes by recalling data and recalculating. Also validate input
 $(document).ready(function() {
     var table = $('#table-id').DataTable();
     $('#mastery').on('keyup', function(){
-        
+        $('#mastery').val(parseInt($('#mastery').val().toString()))
+        if ($('#mastery').val() > 2000) {
+            $('#mastery').val(2000)
+        }
         table.clear().rows.add(parsedData()).draw();
      });
 });
 
+//Validate in stock input by removing leading 0s
+$(document).ready(function() {
+    $('#instock').on('keyup', function(){
+        $('#instock').val(parseInt($('#instock').val().toString()))
+        
+     });
+});
+
+//Update database if update button is pressed. Also prevent spamming the button
+$(document).ready(function() {
+    var table = $('#table-id').DataTable();
+    var locked = false
+    $('.update-button').on('click', function(){
+        if (locked === false) {
+            fetch_cooking_data().then( data => {
+                table.clear().rows.add(parsedData(data.data)).draw();
+                
+            })
+        }
+
+        else {
+           setTimeout(function() {locked= false},1000)
+        }
+        
+     });
+});
+
+function fetch_cooking_data() {
+    return  fetch('/cooking', {
+        headers:{
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        },
+    }).then(response => {
+      if (response.headers.get('content-type') != 'application/json') {
+        throw new TypeError();
+      }
+      return response.json()         
+    }) 
+}
 
 //Color code profession level selection input
 var select = $('#profession-level');
@@ -247,24 +304,8 @@ DataTable.render.profit = function () {
 };
 
 
-var goodNumber = /^(\+|-)?((\d+(\.\d+)?)|(\.\d+))$/
-var goodPrefix = /^(\+|-)?((\d*(\.?\d*)?)|(\.\d*))$/
-    
-$('input')
-    .data("oldValue",'')
-    .bind('input propertychange', function() {
-        var $this = $(this);
-        var newValue = $this.val();
-        
-        if ( !goodPrefix.test(newValue) )
-            return $this.val($this.data('oldValue'));
-        if ( goodNumber.test(newValue) )
-            $this.removeClass("redborder");
-        else
-            $this.addClass("redborder");
-        
-        return $this.data('oldValue',newValue)
-    });
+
+
 
 
 

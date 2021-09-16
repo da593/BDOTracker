@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.css">
     <link rel="stylesheet" type ="text/css" href="{% static 'style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -49,36 +50,52 @@
         </div>
 
         <div class='input-content'>
-                <label for='mastery'> Mastery 
-                <input type="number" id="mastery" value =400 min =0 max= 2000
-                onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
-                </label>
-                
+                <form id="input-form">
+                    <label for='mastery'> Mastery 
+                    <input type="number" id="mastery" value =400 min =0 max= 2000
+                    onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
+                    </label>
+                    
 
-                <label for='cp'> CP
-                <input type="number" id="cp" value = 300 min =0 max= 5000
-                onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
-                </label>
+                    <label for='cp'> CP
+                    <input type="number" id="cp" value = 300 min =0 max= 5000
+                    onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
+                    </label>
 
-                <label for='instock' > Minimum In stock  
-                <input type="number" id="instock" value = 0 min =0 max= 100000000
-                onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');"> 
-                </label>
+                    <label for='instock' > Minimum In stock  
+                    <input type="number" id="instock" value = 0 min =0 max= 100000000
+                    onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');"> 
+                    </label>
 
-                <label for="profession-level">Profession Level
-                    <select id="profession-level"  name="profession-level" >
-                        <option id="option1" value=1>Apprentice</option>
-                        <option id="option2" value=2>Skilled</option>
-                        <option id="option3" value=3>Professional</option>
-                        <option id="option4" value=4>Artisan</option>
-                        <option id="option5" value=5>Master</option>
-                        <option id="option6" value=6 selected>Guru</option>
-                    </select>
-                </label>
-               
+                    <label for="profession-level">Profession Level
+                        <select id="profession-level"  name="profession-level" >
+                            <option id="option1" value=1>Apprentice</option>
+                            <option id="option2" value=2>Skilled</option>
+                            <option id="option3" value=3>Professional</option>
+                            <option id="option4" value=4>Artisan</option>
+                            <option id="option5" value=5>Master</option>
+                            <option id="option6" value=6 selected>Guru</option>
+                        </select>
+                    </label>
+               </form>
         </div>  
-        <input type="text" id="searchbox"  placeholder="Search items...">
+
         <div class = "database">
+
+            <span>
+                <div class="table-update-container">
+                    <span class="update-image">
+                    </span>
+                    <span class="update-time">
+                     prices updated
+                    </span>
+                    <button type="button" id = "update-button" class="update-button">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                </div>
+                <input type="text" id="searchbox"  placeholder="Search items...">
+            </span>
+
             <table id="table-id" class="table table-striped table-dark">
                 <thead class='thead-dark'>
                     <tr>

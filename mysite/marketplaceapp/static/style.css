@@ -259,21 +259,70 @@ input[type=number] {
     display: none;
   }
 
+  .table-update-container {
+    background-color:rgb(20,20,20);
+    margin-top:55px;
+    overflow:hidden;
+   
+}
 
+.update-image::before {
+    content: "●";
+    color:#5ff369;
+    font-size:25px;
+    padding-left:15px;
+    
+    
+}
+
+.update-image {
+    display:inline-block;
+    line-height:35px;
+    text-align:center;
+}
+
+.update-time {
+    color:white;
+    font-size:14px;
+    font-family:'Roberto',sans-serif;
+    text-transform:uppercase;
+    padding-left:5px;
+   
+}
+
+.bi.bi-arrow-clockwise {
+    color:white;
+    font-size:22px;
+    padding-right:10px;
+}
+
+.update-button {
+    background-color:rgb(20,20,20);
+    float:right;
+    border-style:none;
+    padding-top:5px;
+    margin:0 auto;
+    
+}
+
+button:focus {outline:none;}
+
+.database {
+    background-color:rgb(20,20,20);
+}
 
 #searchbox {
-    background-image: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png');
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" fill="grey" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>');
     background-repeat: no-repeat;
     background-position: left center;
     background-size: 25px;
-    width: 70%;
+    width: 100%;
     padding-top:15px;
     padding-bottom:15px;
     padding-left:30px;
     border: 1px solid black;
-    margin-bottom: 15px;
     margin: 0 auto;
-    margin-top: 55px;
+    color:white;
     font-size: 16px;
     background-color:rgb(24,24,24);
     outline: none;

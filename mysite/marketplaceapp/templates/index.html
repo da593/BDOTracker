@@ -58,9 +58,11 @@
                 <li> Finish working on the filter options for the Imperial Cooking section &check; </li>
                 <li> Implement calculations for profit for each box based on mastery and CP &check;</li>
                 <li> Implement table value changes when mastery and cp is changed from input &check;</li>
-                <li> Validate mastery and cp input so that it does not exceed its min and max values (mastery causes error since max is 2000)</li>
-                <li> Implement a way for users to update database by clicking a button</li>
-                
+                <li> Validate mastery and cp input so that it does not exceed its min and max values (mastery causes error since max is 2000) &check;</li>
+                <li> Implement a way for users to update database by clicking a button &check;</li>
+                <li> Dynamically update table on user request &check;</li>
+                <li> Update local database at set intervals </li>
+                <li> Provide time when last request from updated database is called when update button is hit </li>
             </ul>
 
             <p>Major updates to work on: </p>
@@ -75,12 +77,18 @@
         <div class="updates-container">
             <p class="update-title">Recent project updates</p>
 
+            <p>9/16 - version: 1.14 </p>
+            <ul>
+                <li>Validated mastery and cp inputs</li>
+                <li>Implemented an update button to retrieve updated items from local database</li>
+                <li>Table dynamically changes base price and in stock when update button is hit (Fetch/promises api)</li>
+            </ul> 
+
             <p>9/15 - version: 1.13 </p>
             <ul>
                 <li>Implemented profit and revenue for each cooking item</li>
                 <li>Color coded profits</li>
                 <li>Table dynamically changes revenue and profit based on mastery and cp</li>
-    
             </ul> 
 
            <p>9/13 - version: 1.12 </p>

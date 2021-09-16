@@ -1,5 +1,6 @@
-function parsedData() {
-    var mydata = JSON.parse(document.getElementById('item_data').textContent);
+//Parse an array of json objects
+function parsedData(data=JSON.parse(document.getElementById('item_data').textContent)) {
+    var mydata = data
 
     for (let i =0; i<mydata.length; i++) {
         mydata[i]['total_quantity'] = mydata[i].quantity * Math.floor(document.getElementById("cp").value / 2)
@@ -12,8 +13,10 @@ function parsedData() {
         mydata[i]['revenue_box'] = revenueBox
         mydata[i]['total_profit'] = totalProfit
         mydata[i]['total_revenue'] = totalRevenue
-}
-    
+    }
     return mydata
 }
+
+
+
 
