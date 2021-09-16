@@ -1,5 +1,6 @@
-//Jquery function for formatting the Datatable
+
 $(document).ready( function () {
+    //Initalize and render datatable
      $('#table-id').DataTable(
         {   
             "dom": 
@@ -20,7 +21,7 @@ $(document).ready( function () {
             
             order: [[ 6, "dsc" ]],
             
-            "data":parsedData(),
+            "data":calculateAdditionalData(),
             
             "columns": [
                 
@@ -99,23 +100,36 @@ $(document).ready( function () {
             ]
         } 
     );
+    //sets the searchbox to the customized searchbox created/styled in the html/css
+    var table = $('#table-id').dataTable();
+    $("#searchbox").keyup(function() {
+        table.fnFilter(this.value);
+
+    });
+
+    setUpdateTime() 
 } );
 
+//Customized helper render function to style profit numbers
+DataTable.render.profit = function () {
+    return function ( data ) {
+        var number = $.fn.dataTable.render.number( ',', '.'). display(data);
+        let color = "white"; 
+        if (data < 0) {
+            color = "#ff6367"
+        }
+        else {
+            color = "#b3ff7a"
+        }
 
-//Jquery function that sets the searchbox to the customized searchbox created/styled in the html/css
-$(document).ready(function() {
-    var dataTable = $('#table-id').dataTable();
-    $("#searchbox").keyup(function() {
-        dataTable.fnFilter(this.value);
-
-    });  
- 
-});
+        return '<span style="color:' + color + '">' + number + '</span>';
+    };
+};
 
 
-//Datatable plug-in API that holds an array of function to filter the database
-//Filters items based on if item's in-stock is greater than the user input in-stock
+//Datatable plug-in API that holds an array of functions to filter the database
 $.fn.dataTable.ext.search.push(
+    //Filters items based on if item's in-stock is greater than the user input in-stock
     function( settings, data, dataIndex ) {
         var min = parseInt( $('#instock').val(), 10 );
         var amount = parseFloat( data[2] ) || 0; // Data for the in stock column. (based on #table-id)
@@ -127,7 +141,7 @@ $.fn.dataTable.ext.search.push(
         }
         return false;
     },
-
+    //filters item based on box profession level
     function( settings, data, dataIndex ) {
         var min = parseInt( $('#profession-level').val(), 10 );
         var amount = ( data[0] ) ; // Data for the in stock column. (based on #table-id)
@@ -162,94 +176,8 @@ $.fn.dataTable.ext.search.push(
         return false;
     }
 );
-//mastery input range using attributes
-$(document).ready(function() {
-    $("#mastery").attr({
-        "max" : 2000,        
-        "min" : 0          
-    });
-});
 
-//cp input range using attributes
-$(document).ready(function() {
-    $("#cp").attr({
-        "max" : 5000,        
-        "min" : 0          
-    });
-});
-
-
-//Filter in stock whenever in stock input is changed
-$(document).ready(function() {
-    var table = $('#table-id').DataTable();
-     
-    // Event listener to the two range filtering inputs to redraw on input
-    $('#instock').keyup( function() {
-        table.column(3).search('').draw();
-    });
-});
-
-
-//Filter box level requirement everytime profession level is changed
-$(document).ready(function (){
-    var table = $('#table-id').DataTable();
-    $('#profession-level').on('change', function(){
-        table.column(0).search('').draw(); 
-     });
-});
-
-//Recalculate profit and revnue when cp changes by recalling data and recalculating. Also validate input
-$(document).ready(function() {
-    var table = $('#table-id').DataTable();
-    $('#cp').on('keyup', function(){
-        $('#cp').val(parseInt($('#cp').val().toString()))
-        if ($('#cp').val() > 5000) {
-            $('#cp').val(5000)
-        }
-        table.clear().rows.add(parsedData()).draw();
-       
-     });
-});
-
-//Recalculate profit and revenue when mastery changes by recalling data and recalculating. Also validate input
-$(document).ready(function() {
-    var table = $('#table-id').DataTable();
-    $('#mastery').on('keyup', function(){
-        $('#mastery').val(parseInt($('#mastery').val().toString()))
-        if ($('#mastery').val() > 2000) {
-            $('#mastery').val(2000)
-        }
-        table.clear().rows.add(parsedData()).draw();
-     });
-});
-
-//Validate in stock input by removing leading 0s
-$(document).ready(function() {
-    $('#instock').on('keyup', function(){
-        $('#instock').val(parseInt($('#instock').val().toString()))
-        
-     });
-});
-
-//Update database if update button is pressed. Also prevent spamming the button
-$(document).ready(function() {
-    var table = $('#table-id').DataTable();
-    var locked = false
-    $('.update-button').on('click', function(){
-        if (locked === false) {
-            fetch_cooking_data().then( data => {
-                table.clear().rows.add(parsedData(data.data)).draw();
-                
-            })
-        }
-
-        else {
-           setTimeout(function() {locked= false},1000)
-        }
-        
-     });
-});
-
+//When update button hits, Fetch is used to retrieve updated data from database and starts an async promise chain in order to update the table values displayed
 function fetch_cooking_data() {
     return  fetch('/cooking', {
         headers:{
@@ -264,47 +192,16 @@ function fetch_cooking_data() {
     }) 
 }
 
-//Color code profession level selection input
-var select = $('#profession-level');
-select.change(function() {
-    if (select.val() == 1) {
-        select.css('color','#b3ff7a');
-    }
-    else if (select.val() == 2) {
-        select.css('color','#0391c4');      
-    }
-    else if (select.val() == 3) {
-        select.css('color','#f6c232');      
-    }
-    else if (select.val() == 4) {
-        select.css('color','#d42626');      
-    }
-    else if (select.val() == 5) {
-        select.css('color','#ad3495');      
-    }
-    else if (select.val() == 6) {
-        select.css('color','#ff8315');      
-    }
-});
-
-//Customized helper render function to style profit numbers
-DataTable.render.profit = function () {
-    return function ( data ) {
-        var number = $.fn.dataTable.render.number( ',', '.'). display(data);
-        let color = "white"; 
-        if (data < 0) {
-            color = "#ff6367"
-        }
-        else {
-            color = "#b3ff7a"
-        }
-
-        return '<span style="color:' + color + '">' + number + '</span>';
-    };
-};
 
 
 
+
+//Sets current updated time on loadup and on call
+function setUpdateTime() {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const currentTime = moment().tz(timezone).format('hh:mm:ss A');
+    $('#update-time').text("prices updated at".concat(" ",currentTime))
+}
 
 
 
