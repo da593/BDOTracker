@@ -1,0 +1,27 @@
+from django.contrib import admin
+from .models import MarketplaceItem,CookingItem,AlchemyItem
+# Register your models here.
+class MarketplaceAdmin(admin.ModelAdmin):
+    list_display = ['item_id','item_name','min_enhance','max_enhance',
+                    'base_price','in_stock','total_trades','min_price_list',
+                    'max_price_list','last_sale_price','last_sale_time','item_type','grade']
+
+    search_fields = ['item_id','item_name','item_type']
+
+class CookingAdmin(admin.ModelAdmin):
+    list_display = ['item_id','item_name','min_enhance','max_enhance',
+                    'base_price','in_stock','total_trades','min_price_list',
+                    'max_price_list','last_sale_price','last_sale_time','item_type','grade','profession_level','quantity']
+
+    search_fields = ['item_name','in_stock','profession_level','quantity']
+
+class AlchemyAdmin(admin.ModelAdmin):
+    list_display = ['item_id','item_name','min_enhance','max_enhance',
+                    'base_price','in_stock','total_trades','min_price_list',
+                    'max_price_list','last_sale_price','last_sale_time','item_type','grade','profession_level','quantity']
+
+    search_fields = ['item_name','in_stock','profession_level','quantity']
+
+admin.site.register(MarketplaceItem,MarketplaceAdmin)
+admin.site.register(CookingItem,CookingAdmin)
+admin.site.register(AlchemyItem,AlchemyAdmin)
