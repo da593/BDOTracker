@@ -32,7 +32,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li><a class="dropdown-item" href={%url 'cooking'%}>Imperial Cooking</a></li>
                                     <li><a class="dropdown-item" href={%url 'alchemy'%}>Imperial Alchemy</a></li>
-                                    <li><a class="dropdown-item" href={%url 'farming'%}>Farming</a></li>
+                                    <li><a class="dropdown-item" href={%url 'farming'%}>Magical Seed Farming</a></li>
                                 </ul>
                         </li>
                     </ul>
@@ -55,8 +55,9 @@
             <p class="update-title">Work in Progress</p>
             <p> Currently Working On: </p>
              <ul>
-                <li> Update local database at set intervals </li>
-                <li> Farming Tab </li>
+                <li> Add crate calculations to farming tab </li>
+                <li> Add dynamic inputs and dynamically update farming table </li>
+                <li> Fetch updated farming items from database </li>
             </ul>
 
             <p>Major updates to work on: </p>
@@ -70,13 +71,19 @@
             <p>Completed: </p>
             <ul>
                 <li> Imperial Cooking Tab </li>
-                <li> Imperial Alchemy Tab (very similar to cooking tab) </li>
+                <li> Imperial Alchemy Tab </li>
             
             </ul>
         </div>
 
         <div class="updates-container">
             <p class="update-title">Recent project updates</p>
+            <p>9/18 - version: 1.20 </p>
+            <ul>
+                <li>Added market and vendor calculations for farming tab</li>
+                <li>Added required inputs for farming tab</li>
+               
+            </ul> 
 
             <p>9/17 - version: 1.15 </p>
             <ul>
@@ -87,7 +94,7 @@
             <p>9/16 - version: 1.14 </p>
             <ul>
                 <li>Validated mastery and cp inputs</li>
-                <li>Implemented an update button to retrieve updated items from local database</li>
+                <li>Implemented an update button to retrieve updated items from database</li>
                 <li>Table dynamically changes base price and in stock when update button is hit (Fetch/promises api)</li>
             </ul> 
 

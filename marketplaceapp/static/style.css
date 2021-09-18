@@ -188,24 +188,26 @@ body {
 .content {
     width: 60%;
     margin:auto;
-    margin-top:5%;
+    margin-top:3%;
 
 }
 
+/*Center input requirements to center*/
 .input-content {
-    padding-top:25px;
+    margin-top:2.5%;
     text-align: center;
- 
 }
 
-
+/*Style text labels*/
 label {
     display:inline-block;
-    color:white;
+    
     font-family:sans-serif;
     text-align:left;
+    color:white;
 }
 
+/*Put labels above input boxes and style boxes*/
 input,select {
     display:block; 
     width:150px;
@@ -216,8 +218,9 @@ input,select {
     border-style:none;
     padding: 10px 10px;
     margin-right: 20px;
-    
+    height:40px;
 }
+
 
 
 input::-webkit-outer-spin-button,
@@ -310,9 +313,7 @@ input[type=number] {
 
 button:focus {outline:none;}
 
-.database {
-    background-color:rgb(20,20,20);
-}
+
 
 #searchbox {
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" fill="grey" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>');
@@ -358,7 +359,7 @@ button:focus {outline:none;}
     color:white !important;
 }
 
-
+#option0 {color:#fff;}
 #option1 { color: #b3ff7a;}
 #option2 { color: #0391c4;}
 #option3{ color: #f6c232;}
@@ -366,10 +367,17 @@ button:focus {outline:none;}
 #option5{ color: #ad3495;}
 #option6 { color: #ff8315;}
 
-#profession-level {
-    color: #ff8315;
+#trade-level:focus,#trade-level:active  {
+    outline:none;
 }
 
-#table-id_length > option {
-    color:black;
+
+#trade-profession:focus, #trade-profession:active {
+    outline:none !important;
+    1we
 }
+
+
+
+
+  
