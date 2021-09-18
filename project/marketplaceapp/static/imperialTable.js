@@ -4,7 +4,7 @@ $(document).ready( function () {
      $('#table-id').DataTable(
         {   
             "dom": 
-            "t<'#table-footer'ip>",
+            "t<ip>",
 
             language: {
                 search:"",
@@ -74,18 +74,7 @@ $(document).ready( function () {
                   
                     {"data":"total_quantity",},
                     {"data":"profit_box",
-                    render: function(data) {
-                        var number = $.fn.dataTable.render.number( ',', '.'). display(data);
-                        let color = "white"; 
-                        if (data < 0) {
-                            color = "#ff6367"
-                        }
-                        else {
-                            color = "#b3ff7a"
-                        }
-
-                        return '<span style="color:' + color + '">' + number + '</span>';
-                    }
+                    render: DataTable.render.profit()
                 },
                     {"data":"total_profit",
                     render: DataTable.render.profit()
@@ -178,8 +167,8 @@ $.fn.dataTable.ext.search.push(
 );
 
 //When update button hits, Fetch is used to retrieve updated data from database and starts an async promise chain in order to update the table values displayed
-function fetch_cooking_data() {
-    return  fetch('/cooking', {
+function fetch_data(type) {
+    return  fetch('/'.concat(type), {
         headers:{
             'Accept': 'application/json',
             'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()

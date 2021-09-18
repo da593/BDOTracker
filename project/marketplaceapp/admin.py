@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MarketplaceItem,CookingItem,AlchemyItem
+from .models import *
 # Register your models here.
 class MarketplaceAdmin(admin.ModelAdmin):
     list_display = ['item_id','item_name','min_enhance','max_enhance',
@@ -22,6 +22,22 @@ class AlchemyAdmin(admin.ModelAdmin):
 
     search_fields = ['item_name','in_stock','profession_level','quantity']
 
+class FarmingAdmin(admin.ModelAdmin):
+    list_display = ['item_id','item_name','min_enhance','max_enhance',
+                    'base_price','in_stock',
+                    'item_type','grade','fruit','perfect_growth_minutes','fertilizer_growth_minutes','slots','seed_price']
+
+    search_fields = ['item_name','in_stock']
+
+class FruitAdmin(admin.ModelAdmin):
+    list_display = ['item_id','item_name','min_enhance','max_enhance',
+                    'base_price','in_stock','total_trades','min_price_list',
+                    'max_price_list','last_sale_price','last_sale_time','item_type','grade']
+
+    search_fields = ['item_name','in_stock']
+
 admin.site.register(MarketplaceItem,MarketplaceAdmin)
 admin.site.register(CookingItem,CookingAdmin)
 admin.site.register(AlchemyItem,AlchemyAdmin)
+admin.site.register(FarmingItem,FarmingAdmin)
+admin.site.register(FruitItem,FruitAdmin)
