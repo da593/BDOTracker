@@ -196,12 +196,12 @@ body {
 .input-content {
     margin-top:2.5%;
     text-align: center;
+    width:60%;
 }
 
 /*Style text labels*/
 label {
     display:inline-block;
-    
     font-family:sans-serif;
     text-align:left;
     color:white;
@@ -367,17 +367,8 @@ button:focus {outline:none;}
 #option5{ color: #ad3495;}
 #option6 { color: #ff8315;}
 
-#trade-level:focus,#trade-level:active  {
-    outline:none;
-}
-
-
-#trade-profession:focus, #trade-profession:active {
-    outline:none !important;
-    1we
-}
 
 
 
 
-  
+

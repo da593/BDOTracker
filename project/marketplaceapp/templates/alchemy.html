@@ -49,24 +49,30 @@
             <p class='description'>Determine imperial delivery profit from various elixirs based on marketplace value or total revenue</p>
         </div>
 
-        <div class='input-content'>
+         <div class='input-content container'>
                 <form id="input-form">
-                    <label for='mastery'> Mastery 
-                    <input type="number" id="mastery" value =400 min =0 max= 2000
-                    onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
-                    </label>
-                    
+                <div class="row justify-content-md-center mt-3">
+                    <div class="col-sm-2">
+                        <label for='mastery'> Mastery 
+                            <input type="number" id="mastery" value =400 min =0 max= 2000
+                            onkeydown="if(event.key==='.'){event.preventDefault();}">
+                        </label>
+                    </div>
 
-                    <label for='cp'> CP
-                    <input type="number" id="cp" value = 300 min =0 max= 5000
-                    onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
-                    </label>
+                     <div class="col-sm-2">
+                        <label for='cp'> CP
+                            <input type="number" id="cp" value = 300 min =0 max= 5000
+                            onkeydown="if(event.key==='.'){event.preventDefault();}">
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for='instock' > Minimum In stock  
+                            <input type="number" id="instock" value = 0 min =0 max= 100000000
+                            onkeydown="if(event.key==='.'){event.preventDefault();}"> 
+                        </label>
+                    </div>
 
-                    <label for='instock' > Minimum In stock  
-                    <input type="number" id="instock" value = 0 min =0 max= 100000000
-                    onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');"> 
-                    </label>
-
+                    <div class="col-sm-2">
                     <label for="profession-level">Profession Level
                         <select id="profession-level"  name="profession-level" >
                             <option id="option1" value=1>Apprentice</option>
@@ -77,8 +83,10 @@
                             <option id="option6" value=6 selected>Guru</option>
                         </select>
                     </label>
+                     </div>
+                </div>
                </form>
-        </div>  
+        </div>    
 
         <div class = "database">
 
