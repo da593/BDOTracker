@@ -49,90 +49,112 @@
             <p class='description'>Determine marketplace and vendor profit from harvest/breeding magical crops</p>
         </div>
 
-        <div class='input-content'>
-                <form id="input-form">
-                    <label for='hours-online'> Hours Online
-                        <input type="number" id="hours-online" value =16 min =0 max= 24
-                        onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
-                    </label>
-                    
-
-                    <label for='harvest-day'> Max Replant per Day
-                        <input type="number" id="harvest-day" value = 4 min =1 max= 8
-                        onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
-                    </label>
-
-                    <label for='farming-slots' > Farming Slots 
-                        <input type="number" id="farming-slots" value = 100 min =0 max= 100
-                        onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');"> 
-                    </label>
-                    
-                    <label for="fertilizer"> Fertilizer used
-                        <select id="fertilizer"  name="fertilizer" >
-                            <option id="option" value="yes">Yes</option>
-                            <option id="option" value="no" selected>No</option>
+        <div class='input-content container'>
+            <form id="input-form">
+            <div class='row justify-content-md-left mt-3'>
+                <div class="col-6 col-sm-3">
+                     <label> Origin Town
+                        <select id="origin-town">
+                            <option id="option" value="grana">Grana</option>
+                            <option id="option" value="old-wisdom-tree">Old Wisdom Tree</option>
                         </select>
                     </label>
-
-                    <label for='family-fame' > Family Fame
-                    <input type="number" id="family-fame" value = 4000 min =0 max= 10000
-                    onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');"> 
+                </div>
+                <div class="col-6 col-sm-3">
+                    <label> Crates Per Task
+                        <select id="crates-per-task">
+                            <option id="option" value=1>1</option>
+                            <option id="option" value=2>2</option>
+                            <option id="option" value=4 selected>4</option>
+                        </select>
                     </label>
+                </div>
+
                 
+                <div class="col-sm-6">
+                    <div class="input-group no-gutters">
+                        <label style="text-align:center;" > Trade Profession 
+                                <select id="trade-profession" style="margin-right:0;">
+                                    <option id="option0" value=1>Beginner</option>
+                                    <option id="option1" value=2>Apprentice</option>
+                                    <option id="option2" value=3>Skilled</option>
+                                    <option id="option3" value=4>Professional</option>
+                                    <option id="option4" value=5>Artisan</option>
+                                    <option id="option5" value=6>Master</option>
+                                    <option id="option6" value=7 selected>Guru</option>
+                                </select>  
+                        </label>
+                        <label>  (Beginner 1 - Guru 50)
+                        <input id="profession-number" type="number" value = 10 min=1 max =50>
+                        </label>
+                    </div>  
+                </div>
+            </div>
+
+            <div class='row justify-content-md-left mt-3'>
+                <div class="col-6 col-sm-3">
+                    <label for='family-fame' > Family Fame
+                        <input type="number" id="family-fame" value = 4000 min =0 max= 10000
+                        onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');"> 
+                    </label>
+                </div>
+                <div class="col-6 col-sm-3">
                     <label for="value-pack"> Value Pack
                         <select id="value-pack"  name="value-pack" >
                             <option id="option" value="yes" selected>Yes</option>
                             <option id="option" value="no">No</option>
                         </select>
                     </label> 
-                
+ 
+                </div>
+                <div class="col-6 col-sm-3">
                     <label for="merchant-ring"> Merchant Ring
                         <select id="merchant-ring"  name="merchant-ring" >
                             <option id="option" value="yes">Yes</option>
                             <option id="option" value="no" selected>No</option>
                         </select>
                     </label>
+                </div>
+            </div>
 
-
-                    <br>
-                    <br>
-                    
-                        
-                    
-                            
-
-                    <label style="text-align:left"> Trading Profession Level
-                    <div class="input-group">
-                        <select id="trade-profession" style="margin-right:0;,padding-right:0;text-align:right;" dir="rtl">
-                            <option id="option0" value=1>Beginner</option>
-                            <option id="option1" value=2>Apprentice</option>
-                            <option id="option2" value=3>Skilled</option>
-                            <option id="option3" value=4>Professional</option>
-                            <option id="option4" value=5>Artisan</option>
-                            <option id="option5" value=6>Master</option>
-                            <option id="option6" value=7 selected>Guru</option>
-                        </select> 
-                        <span class="input-group-btn" style="width:0px;"></span>
-                        <input type="text" id="trade-level" class="form-control input-sm" value=10 min = 1 max = 50 style="margin-left:-2px;background-color:rgb(24,24,24);color:white;height:40px;border:none;padding-bottom:2px;" />
-                    </div>
-
+            <div class='row justify-content-md-left mt-3'>
+                <div class="col-6 col-sm-3">
+                     <label for='hours-online'> Hours Online
+                        <input type="number" id="hours-online" value =16 min =0 max= 24
+                        onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
                     </label>
-                    <label> Origin Town
-                        <select id="origin-town">
-                            <option id="option" value="grana">Grana</option>
-                            <option id="option" value="old-wisdom-tree">Old Wisdom Tree</option>
+                </div>
+                <div class="col-6 col-sm-3">             
+                    <label for='harvest-day'> Max Replant per Day
+                        <input type="number" id="harvest-day" value = 4 min =1 max= 8
+                        onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
+                    </label>
+                </div>
+                <div class="col-6 col-sm-3">
+                 <label for='farming-slots' > Farming Slots 
+                        <input type="number" id="farming-slots" value = 100 min =0 max= 100
+                        onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');"> 
+                    </label>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <label for="fertilizer"> Fertilizer used
+                        <select id="fertilizer"  name="fertilizer" >
+                            <option id="option" value="yes">Yes</option>
+                            <option id="option" value="no" selected>No</option>
                         </select>
                     </label>
-                    <label> Crates Per Task
-                        <select id="crates-per-task">
-                            <option id="option" value=1>1</option>
-                            <option id="option" value=2>2</option>
-                            <option id="option" value=4>4</option>
-                        </select>
-                    </label>
+                </div>
+            </div>
 
-               </form>
-        </div>  
+   
+
+                </div>
+            </div>
+
+            </form>
+        </div>
+
+    
 
         <div class = "database">
             <span>
@@ -156,9 +178,9 @@
                         <th>Growth Time (mins)</th>
                         <th>Harvest per Day</th>
                         <th>Crop In Stock</th>
-                        <th>Crate</th>
                         <th>Market</th>
                         <th>Vendor</th>
+                        <th>Crate</th>
                         <th style="text-align:left">Custom Growth <br>Time (mins)</th>
                     </tr>
 

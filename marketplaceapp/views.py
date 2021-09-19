@@ -51,5 +51,9 @@ def getFarmingPage(request):
     fodder = FruitItem.objects.filter(item_type="farming").values("item_name","base_price")
     serializer = json.dumps(list(fodder),cls=DjangoJSONEncoder)
     fodders = json.loads(serializer)
-    return render(request,'farming.html',{'crop':crops,'fruit':fruits,"stonetail":fodders})
+    
+    bsp = FruitItem.objects.filter(item_name="Black Stone Powder").values("item_name","base_price")
+    serializer = json.dumps(list(bsp),cls=DjangoJSONEncoder)
+    bsps = json.loads(serializer)
+    return render(request,'farming.html',{'crop':crops,'fruit':fruits,"stonetail":fodders,"bsp":bsps})
 

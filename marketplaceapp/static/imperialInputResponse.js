@@ -16,6 +16,7 @@ $(document).ready(function() {
 
     // Filter in stock everytime in stock is changed
     $('#instock').keyup( function() {
+        $(this).val(parseFloat($(this).val()) || 0);
         table.column(3).search('').draw();
     });
 
@@ -27,47 +28,39 @@ $(document).ready(function() {
 
      //Recalculate profit and revenue when cp changes by recalling data and recalculating. Also validates input
      $('#cp').on('keyup', function(){
-        $('#cp').val(parseInt($('#cp').val().toString()))
+        $(this).val(parseFloat($(this).val()) || 0);
         if ($('#cp').val() > 5000) {
             $('#cp').val(5000)
         }
-        table.clear().rows.add(calculateAdditionalData()).draw();
+        table.clear().rows.add(calculateAdditionalData(getPageType())).draw();
      });
 
      //Recalculate profit and revenue when mastery changes by recalling data and recalculating. Also validates input
      $('#mastery').on('keyup', function(){
-        $('#mastery').val(parseInt($('#mastery').val().toString()))
+
+        $(this).val(parseFloat($(this).val()) || 0);
         if ($('#mastery').val() > 2000) {
             $('#mastery').val(2000)
         }
         
 
-        table.clear().rows.add(calculateAdditionalData()).draw();
-     });
-     
-     //Validate in stock input by removing leading 0s 
-     $('#instock').on('keyup', function(){
-        $('#instock').val(parseInt($('#instock').val().toString()))
-        
+        table.clear().rows.add(calculateAdditionalData(getPageType())).draw();
      });
 
+
+   
+     
      //Update table prices if update button is pressed by fetching data from database. Also prevent spamming the button by locking button for 1min
-     var type
-     if (document.getElementById('title').textContent.toUpperCase().includes("cooking".toUpperCase())) {
-         type = "cooking"
-     }
- 
-     else if (document.getElementById('title').textContent.toUpperCase().includes("alchemy".toUpperCase())){
-         type = "alchemy"
-     }
+
      var locked = false
      $('.update-button').on('click', function(){
+         type = getPageType()
          if (locked === false) {
              $("#update-image").css({'color':'#efb700'})
              $('#update-time').text("loading data")
-             fetch_data(type).then( data => {
+             fetch_data(getPageType(type)).then( data => {
                  $("#update-image").css({'color':'#efb700'})
-                 table.clear().rows.add(calculateAdditionalData(data.data)).draw();
+                 table.clear().rows.add(calculateAdditionalData(type,data.data)).draw();
                  $("#update-image").css({'color':'#5ff369'})
                  setUpdateTime()
                  locked= true
@@ -83,8 +76,16 @@ $(document).ready(function() {
       });
 })
 
+function getPageType () {
+    console.log()
+    if (document.getElementById('title').textContent.toUpperCase().includes("cooking".toUpperCase())) {
+        return "cooking"
+    }
 
-
+    else if (document.getElementById('title').textContent.toUpperCase().includes("alchemy".toUpperCase())){
+        return "alchemy"
+    }
+}
 
 
 

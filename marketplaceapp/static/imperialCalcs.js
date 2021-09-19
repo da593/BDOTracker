@@ -1,9 +1,7 @@
 //Calculate quantity, revenue, and profit and is added to JSON data field to be rendered into the table
 //data is an array of JSON objects
 function calculateAdditionalData(type,mydata=JSON.parse(document.getElementById('item_data').textContent)) {
-
-    console.log(mydata)
-
+   
     for (let i =0; i<mydata.length; i++) {
         mydata[i]['total_quantity'] = mydata[i].quantity * Math.floor(document.getElementById("cp").value / 2)
         var mastery = Math.floor(document.getElementById("mastery").value / 50) * 50
@@ -15,6 +13,7 @@ function calculateAdditionalData(type,mydata=JSON.parse(document.getElementById(
         mydata[i]['revenue_box'] = revenueBox
         mydata[i]['total_profit'] = totalProfit
         mydata[i]['total_revenue'] = totalRevenue
+       
     }
     return mydata
 }
@@ -70,6 +69,7 @@ function calcRevenue(type,mastery,profession_level) {
     var imperialIncrease = 0
     if (type === "cooking"){
         imperialIncrease = masteryValues[mastery/50][mastery].cooking
+        
     }
     else if (type ==="alchemy") {
         imperialIncrease = masteryValues[mastery/50][mastery].alchemy
@@ -106,7 +106,7 @@ function calcRevenue(type,mastery,profession_level) {
         boxPrice = 800000
         basePrice = 320000
     }
-    
+
     return boxPrice + (basePrice * imperialIncrease)
 }
 

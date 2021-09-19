@@ -21,7 +21,7 @@ $(document).ready( function () {
             
             order: [[ 6, "dsc" ]],
             
-            "data":calculateAdditionalData(),
+            "data":calculateAdditionalData(getPageType()),
             
             "columns": [
                 

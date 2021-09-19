@@ -52,16 +52,17 @@ $(document).ready( function () {
                 },
                     {"data":"in_stock",},
                 
-                  
-                    {"data":"crate",
-                    render: DataTable.render.profit()
-                },
+
                     {"data":"market",
                     render: DataTable.render.profit()
                 },
                     {"data":"vendor",
                     render: DataTable.render.profit()
                 },
+
+                {"data":"crate",
+                render: DataTable.render.profit()
+            },
 
                 { "data": undefined, "defaultContent": '<input "type="number" value="0" min = 1 max = 2400 style = "background-color:rgb(55, 59, 62); text-align:center;"        >'},
 
