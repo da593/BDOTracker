@@ -113,3 +113,21 @@ class FruitItem(models.Model):
         managed = False
         db_table = 'fruit_items'
         unique_together = (('item_id', 'min_enhance', 'max_enhance'),)
+
+class PearlItem(models.Model):
+    item_id = models.BigIntegerField(primary_key=True)
+    item_name = models.CharField(max_length=100, blank=True, null=True)
+    base_price = models.BigIntegerField(blank=True, null=True)
+    in_stock = models.BigIntegerField(blank=True, null=True)
+    total_trades = models.BigIntegerField(blank=True, null=True)
+    hourly_sale = models.IntegerField()
+    daily_sale = models.IntegerField()
+    weekly_sale = models.IntegerField()
+    monthly_sale = models.IntegerField()
+    grade = models.IntegerField()
+
+
+    class Meta:
+        managed = False
+        db_table = 'pearl_items'
+        unique_together = (('item_id'),)

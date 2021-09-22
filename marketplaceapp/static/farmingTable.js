@@ -1,6 +1,6 @@
 $(document).ready( function () {
 
-    $('#table-id').DataTable(
+    var table = $('#table-id').DataTable(
         {   
             "dom": 
             "<ti>",
@@ -17,9 +17,9 @@ $(document).ready( function () {
                 }
                
                 ,
-            { className: "dt-center", targets: [0,1,2,3,4,5,6,7,8] }],             
+            { className: "dt-center", targets: [0,1,2,3,4,5,6,7] }],             
             
-            order: [[ 6, "dsc" ]],
+            order: [[ 5, "dsc" ]],
             
             "data":calculateFarmingData(),
             
@@ -44,12 +44,14 @@ $(document).ready( function () {
                     }
                 },
                     {"data":"fruit",},
-                    {"data":"growth_time",},
-                    {"data":"harvest_day",
+                    {"data":"growth_time",
                     render: function(data) {
-                        return data.toFixed(2)
+                        hr = Math.floor((data / 60))
+                        min = data % 60
+                        return hr + "hr " + min+"m"
                     }
                 },
+                    {"data":"harvest_day",},
                     {"data":"in_stock",},
                 
 
@@ -64,7 +66,6 @@ $(document).ready( function () {
                 render: DataTable.render.profit()
             },
 
-                { "data": undefined, "defaultContent": '<input "type="number" value="0" min = 1 max = 2400 style = "background-color:rgb(55, 59, 62); text-align:center;"        >'},
 
             ]
         } 

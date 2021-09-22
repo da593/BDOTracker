@@ -166,20 +166,7 @@ $.fn.dataTable.ext.search.push(
     }
 );
 
-//When update button hits, Fetch is used to retrieve updated data from database and starts an async promise chain in order to update the table values displayed
-function fetch_data(type) {
-    return  fetch('/'.concat(type), {
-        headers:{
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
-        },
-    }).then(response => {
-      if (response.headers.get('content-type') != 'application/json') {
-        throw new TypeError();
-      }
-      return response.json()         
-    }) 
-}
+
 
 
 

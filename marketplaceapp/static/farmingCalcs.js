@@ -1,64 +1,70 @@
-function calculateFarmingData(crop_data=JSON.parse(document.getElementById('crop_data').textContent),fruit_data=JSON.parse(document.getElementById('fruit_data').textContent),stonetail_data = JSON.parse(document.getElementById('stonetail_data').textContent) ) {
+function calculateFarmingData(crop_data=JSON.parse(document.getElementById('crop_data').textContent),stonetail_data=JSON.parse(document.getElementById('stonetail_data').textContent),bsp_data=JSON.parse(document.getElementById('bsp_data').textContent) ) {
     
     for (let i=0;i<crop_data.length;i++) {
         
+
+ 
         if (document.getElementById('fertilizer').value ==='yes') {
             crop_data[i]['growth_time'] = crop_data[i]['fertilizer_growth_minutes']
         }
         else {
             crop_data[i]['growth_time'] = crop_data[i]['perfect_growth_minutes']
         }
-        var tax = calculateTax()
-        var fruitValue = findFruitValue(fruit_data,crop_data[i]['fruit'])
-        var bsp = findFruitValue(fruit_data,'Black Stone Powder')
-
-        crop_data[i]['harvest_day'] = Math.min(document.getElementById('harvest-day').value, (document.getElementById('hours-online').value * 60/ crop_data[i]['growth_time']) )
-        crop_data[i]['market'] = calculateMarketProfit(crop_data[i]['slots'],stonetail_data[0]['base_price'],fruitValue,crop_data[i]['base_price'], crop_data[i]['harvest_day'],tax)
-        crop_data[i]['vendor'] = calculateVendorProfit(crop_data[i]['slots'],stonetail_data[0]['base_price'],fruitValue,crop_data[i]['seed_price'], crop_data[i]['harvest_day'],tax)
-
-        var crateBase = findCrateBase(crop_data[i]['item_name'])
         
+
+        var tax = calculateTax()
+        var fruitValue = findFruitValue(crop_data[i]['fruit'])
+        var stonetailValue = stonetail_data[0]['base_price']
+        crop_data[i]['harvest_day'] = Math.min(document.getElementById('harvest-day').value, Math.floor(document.getElementById('hours-online').value * 60/ crop_data[i]['growth_time']) )
+        
+        crop_data[i]['market'] = calculateMarketProfit(crop_data[i]['slots'],stonetailValue,fruitValue,crop_data[i]['base_price'], crop_data[i]['harvest_day'],tax)
+        crop_data[i]['vendor'] = calculateVendorProfit(crop_data[i]['slots'],stonetailValue,fruitValue,crop_data[i]['seed_price'], crop_data[i]['harvest_day'],tax)
+        
+        //Crate calculations
+        var crateBase = findCrateBase(crop_data[i]['item_name'])
         if (crateBase <= 0) {
             crop_data[i]['crate'] = 0
            
         }
         else {
-            var crateValue = calculateCrateValue(bsp,crateBase)
-            crop_data[i]['crate'] = calculateCrateProfit(crop_data[i]['slots'],stonetail_data[0]['base_price'],fruitValue,crateValue, crop_data[i]['harvest_day'],tax)
+            var crateValue = calculateCrateValue(bsp_data[0]['base_price'],crateBase)
+            crop_data[i]['crate'] = calculateCrateProfit(crop_data[i]['slots'],stonetailValue,fruitValue,crateValue, crop_data[i]['harvest_day'],tax)
             
         }
-
-        
-
         
     }
     //console.log(crop_data)
-    
+  
     return crop_data
 }
 
+
+
+
 function calculateTax() {
     var fame = document.getElementById("family-fame").value
-    var tax = 0.65
+    
+    
     var afterSaleBonuses = 1
-    if (fame >= 1000 || fame<=3999){
-        afterSaleBonuses = afterSaleBonuses + 0.005 
+
+    if (fame >= 1000 && fame <=3999){
+        afterSaleBonuses += 0.005 
     }
-    else if (fame >= 4000 || fame<=6999) {
-        afterSaleBonuses = afterSaleBonuses + 0.01
+    else if (fame >= 4000 && fame <=6999) {
+        afterSaleBonuses += 0.01
     }
     else if (fame >= 7000) {
-        afterSaleBonuses = afterSaleBonuses + 0.015
+        afterSaleBonuses += 0.015
+      
     }
     
     if (document.getElementById("value-pack").value === "yes") {
-        afterSaleBonuses = afterSaleBonuses + 0.3
+        afterSaleBonuses += 0.3
     }
 
     if (document.getElementById("merchant-ring").value === "yes") {
-        afterSaleBonuses = afterSaleBonuses + 0.05
+        afterSaleBonuses += 0.05
     }
-    
     return 0.65 * afterSaleBonuses
 }
 
@@ -107,7 +113,7 @@ function calculateCrateValue(bsp,crateBase) {
 
     var crateCost = bsp + cpInvest * cpCost/(100*document.getElementById('crates-per-task').value) + transportCost / 7157
     var distanceBonus = 0
-    var tradeLevel = parseInt(document.getElementById("profession-number").value)
+    
     if (document.getElementById("origin-town").value === "grana") {
         distanceBonus = 1.1385
     }
@@ -115,7 +121,13 @@ function calculateCrateValue(bsp,crateBase) {
         distanceBonus = 1.0407
     }
 
-    if (document.getElementById("trade-profession").value == 1) {
+    var tradeLevel = parseInt(document.getElementById("profession-number").value)
+
+    if (tradeLevel == 0) {
+        tradeLevel += 1
+    }
+
+    if (document.getElementById("trade-profession").value == 1 ) {
         tradeLevel += 0
     }
 
@@ -171,16 +183,19 @@ function calculateVendorProfit(cropSlot,fodderValue,fruitValue,seedValue,totalCy
     return vendor
 }
 
-function findFruitValue(fruit_data,name) {
+function findFruitValue(name,fruit_data=JSON.parse(document.getElementById('fruit_data').textContent)) {
     
     for (let i=0;i<fruit_data.length;i++) {
         
-        if (fruit_data[i]['item_name'] === name) {
+        if (fruit_data[i]['item_name'].toUpperCase() === name.toUpperCase()) {
           
             return fruit_data[i]['base_price']
         }
     }
 }
+
+
+
 
 
 function findCrateBase(crop) {
@@ -236,4 +251,4 @@ function findCrateBase(crop) {
     }
 }
 
-    
+
