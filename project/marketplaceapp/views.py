@@ -16,27 +16,21 @@ def getPearlMarketPage(request):
 
 
 def getCookingPage(request):
+    queryset = CookingItem.objects.values('item_name','base_price','in_stock','profession_level','quantity','grade')
+    serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
+    data = json.loads(serializer)
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        queryset = CookingItem.objects.values('item_name','base_price','in_stock','profession_level','quantity','grade')
-        serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
-        data = json.loads(serializer)
         return JsonResponse({"lastUpdate":datetime.now().timestamp(),'data':data})
     else:
-        queryset = CookingItem.objects.values('item_name','base_price','in_stock','profession_level','quantity','grade')
-        serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
-        data = json.loads(serializer)
         return render(request,'cooking.html',{'data':data})
 
 def getAlchemyPage(request):
+    queryset = AlchemyItem.objects.values('item_name','base_price','in_stock','profession_level','quantity','grade')
+    serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
+    data = json.loads(serializer)
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        queryset = AlchemyItem.objects.values('item_name','base_price','in_stock','profession_level','quantity','grade')
-        serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
-        data = json.loads(serializer)
         return JsonResponse({'data':data})
     else:
-        queryset = AlchemyItem.objects.values('item_name','base_price','in_stock','profession_level','quantity','grade')
-        serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
-        data = json.loads(serializer)
         return render(request,'alchemy.html',{'data':data})
 
 def getFarmingPage(request):
@@ -55,5 +49,9 @@ def getFarmingPage(request):
     bsp = FruitItem.objects.filter(item_name="Black Stone Powder").values("item_name","base_price")
     serializer = json.dumps(list(bsp),cls=DjangoJSONEncoder)
     bsps = json.loads(serializer)
-    return render(request,'farming.html',{'crop':crops,'fruit':fruits,"stonetail":fodders,"bsp":bsps})
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({'crop':crops,'fruit':fruits,"stonetail":fodders,"bsp":bsps})
+    else:
+        return render(request,'farming.html',{'crop':crops,'fruit':fruits,"stonetail":fodders,"bsp":bsps})
+
 
