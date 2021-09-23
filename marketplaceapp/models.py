@@ -124,6 +124,7 @@ class PearlItem(models.Model):
     daily_sale = models.IntegerField()
     weekly_sale = models.IntegerField()
     monthly_sale = models.IntegerField()
+    item_type = models.CharField(max_length=32)
     grade = models.IntegerField()
 
 

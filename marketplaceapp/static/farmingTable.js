@@ -81,26 +81,5 @@ $(document).ready( function () {
     setUpdateTime() 
 } );
 
-//Customized helper render function to style profit numbers
-DataTable.render.profit = function () {
-    return function ( data ) {
-        var number = $.fn.dataTable.render.number( ',', '.'). display(data);
-        let color = "white"; 
-        if (data < 0) {
-            color = "#ff6367"
-        }
-        else {
-            color = "#b3ff7a"
-        }
 
-        return '<span style="color:' + color + '">' + number + '</span>';
-    };
-};
-
-//Sets current updated time on loadup and on call
-function setUpdateTime() {
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const currentTime = moment().tz(timezone).format('hh:mm:ss A');
-    $('#update-time').text("prices updated at".concat(" ",currentTime))
-}
 

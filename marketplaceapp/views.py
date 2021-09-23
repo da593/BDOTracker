@@ -12,8 +12,15 @@ def getHomePage(request):
     return render(request,'index.html')
 
 def getPearlMarketPage(request):
-    return render(request,'pearlmarket.html')
-
+    queryset = PearlItem.objects.values('item_name','total_trades','hourly_sale','daily_sale','weekly_sale','monthly_sale','item_type','grade')
+    serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
+    data = json.loads(serializer)
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({'data':data})
+    else:
+        
+        return render(request,'pearlmarket.html',{'data':data})
+    
 
 def getCookingPage(request):
     queryset = CookingItem.objects.values('item_name','base_price','in_stock','profession_level','quantity','grade')
@@ -49,6 +56,7 @@ def getFarmingPage(request):
     bsp = FruitItem.objects.filter(item_name="Black Stone Powder").values("item_name","base_price")
     serializer = json.dumps(list(bsp),cls=DjangoJSONEncoder)
     bsps = json.loads(serializer)
+    
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         return JsonResponse({'crop':crops,'fruit':fruits,"stonetail":fodders,"bsp":bsps})
     else:
