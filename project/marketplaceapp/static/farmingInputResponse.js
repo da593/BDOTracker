@@ -116,9 +116,6 @@ $(document).ready(function() {
      });
 
 
-
-
-
      //Update table prices if update button is pressed by fetching data from database. Also prevent spamming the button by locking button for 1min
      var locked = false
      $('.update-button').on('click', function(){
@@ -127,9 +124,9 @@ $(document).ready(function() {
              $("#update-image").css({'color':'#efb700'})
              $('#update-time').text("loading data")
              fetch_data(getPageType(type)).then( data => {
-                
+               
                  $("#update-image").css({'color':'#efb700'})
-                 table.clear().rows.add(calculateFarmingData(data.crop,data.fruit,data.stonetail,data.bsp)).draw();
+                 table.clear().rows.add(calculateFarmingData(data.crop,data.stonetail,data.bsp)).draw();
                  $("#update-image").css({'color':'#5ff369'})
                  setUpdateTime()
                  locked= true
@@ -139,44 +136,15 @@ $(document).ready(function() {
          }
  
          else {
-            setTimeout(function() {locked= false},20000)
-         }
+            $(".bi.bi-arrow-clockwise").css({'color':'#e02d48'})
+            setTimeout(function() {
+                locked= false
+                $(".bi.bi-arrow-clockwise").css({'color':'white'})
+            },20000)
+            }
          
       });
 })
 
-function getPageType () {
-    console.log()
-    if (document.getElementById('title').textContent.toUpperCase().includes("cooking".toUpperCase())) {
-        return "cooking"
-    }
 
-    else if (document.getElementById('title').textContent.toUpperCase().includes("alchemy".toUpperCase())){
-        return "alchemy"
-    }
-
-    else if (document.getElementById('title').textContent.toUpperCase().includes("farming".toUpperCase())){
-        return "farming"
-    }
-
-    else if (document.getElementById('title').textContent.toUpperCase().includes("pearl".toUpperCase())){
-        return "pearlmarket"
-    }
-    
-}
-
-//When update button hits, Fetch is used to retrieve updated data from database and starts an async promise chain in order to update the table values displayed
-function fetch_data(type) {
-    return  fetch('/'.concat(type), {
-        headers:{
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
-        },
-    }).then(response => {
-      if (response.headers.get('content-type') != 'application/json') {
-        throw new TypeError();
-      }
-      return response.json()         
-    }) 
-}
 

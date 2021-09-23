@@ -38,9 +38,9 @@ class FruitAdmin(admin.ModelAdmin):
 
 class PearlAdmin(admin.ModelAdmin):
     list_display = ['item_id','item_name','base_price','in_stock','total_trades',
-                    'hourly_sale','hourly_sale','hourly_sale','hourly_sale','grade']
+                    'hourly_sale','daily_sale','weekly_sale','monthly_sale','item_type','grade']
 
-    search_fields = ['item_name','in_stock']
+    search_fields = ['item_name','item_type']
 
 admin.site.register(MarketplaceItem,MarketplaceAdmin)
 admin.site.register(CookingItem,CookingAdmin)
