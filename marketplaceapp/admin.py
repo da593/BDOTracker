@@ -1,12 +1,7 @@
 from django.contrib import admin
 from .models import *
 # Register your models here.
-class MarketplaceAdmin(admin.ModelAdmin):
-    list_display = ['item_id','item_name','min_enhance','max_enhance',
-                    'base_price','in_stock','total_trades','min_price_list',
-                    'max_price_list','last_sale_price','last_sale_time','item_type','grade']
 
-    search_fields = ['item_id','item_name','item_type']
 
 class CookingAdmin(admin.ModelAdmin):
     list_display = ['item_id','item_name','min_enhance','max_enhance',
@@ -42,9 +37,15 @@ class PearlAdmin(admin.ModelAdmin):
 
     search_fields = ['item_name','item_type']
 
-admin.site.register(MarketplaceItem,MarketplaceAdmin)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ['submission_id','feedback_type','feedback']
+    search_fields=['feedback_type','feedback']
+
+
 admin.site.register(CookingItem,CookingAdmin)
 admin.site.register(AlchemyItem,AlchemyAdmin)
 admin.site.register(FarmingItem,FarmingAdmin)
 admin.site.register(FruitItem,FruitAdmin)
 admin.site.register(PearlItem,PearlAdmin)
+admin.site.register(FeedbackForm,FeedbackAdmin)
+

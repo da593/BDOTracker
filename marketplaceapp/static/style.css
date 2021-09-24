@@ -369,6 +369,214 @@ button:focus {outline:none;}
 
 
 
+.popup-container {
+    display:none;
+    width:100%;
+    height:100%;
+    z-index:1;
+    position:fixed;
+    background-color:rgb(0,0,0,0.4);
+}
+
+.popup-content {
+    width:25%;
+    margin:0 auto;
+    margin-top:10%;
+}
+
+.top-window {
+    width:100%;
+    text-align:right;
+}
+
+.popup-header {
+    padding-top:25px;
+    padding-bottom:15px;
+    color:white;
+    text-align:center;
+    font-size:24px;
+    background-color: rgb(16,16,16);
+}
+
+.popup-header > p {
+    margin-bottom:0;
+}
+
+.popup-header-content {
+    font-size:16px;
+}
+
+.popup-links {
+    background-color:white;
+    
+}
+
+.popup-links > ul {
+   padding-bottom:25px;
+   padding-left:0px;
+}
+
+
+
+.popup-links > ul > li {
+    color:black;
+    list-style-type:none;
+    font-family:"Roboto",sans-serif;
+    font-weight:bold;
+    padding-top:25px;
+    padding-left:25%;
+    
+}
+
+#feedback-sub > ul > li:hover {
+    background-color:grey
+}
+
+#feedback-sub > ul > li > a {
+    color:black
+}
+
+.popup-links > ul > li > a {
+    text-decoration:none; 
+    font-family:sans-serif;
+    font-size:16px;
+}
+
+i {
+    margin-left:0;
+    font-size:22px;
+    padding-right:20px;
+}
+
+#link-image {
+    font-size:28px;
+}
+
+.copy-button {
+    background-color:white;
+    border-style:none;
+    padding-top:5px;
+    
+}
+
+.close-button {
+    background-color:transparent;
+    border-style:none;
+    color:grey;
+    padding-right:0px;
+}
+
+.close-button:hover {
+    color: #353336
+}
+
+.back-button {
+    background-color:transparent;
+    border-style:none;
+    color:grey;
+    padding-right:0px;
+}
+
+
+
+.bottom-popup-header {
+    text-align:center;
+    color:black;
+    font-family:sans-serif;
+    font-weight:bold;
+    padding-top:3%;
+}
+/*Like feedback icon*/
+.bi.bi-linkedin,.bi.bi-hand-thumbs-up-fill {
+    color:rgb(10, 102, 194);
+}
+/*Idea feedback icon*/
+.bi.bi-lightbulb-fill {
+    color:#deca1d;
+}
+/*problem feedback icon*/
+.bi.bi-exclamation-lg {
+    color:red;
+}
+
+/*Back button icon*/
+.bi.bi-arrow-90deg-left {
+    color:black;
+    
+}
+
+.bi.bi-arrow-90deg-left:hover {
+    color:#5085d9;
+}
+
+.bottom-top-window {
+    text-align:left;
+    
+}
+
+#form-sub {
+    display:none;
+    text-align:center;
+    padding-bottom:15px;
+    margin: auto;
+}
+
+#submit-finished {
+    display:none;
+    text-align:center;
+    padding-bottom:100px;
+}
+
+#submit-finished > p {
+    font-family:sans-serif;
+    font-size:24px;
+    color:black;
+    font-weight:bold;
+    padding-top:100px;
+}
+
+.submit-container {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    
+}
+
+#submit-feedback:hover {
+    color:#ff6367;
+}
+
+#contact-button:hover,#feedback-button:hover {
+    color:#ff6367;
+}
+
+.validity {
+    display:none;
+    color:red;
+}
+
+.fixed-footer {
+    position:fixed;
+    width:10%;
+    height:10%;
+    margin-top:20%;
+    align-content:center;
+    margin-left:3%;
+    
+}
+
+.side-buttons {
+    padding-right:15px;
+    background-color:rgb(24,24,24);
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    text-decoration:none;
+    color:white;
+    text-align:center;
+    padding
+}
 
 
 

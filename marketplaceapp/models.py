@@ -132,3 +132,14 @@ class PearlItem(models.Model):
         managed = False
         db_table = 'pearl_items'
         unique_together = (('item_id'),)
+
+class FeedbackForm(models.Model):
+    submission_id = models.BigAutoField(primary_key=True)
+    feedback_type = models.CharField(max_length=32)
+    feedback = models.TextField(blank=False,null=False)
+
+    class Meta:
+        managed = False
+        db_table = 'feedback_forms'
+        unique_together = (('submission_id'),)
+

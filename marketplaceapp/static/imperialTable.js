@@ -152,7 +152,21 @@ $.fn.dataTable.ext.search.push(
     }
 );
 
+//Customized helper render function to style profit numbers
+DataTable.render.profit = function () {
+    return function ( data ) {
+        var number = $.fn.dataTable.render.number( ',', '.'). display(data);
+        let color = "white"; 
+        if (data < 0) {
+            color = "#ff6367"
+        }
+        else {
+            color = "#b3ff7a"
+        }
 
+        return '<span style="color:' + color + '">' + number + '</span>';
+    };
+};
 
 
 
