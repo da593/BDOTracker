@@ -1,4 +1,8 @@
-
+$('.bi.bi-question-circle').ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({
+        placement : 'top'
+    });
+});
 function getPageType () {
     console.log()
     if (document.getElementById('page').textContent.toUpperCase().includes("cooking".toUpperCase())) {
@@ -48,6 +52,8 @@ var popup_box = document.getElementsByClassName("popup-container")
 
 var open_contact = document.getElementById("contact-button")
 var open_feedback= document.getElementById("feedback-button")
+var side_open_contact = document.getElementById("side-contacts-button")
+var side_open_feedback= document.getElementById("side-feedback-button") 
 
 var copy_email = document.getElementById("copy-email")
 //Open contact/feedback popup depending on linked click
@@ -60,6 +66,14 @@ open_feedback.onclick = function(){
     popup_box[1].style.display = "block";
 }
 
+side_open_contact.onclick = function(){
+  
+    popup_box[0].style.display = "block";
+}
+
+side_open_feedback.onclick = function(){
+    popup_box[1].style.display = "block";
+}
 
 //copy email to clipboard
 copy_email.onclick = function(){
@@ -148,3 +162,5 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+
