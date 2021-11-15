@@ -4,6 +4,6 @@ This website is used to determine the most profitable items to turn in for vario
 
 # Setup
 1. Clone the repository
-2. Change to root directory (./BDOTracker)
-3. npm install
-4. npm start
+2. Change to project directory (../BDOTracker/project)
+3.  run the command in the terminal: 'python manage.py runserver'
+5. npm start
