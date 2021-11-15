@@ -5,5 +5,5 @@ This website is used to determine the most profitable items to turn in for vario
 # Setup
 1. Clone the repository
 2. Change to project directory (../BDOTracker/project)
-3.  run the command in the terminal: `python manage.py runserver`
-5. npm start
+3. run the command in the terminal: `python manage.py runserver`
+4. Open the local deployment sever as linked in the terminal
