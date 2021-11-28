@@ -1,0 +1,31 @@
+version: "3.8"
+   
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - marketplace-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: BDOProject
+      MYSQL_DATABASE: marketplacedb
+    ports:
+      - "33061:3306"
+
+  django:
+    build: ./project
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    working_dir: /project
+    volumes:
+      - ./project:/project
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: BDOProject
+      MYSQL_DB: marketplacedb
+    depends_on:
+      - mysql
+
+volumes:
+  marketplace-data:

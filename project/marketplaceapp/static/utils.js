@@ -119,6 +119,7 @@ $('.back-button').on('click',function(){
     $('#feedback-text').val("")
 })
 
+
 $('#submit-feedback').on('click',function(){
     var text = $('#feedback-text').val().trim()
     if (text == "" || text.length < 10){
@@ -141,7 +142,7 @@ function post_data (type,data) {
         headers:{
             'Accept': 'application/json',
             'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
-            'X-CSRFToken': getCookie('csrftoken'),
+            'X-CSRFToken': csrftoken,
         },
         body:JSON.stringify({'post_data':data})
     })
@@ -163,4 +164,4 @@ function getCookie(name) {
     return cookieValue;
 }
 
-
+const csrftoken = getCookie('csrftoken')
