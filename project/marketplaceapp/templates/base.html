@@ -19,8 +19,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
-    {%block navbar%}
-    {%endblock navbar%}
+            {%block navbar%}
+            {%endblock navbar%}
             <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
                 <li class="nav-item"><p id="platform" class="navbar-text">PC-NA</p></li>
             </ul>
@@ -80,8 +80,8 @@
                 <textarea id="feedback-text" rows="5" cols="50" style="text-align:left; margin-bottom:15px;" value="" placeholder="Enter feedback (Mininum 10 characters)..."></textarea>
                 <div class="submit-container">
                      <span class="validity">Enter a minimum of 10 characters</span>
-                    <form>
-                        <input id="submit-feedback" type="submit" value="Submit feedback">
+                    <form> {% csrf_token %}
+                        <input id="submit-feedback" type="button" value="Submit feedback">
                     </form>
                 </div>
             </div>
