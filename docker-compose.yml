@@ -8,9 +8,8 @@ services:
     # Create a volume named marketplace-data and store them in Docker virtual hard drive (typically /var/lib/docker/volumes)
     volumes:
       - marketplace-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: BDOProject
-      MYSQL_DATABASE: marketplacedb
+    env_file:
+      - ./project/.env.dev
     ports:
       - "33061:3306"
 
@@ -18,17 +17,16 @@ services:
     build: 
       context: ./project
       dockerfile: Dockerfile
+
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     # Create a volume in the working directory to update when code changes
     volumes:
       - ./project:/project
-    environment:
-      MYSQL_HOST: mysql
-      MYSQL_USER: root
-      MYSQL_PASSWORD: BDOProject
-      MYSQL_DB: marketplacedb
+    env_file:
+        - ./project/.env.dev
+
     depends_on:
       - mysql
 
