@@ -1,0 +1,85 @@
+.Header {
+    height:25%; /* Full-height: remove this if you want "auto" height */
+    width: 100%; /* Set the width of the sidebar */
+    --primaryBackgroundColor: #2496ed;
+    
+   
+}
+
+
+.navbar {
+    height:100%;
+    margin-left:22%;
+    margin-right:22%;
+
+}
+
+
+
+.navbar-justify-left {
+    float:left;
+    text-align:center;
+    color:black;
+    font-size:20px;
+    font-weight:400;
+    padding-left:40px;
+}
+
+
+.navbar-justify-center {
+    display: inline-block;
+    margin-left:0 auto;
+    margin-right:0 auto;
+    margin-top:16px;
+    
+}
+
+.navbar-justify-right {
+    float:right;
+    padding-right:40px;
+    margin-top:25px;
+}
+
+/*Display as flex box and use space-between to distribute space*/
+.navbar-list {
+    list-style-type:none;
+    margin-top:25px;
+    display:flex;
+    align-items: stretch; /* Default */
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+/*display each item as a block
+flex 0 forces item to not grow to parent size
+flex 1 prevents overflowing
+flex auto calculates equal width for each item
+*/
+.navbar-item {
+    display:block;
+    flex:0 1 auto;
+    margin-right:35px;
+ 
+}
+
+.navbar-link,.navbar-dropdown-link {
+    text-decoration: none;
+    color:black;
+    font-size:18px;
+    font-weight:400;
+}
+
+.navbar-dropdown-link {
+    text-decoration: none;
+}
+
+.dropdown-toggle {
+    color:black !important;
+    font-size:18px !important;
+    font-weight:400 !important;
+	padding:0px 0px !important;
+}
+

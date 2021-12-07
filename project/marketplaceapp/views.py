@@ -1,73 +1,67 @@
 from django.shortcuts import render
 from django.core.serializers.json import DjangoJSONEncoder
-import json
-from django.http import JsonResponse
 from datetime import datetime
+from .serializers import *
 from .models import *
 from django.http import HttpResponseRedirect,HttpResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.renderers import JSONRenderer
+from rest_framework.response import Response
 
-# Create your views here.
+# Set the post requests for all views
+class BaseView(APIView):
+    def __init__(self):
+        self.model = None
+        self.serializer_class = None
 
+    # return a list of dictionaries of the item as data to user on request
+    def get(self,request):
+        if (self.model == None):
+            return Response(None)
+        else:
+            queryset = self.model.objects.all()
+            serializer =self.serializer_class(queryset,many=True)
+            return Response(serializer.data)
 
-def getHomePage(request):
-    if request.method == "POST":
-        feedbackForm = FeedbackForm()
-        feedback_data = json.load(request)['post_data']
-        feedbackForm.feedback_type = feedback_data['type']
-        feedbackForm.feedback = feedback_data['feedback']
-        feedbackForm.save()
-        return HttpResponse()
-    else:
-        return render(request,'index.html')
+    # Add feedback from user to feedback database on PO
+    def post(self,request):
+        serializer = FeedbackSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save
+            return Response(serializer.data, status=status.HTTP_201_CREATED) 
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-def getPearlMarketPage(request):
-    queryset = PearlItem.objects.values('item_name','total_trades','hourly_sale','daily_sale','weekly_sale','monthly_sale','item_type','grade')
-    serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
-    data = json.loads(serializer)
-    if (request.method == "POST"):
-        feedbackForm = FeedbackForm()
-        feedback_data = json.load(request)['post_data']
-        feedbackForm.feedback_type = feedback_data['type']
-        feedbackForm.feedback = feedback_data['feedback']
-        feedbackForm.save()
-        return HttpResponse()
-    elif request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return JsonResponse({'data':data})
-    else:
-        return render(request,'pearlmarket.html',{'data':data})
+class PearlView(BaseView):
+    def __init__(self):
+        self.model = PearlItem
+        self.serializer_class = PearlSerializer
+
+class CookingView(BaseView):
+    def __init__(self):
+        self.model = CookingItem
+        self.serializer_class = CookingSerializer
+
+class AlchemyView(BaseView):
+    def __init__(self):
+        self.model = AlchemyItem
+        self.serializer_class = AlchemySerializer
+
+class FarmingView(BaseView):
+    def __init__(self):
+        self.model = FarmingItem
+        self.serializer_class = FarmingSerializer
+        self.fruit = FruitItem
+        self.fruitSerializer_class = FruitSerializer
     
-
-def getCookingPage(request):
-    queryset = CookingItem.objects.values('item_name','base_price','in_stock','profession_level','quantity','grade')
-    serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
-    data = json.loads(serializer)
-    if (request.method == "POST"):
-        feedbackForm = FeedbackForm()
-        feedback_data = json.load(request)['post_data']
-        feedbackForm.feedback_type = feedback_data['type']
-        feedbackForm.feedback = feedback_data['feedback']
-        feedbackForm.save()
-        return HttpResponse()
-    elif request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return JsonResponse({"lastUpdate":datetime.now().timestamp(),'data':data})
-    else:
-        return render(request,'cooking.html',{'data':data})
-
-def getAlchemyPage(request):
-    queryset = AlchemyItem.objects.values('item_name','base_price','in_stock','profession_level','quantity','grade')
-    serializer = json.dumps(list(queryset),cls=DjangoJSONEncoder)
-    data = json.loads(serializer)
-    if (request.method == "POST"):
-        feedbackForm = FeedbackForm()
-        feedback_data = json.load(request)['post_data']
-        feedbackForm.feedback_type = feedback_data['type']
-        feedbackForm.feedback = feedback_data['feedback']
-        feedbackForm.save()
-        return HttpResponse()
-    elif request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return JsonResponse({'data':data}) 
-    else:
-        return render(request,'alchemy.html',{'data':data})
+    # Override get method to include two models that need to be serialize
+    def get(self,request):
+            queryset = self.model.objects.all()
+            farming_serializer = self.serializer_class(queryset,many=True)
+            fruit_serializer = self.fruitSerializer_class(queryset,many=True)
+            data = farming_serializer.data + fruit_serializer.data
+            return Response(data)
 
 def getFarmingPage(request):
     crop = FarmingItem.objects.values('item_name','base_price','in_stock','grade','perfect_growth_minutes','fertilizer_growth_minutes','slots','seed_price','fruit')

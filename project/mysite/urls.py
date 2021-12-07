@@ -19,8 +19,7 @@ from marketplaceapp import views
 
 
 urlpatterns = [
-    path('',include('marketplaceapp.urls')),
-    path('BDOTracker/', include('marketplaceapp.urls')),
+    path('api/', include('marketplaceapp.urls')),
     path('admin/', admin.site.urls),
     
 ]
