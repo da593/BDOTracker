@@ -1,4 +1,4 @@
-const URL = process.env.REACT_APP_ROUTER
+//const URL = process.env.REACT_APP_ROUTER
 export const SingleLinks = [
 
     {
@@ -32,3 +32,10 @@ export const DropDownLinks = [
         cName:'navbar-link'
     },
 ]
+
+export const ActiveLinkStyle = () => {
+    return {
+        
+        
+      };
+}

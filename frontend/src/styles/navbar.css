@@ -1,23 +1,21 @@
-.Header {
-    height:25%; /* Full-height: remove this if you want "auto" height */
+.Header {  
     width: 100%; /* Set the width of the sidebar */
-    --primaryBackgroundColor: #2496ed;
-    
-   
+    background-color: var(--primaryAltBackgroundColor); 
 }
 
-
+/*Forced header to fit navbar with inline-block*/
 .navbar {
-    height:100%;
-    margin-left:22%;
-    margin-right:22%;
+    display:flex;
+    margin-left:20%;
+    margin-right:20%;
+    justify-content:space-between;
+    align-content:center;
 
 }
-
 
 
 .navbar-justify-left {
-    float:left;
+    align-self:center;
     text-align:center;
     color:black;
     font-size:20px;
@@ -25,25 +23,21 @@
     padding-left:40px;
 }
 
-
-.navbar-justify-center {
-    display: inline-block;
-    margin-left:0 auto;
-    margin-right:0 auto;
-    margin-top:16px;
-    
+.navbar-brand {
+    font-size:20px;
+    font-weight:700;
+    color:var(--primaryLinkColor)
 }
 
-.navbar-justify-right {
-    float:right;
-    padding-right:40px;
-    margin-top:25px;
+.navbar-justify-center {
+    align-self:center;
+    margin-left:0 auto;
+    margin-right:0 auto;
 }
 
 /*Display as flex box and use space-between to distribute space*/
 .navbar-list {
     list-style-type:none;
-    margin-top:25px;
     display:flex;
     align-items: stretch; /* Default */
     justify-content: space-between;
@@ -67,19 +61,100 @@ flex auto calculates equal width for each item
 
 .navbar-link,.navbar-dropdown-link {
     text-decoration: none;
-    color:black;
+    color:var(--primaryLinkColor);
     font-size:18px;
     font-weight:400;
+    display: inline-block;
 }
 
-.navbar-dropdown-link {
+
+
+
+.navbar-justify-right {
+    align-self:center;
+    padding-right:40px;
+}
+
+.toggle-light-mode {
+    display:flex;
+}
+
+.icon {
+    font-size:20px;
+    color:white;
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.dropdown-button {
+    background-color:transparent;
+    border:none !important;
+    font-size:18px;
+    font-weight:400;
+    color:white;
+}
+
+.dropdown-icon {
+    font-size:14px;
+    color:white;
+    
+}
+
+.dropdown-button:hover {
+    cursor:pointer;
+}
+
+.dropdown-menu {
+    position:absolute;
+    background-color:var(--primaryAltBackgroundColor);
+    filter:brightness(95%);
+    
+}
+
+.dropdown-menu > li {
+    padding: 10px 15px;
+    margin-right:0%;
+    
+}
+
+.react-toggle-track {
+    background-color: var(--primaryAltTextColor) !important;
+}
+
+.current-page {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 3px;
     text-decoration: none;
-}
+    color:var(--primaryLinkColor);
+    font-size:18px;
+    font-weight:400;
+  }
+  
+  @keyframes border {
+    from {width: 0%;}
+    to {width:100%}
+  }
+  
+  .current-page::after {
+    content: '';
+    display: block;
+    position:absolute;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: var(--primaryAltTextColor);  
+    animation-name: border; 
+    animation-duration: 4s; 
+    animation-fill-mode: forwards; 
+    animation-name: border;
+    animation-duration: 0.5s;
+    
+  }
 
-.dropdown-toggle {
-    color:black !important;
-    font-size:18px !important;
-    font-weight:400 !important;
-	padding:0px 0px !important;
-}
+
+
+
+
+
 
