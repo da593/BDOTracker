@@ -11,11 +11,6 @@ const URL="/farming"
 function Farming() {
    const [data,setData] = useState(null)
   
-   useEffect(() => {
-      GET(URL).then((response) => {
-         setData(response.data)
-      })
-      },[] )
 
 
    return (

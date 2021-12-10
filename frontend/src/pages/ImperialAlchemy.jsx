@@ -9,12 +9,6 @@ function ImperialAlchemy() {
    const [data,setData] = useState(null)
    const URL="/alchemy"
 
-   useEffect(() => {
-      GET(URL).then((response) => {
-         setData(response.data)
-      })
-      },[] )
-
    return (
       <PageLayout          
       title={"Imperial Alchemy"}

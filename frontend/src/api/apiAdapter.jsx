@@ -4,13 +4,21 @@ process.env.NODE_ENV === "development" ? baseURL= "http://localhost:8000/api": b
 
 export function GET(url){
     return (
-        axios.get(baseURL+url)
+        axios.get(url)
+        //axios.get(baseURL+url)
     )}
 
 export function POST(url,requestData) {
     return (
-        axios.post(url,requestData)
+        null
+        //axios.post(url,requestData)
     )
 }
 
-  
+/*
+   useEffect(() => {
+      GET(URL).then((response) => {
+         setData(response.data)
+      })
+      },[] )
+*/

@@ -9,11 +9,7 @@ const URL="/cooking"
 function ImperialCooking() {
    const [data,setData] = useState(null)
 
-   useEffect(() => {
-      GET(URL).then((response) => {
-         setData(response.data)
-      })
-      },[] )
+
 
    return (
       <PageLayout          

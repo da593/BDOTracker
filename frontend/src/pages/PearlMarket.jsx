@@ -8,11 +8,7 @@ const URL="/pearlmarket"
 function PearlMarket() {
    const [data,setData] = useState(null)
   
-   useEffect(() => {
-      GET(URL).then((response) => {
-         setData(response.data)
-      })
-      },[] )
+
 
    return (
       <PageLayout          
