@@ -1,9 +1,23 @@
 .Header {  
-    width: 100%; /* Set the width of the sidebar */
-    background-color: var(--primaryAltBackgroundColor); 
+    color:var(--secondaryTextColor)
 }
 
-/*Forced header to fit navbar with inline-block*/
+.Footer {
+    height:60px;   /* Height of the footer */
+    color:var(--primaryTextColor);
+}
+
+.Header,.dropdown-menu,.Footer {
+    background-color: var(--darkerBackgroundColor); 
+}
+
+.navbar-link,.navbar-dropdown-link,.dropdown-button,.dropdown-icon,.react-toggle-track,.current-page-link {
+    color:var(--secondaryTextColor);
+}
+
+/*Forced header to fit navbar with display option
+Flex and justify content by using space-between the 3 alignments (left,center,right) starting at the center
+*/
 .navbar {
     display:flex;
     margin-left:20%;
@@ -13,11 +27,9 @@
 
 }
 
-
 .navbar-justify-left {
     align-self:center;
     text-align:center;
-    color:black;
     font-size:20px;
     font-weight:400;
     padding-left:40px;
@@ -26,7 +38,6 @@
 .navbar-brand {
     font-size:20px;
     font-weight:700;
-    color:var(--primaryLinkColor)
 }
 
 .navbar-justify-center {
@@ -61,24 +72,23 @@ flex auto calculates equal width for each item
 
 .navbar-link,.navbar-dropdown-link {
     text-decoration: none;
-    color:var(--primaryLinkColor);
     font-size:18px;
     font-weight:400;
     display: inline-block;
 }
 
-
-
-
+/*Change spacing and align self to vertically center*/
 .navbar-justify-right {
     align-self:center;
     padding-right:40px;
 }
 
+
 .toggle-light-mode {
     display:flex;
 }
 
+/*Change style of icons used in toggle button*/
 .icon {
     font-size:20px;
     color:white;
@@ -91,44 +101,41 @@ flex auto calculates equal width for each item
     border:none !important;
     font-size:18px;
     font-weight:400;
-    color:white;
 }
 
 .dropdown-icon {
     font-size:14px;
-    color:white;
-    
 }
 
 .dropdown-button:hover {
     cursor:pointer;
 }
 
+/*Set it absolute to overlap other div and change brightness to adjust color from background*/
 .dropdown-menu {
     position:absolute;
-    background-color:var(--primaryAltBackgroundColor);
-    filter:brightness(95%);
-    
-}
+    filter:brightness(95%);}
 
+/*Change spacing of the list in the dropdown menu*/
 .dropdown-menu > li {
     padding: 10px 15px;
     margin-right:0%;
-    
 }
 
+/*Style for the toggle button using !important to override default style*/
 .react-toggle-track {
-    background-color: var(--primaryAltTextColor) !important;
+    background-color: var(--buttonColor) !important;
 }
 
-.current-page {
+/*Style for the current page link (uses a different className)*/
+.current-page-link {
     display: inline-block;
     position: relative;
     padding-bottom: 3px;
     text-decoration: none;
-    color:var(--primaryLinkColor);
     font-size:18px;
     font-weight:400;
+    color:var(--secondaryTextColor);
   }
   
   @keyframes border {
@@ -136,20 +143,20 @@ flex auto calculates equal width for each item
     to {width:100%}
   }
   
-  .current-page::after {
+  .current-page-link:after {
     content: '';
     display: block;
     position:absolute;
     margin: auto;
     height: 3px;
-    width: 0px;
-    background: var(--primaryAltTextColor);  
+    width: 0px; 
     animation-name: border; 
     animation-duration: 4s; 
     animation-fill-mode: forwards; 
     animation-name: border;
     animation-duration: 0.5s;
-    
+    background-color:var(--secondaryTextColor);
+    color:var(--secondaryTextColor);
   }
 
 

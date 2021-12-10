@@ -1,3 +1,36 @@
-.content-wrapper {
-    z-index:0 !important;
+.HeaderWrapper{
+    display:block;
+    position:absolute;
+    width: 100%; 
+}
+
+.ContentWrapper {
+    display:block;
+    position:relative;
+    margin-top:5%;
+}
+
+.FooterWrapper {
+    display:block;
+    position:fixed;
+    width:100%;
+    bottom:0;
+}
+
+.title,.description {
+    color:var(--primaryTextColor);
+}
+
+.title{
+    text-align:center;
+    font-size: 32px;
+    font-weight:700;
+    margin:0;
+}
+
+.description {
+    text-align:center;
+    font-size: 18px;
+    font-weight:400;
+    margin:0;
 }
