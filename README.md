@@ -3,14 +3,5 @@ This app is used to determine the most profitable items to turn in for various p
 
 ![image](https://user-images.githubusercontent.com/60017078/141867894-2c6cbda0-90d4-4764-9dbb-e344e563f03b.png)
 
-# Setup
-Required: Docker
-1. Clone the repository
-2. Run
-```
- docker-compose up -d
-```
-3. Open [localhost:3000](localhost:3000) in browser
-
 
 
