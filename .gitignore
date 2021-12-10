@@ -1,7 +1,9 @@
 # environment  variables
 .env
 .env.*
-
+.env.dev
+.env.prod
+**.env.*
 # dependencies
 /node_modules
 /.pnp
