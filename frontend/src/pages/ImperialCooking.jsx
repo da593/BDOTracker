@@ -1,16 +1,22 @@
 import React,{useState,useEffect} from "react";
-import axios from 'axios';
-import {GET,POST} from '../api/apiAdapter';
 import PageLayout from "./PageLayout";
-
-const URL="/cooking"
+import {getData} from '../api/apiClient'
 
 
 function ImperialCooking() {
    const [data,setData] = useState(null)
+   const endpoint="/cooking"
+
+   useEffect(() =>  {
+      getData(endpoint).then(function(response) {
+         setData(response.data)
+         
+         return(response.status)
+      })
+      },[] )
 
 
-
+   
    return (
       <PageLayout          
       title={"Imperial Cooking"}

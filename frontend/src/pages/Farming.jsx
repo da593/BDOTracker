@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from "react";
-import axios from 'axios';
-import {GET,POST} from '../api/apiAdapter';
 import PageLayout from "./PageLayout";
+import {getData} from '../api/apiClient'
 
 
 const URL="/farming"
@@ -10,7 +9,15 @@ const URL="/farming"
 
 function Farming() {
    const [data,setData] = useState(null)
-  
+   const endpoint="/farming"
+   
+   useEffect(() =>  {
+      getData(endpoint).then(function(response) {
+         setData(response.data)
+         
+         return(response.status)
+      })
+      },[] )
 
 
    return (

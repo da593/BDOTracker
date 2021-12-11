@@ -18,12 +18,12 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
           <Routes>
-            <Route exact path='/' element={<Home/>}></Route> 
-            <Route exact path='/Home' element={<Home/>}></Route> 
-            <Route exact path='/PearlMarket' element={<PearlMarket/>}></Route> 
+            {/*<Route exact path='/' element={<Home/>}></Route> */}
+            <Route exact path='/home' element={<Home/>}></Route> 
+            <Route exact path='/pearlmarket' element={<PearlMarket/>}></Route> 
             <Route exact path='/cooking' element={<ImperialCooking/>}></Route> 
             <Route exact path='/alchemy' element={<ImperialAlchemy/>}></Route> 
-            <Route exact path='/Farming' element={<Farming/>}></Route> 
+            <Route exact path='/farming' element={<Farming/>}></Route> 
           </Routes>
     </BrowserRouter>
   </React.StrictMode>,

@@ -9,7 +9,7 @@ COPY package-lock.json ./
 
 # Run npm to install dependencies 
 RUN npm install 
-RUN npm install react-scripts@4.0.3 -g 
+RUN npm install react-scripts -g 
 
 # Copy the entire folder into workdir
 COPY ./ ./

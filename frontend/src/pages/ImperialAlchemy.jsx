@@ -1,13 +1,18 @@
 import React,{useState,useEffect,useRef} from "react";
-import axios from 'axios';
-import {GET,POST} from '../api/apiAdapter';
 import PageLayout from "./PageLayout";
-
-
+import {getData} from '../api/apiClient'
 
 function ImperialAlchemy() {
    const [data,setData] = useState(null)
-   const URL="/alchemy"
+   const endpoint="/alchemy"
+
+   useEffect(() =>  {
+      getData(endpoint).then(function(response) {
+         setData(response.data)
+         
+         return(response.status)
+      })
+      },[] )
 
    return (
       <PageLayout          

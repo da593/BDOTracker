@@ -9,10 +9,12 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
-
+from rest_framework.permissions import IsAuthenticated 
 # Set the post requests for all views
 class BaseView(APIView):
+    permission_classes = (IsAuthenticated,) 
     def __init__(self):
+        
         self.model = None
         self.serializer_class = None
 
@@ -32,6 +34,8 @@ class BaseView(APIView):
             serializer.save
             return Response(serializer.data, status=status.HTTP_201_CREATED) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+   
 
 class PearlView(BaseView):
     def __init__(self):

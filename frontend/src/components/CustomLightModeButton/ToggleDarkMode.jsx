@@ -1,34 +1,16 @@
-import React, {useState,useEffect,useMemo} from 'react';
+import React, {useState} from 'react';
 import Toggle from 'react-toggle';
-import { useMediaQuery } from "react-responsive";
 import "react-toggle/style.css"
 import { BsMoon } from "react-icons/bs";
 import { BsSun } from "react-icons/bs";
-
+import { ColorSchemeState } from './ColorSchemeState';
 
 /*Custom Toggle button to toggle light/dark mode 
 Built by zsajjad: https://blog.logrocket.com/dark-mode-in-react-an-in-depth-guide/
 */
 const ToggleDarkMode = () => {
-    const [isDark,setIsDark] = useState(true);
+    const { isDark, setIsDark } = ColorSchemeState();
   
-
-    const systemPrefersDark = useMediaQuery(
-      {
-        query: '(prefers-color-scheme: dark)',
-      },
-      undefined,
-      (isSystemDark) => setIsDark(isSystemDark)
-    );
-    
-    const value = useMemo(() => isDark === undefined ? !!systemPrefersDark : isDark,[isDark, systemPrefersDark])
-    useEffect(() => {
-      if (value) {
-        document.body.classList.add('dark');
-      } else {
-        document.body.classList.remove('dark');
-      }
-    }, [value]);
 
     return (
       <div className="toggle-light-mode">
@@ -38,7 +20,7 @@ const ToggleDarkMode = () => {
         <Toggle
             className="dark-toggle"
             checked={isDark}
-            onChange={({target}) => setIsDark(target.checked)}
+            onChange={(event) => setIsDark(event.target.checked)}
             icons={false}
             aria-label="Dark mode"
         />

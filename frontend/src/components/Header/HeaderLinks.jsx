@@ -36,7 +36,7 @@ export const SingleLinks = [
 
     {
         title:"Home",
-        url:'/Home',
+        url:'/home',
         
     },
     

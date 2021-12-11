@@ -1,21 +1,30 @@
 import React,{useState,useEffect} from "react";
-import {GET,POST} from '../api/apiAdapter';
 import PageLayout from "./PageLayout";
-
-const URL="/pearlmarket"
+import {getData} from '../api/apiClient'
 
 
 function PearlMarket() {
    const [data,setData] = useState(null)
-  
+   const endpoint = "/pearlmarket"
 
+   useEffect(() =>  {
+      getData(endpoint).then(function(response) {
+         setData(response.data)
+         
+         return(response.status)
+      })
+      },[] )
+   
+   function  showData() {
+      console.log(data)
+   }
 
    return (
       <PageLayout          
       title={"Pearl Market"}
       description={"Track the amount of pearl item sales for various periods to determine what is hot"}
       input={
-         <p>Input</p>
+         <p onClick={showData}>Input</p>
       }
 
       table={

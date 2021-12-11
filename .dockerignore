@@ -5,10 +5,10 @@
 .env.prod
 **.env.*
 # dependencies
-node_modules
+**/node_modules
 .pnp
 .pnp.js
-
+**/.venv
 # testing
 coverage
 

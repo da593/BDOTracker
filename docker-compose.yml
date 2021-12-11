@@ -5,6 +5,7 @@ services:
 
   mysql:
     image: mysql:5.7
+    restart: always
     # Create a volume named marketplace-data and store them in Docker virtual hard drive (typically /var/lib/docker/volumes)
     volumes:
       - marketplace-data:/var/lib/mysql
@@ -12,7 +13,6 @@ services:
       - ./project/.env.dev
     ports:
       - "33061:3306"
-
   django-mysql:
     build: 
       context: ./project
@@ -25,17 +25,17 @@ services:
     volumes:
       - ./project:/project
     env_file:
-        - ./project/.env.dev
-
+      - ./project/.env.dev
     depends_on:
       - mysql
+
 
   frontend:
     build: 
       context: ./frontend
       dockerfile: Dockerfile
     restart: always
-    command: npm start
+    command: npm run start
     ports:
       - 3000:3000
     # Create a volume in the working directory to update when code changes
@@ -50,3 +50,4 @@ services:
 # Create a volume for the database to be stored 
 volumes:
   marketplace-data:
+

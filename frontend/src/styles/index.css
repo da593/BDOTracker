@@ -27,7 +27,9 @@ body,html {
   background-color:var(--lightBackgroundColor);
 }
 
-a:visited:{
+a:visited,.navbar-brand:visited,.current-page-link:visited{
   text-decoration: none;
 }
+
+
 

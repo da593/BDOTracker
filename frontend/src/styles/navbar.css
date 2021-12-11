@@ -1,17 +1,16 @@
 .Header {  
-    color:var(--secondaryTextColor)
+    padding:15px 0px;
 }
 
 .Footer {
-    height:60px;   /* Height of the footer */
-    color:var(--primaryTextColor);
+    padding:5px 0px;
 }
 
 .Header,.dropdown-menu,.Footer {
     background-color: var(--darkerBackgroundColor); 
 }
 
-.navbar-link,.navbar-dropdown-link,.dropdown-button,.dropdown-icon,.react-toggle-track,.current-page-link {
+.navbar-brand,.navbar-link,.navbar-dropdown-link,.dropdown-button,.dropdown-icon,.react-toggle-track,.current-page-link {
     color:var(--secondaryTextColor);
 }
 
@@ -38,6 +37,7 @@ Flex and justify content by using space-between the 3 alignments (left,center,ri
 .navbar-brand {
     font-size:20px;
     font-weight:700;
+    text-decoration: none;
 }
 
 .navbar-justify-center {
