@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import PageLayout from "./PageLayout";
+import PageLayout from "./PageManager";
 import {getData} from '../api/apiClient'
 
 
@@ -10,8 +10,9 @@ function PearlMarket() {
    useEffect(() =>  {
       getData(endpoint).then(function(response) {
          setData(response.data)
-         
-         return(response.status)
+         return(response)
+      }).catch((error) => {
+         console.log(error)
       })
       },[] )
    

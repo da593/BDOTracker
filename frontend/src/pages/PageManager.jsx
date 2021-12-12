@@ -3,7 +3,9 @@ import HeaderWrapper from '../components/wrappers/HeaderWrapper';
 import ContentWrapper from '../components/wrappers/ContentWrapper';
 import FooterWrapper from '../components/wrappers/FooterWrapper';
 
-const PageLayout = (props) => {
+const PageManager = (props) => {
+
+
     return (
         <>
         <HeaderWrapper/>
@@ -30,4 +32,4 @@ const PageLayout = (props) => {
     )  
 }
 
-export default PageLayout
+export default PageManager

@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useRef} from "react";
-import PageLayout from "./PageLayout";
+import PageLayout from "./PageManager";
 import {getData} from '../api/apiClient'
 
 function ImperialAlchemy() {
@@ -10,7 +10,7 @@ function ImperialAlchemy() {
       getData(endpoint).then(function(response) {
          setData(response.data)
          
-         return(response.status)
+         return(response)
       })
       },[] )
 
