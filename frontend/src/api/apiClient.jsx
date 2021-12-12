@@ -9,8 +9,10 @@ const axiosClient = axios.create({
     'Accept': 'application/json',
     'Content-Type': 'application/json',
     'Authorization': process.env.NODE_ENV === "development" ? 'Token' + " " +  process.env.REACT_APP_LOCAL_TOKEN : 'Token' + " " + process.env.REACT_APP_AUTH_KEY,
-    }
+    },
 })
+
+
 
 
 // Response interceptor
