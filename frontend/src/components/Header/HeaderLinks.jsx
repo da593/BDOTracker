@@ -8,7 +8,7 @@ export function getSingleLinks() {
         SingleLinks.map((item,index)=> {
             return (
                 <li className="navbar-item" key={index}>
-                    <NavLink to={item.url} className={({ isActive }) => isActive ? "current-page-link" : "navbar-link"}>
+                    <NavLink exact to={item.url} className={({ isActive }) => isActive ? "current-page-link" : "navbar-link"}>
                     {item.title}
                     </NavLink>
                 </li>
@@ -22,7 +22,7 @@ export function getDropDownLinks({onClick}) {
         DropDownLinks.map((item,index)=> {
             return (
                 <li className="navbar-item" key={index}>
-                    <NavLink to={item.url} className={({ isActive }) => isActive ? "current-page-link" : "navbar-link"} onClick={onClick}>
+                    <NavLink exact to={item.url} className={({ isActive }) => isActive ? "current-page-link" : "navbar-link"} onClick={onClick}>
                     {item.title}
                     </NavLink>
                 </li>
@@ -36,7 +36,7 @@ export const SingleLinks = [
 
     {
         title:"Home",
-        url:'/home',
+        url:'/',
         
     },
     
