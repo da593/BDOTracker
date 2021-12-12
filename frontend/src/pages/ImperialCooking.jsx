@@ -15,14 +15,16 @@ function ImperialCooking() {
       })
       },[] )
 
-
+   function  showData() {
+      console.log(data)
+   }
    
    return (
       <PageLayout          
       title={"Imperial Cooking"}
       description={"Determine imperial delivery profit from various meals based on marketplace value or total revenue"}
       input={
-         <p>Input</p>
+         <p onClick={showData}>Input</p>
       }
 
       table={

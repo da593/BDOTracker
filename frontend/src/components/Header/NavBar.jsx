@@ -9,7 +9,7 @@ const NavBar = () => {
     return (
         <div className="navbar">
             <div className="navbar-justify-left">
-                <NavLink to='/home' className="navbar-brand">
+                <NavLink to='/' className="navbar-brand">
                     BDO<br/>Tracker
                 </NavLink>
             </div>

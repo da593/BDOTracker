@@ -3,10 +3,6 @@ import PageLayout from "./PageManager";
 import {getData} from '../api/apiClient'
 
 
-const URL="/farming"
-
-
-
 function Farming() {
    const [data,setData] = useState(null)
    const endpoint="/farming"
@@ -19,13 +15,16 @@ function Farming() {
       })
       },[] )
 
-
+   function  showData() {
+      console.log(data)
+   }
+   
    return (
       <PageLayout          
       title={"Magical Seed Farming"}
       description={"Determine marketplace,vendor, and crate profit from harvest/breeding magical crops"}
       input={
-         <p>Input</p>
+         <p onClick={showData}>Input</p>
       }
 
       table={

@@ -1,10 +1,10 @@
-import React,{useState,useEffect} from "react";
+import React from "react";
 import PageLayout from "./PageManager";
 
 
 function Home() {
    const endpoint = "/home"
-
+   console.log(endpoint)
    return (
       <>
       <PageLayout

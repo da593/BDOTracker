@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef} from "react";
+import React,{useState,useEffect} from "react";
 import PageLayout from "./PageManager";
 import {getData} from '../api/apiClient'
 
@@ -14,12 +14,16 @@ function ImperialAlchemy() {
       })
       },[] )
 
+   function showData() {
+      console.log(data)
+   }
+
    return (
       <PageLayout          
       title={"Imperial Alchemy"}
       description={"Determine imperial delivery profit from various elixirs based on marketplace value or total revenue"}
       input={
-         <p>Input</p>
+         <p onClick={showData}>Input</p>
       }
 
       table={
