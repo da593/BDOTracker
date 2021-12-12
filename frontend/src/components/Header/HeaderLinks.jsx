@@ -8,7 +8,7 @@ export function getSingleLinks() {
         SingleLinks.map((item,index)=> {
             return (
                 <li className="navbar-item" key={index}>
-                    <NavLink exact to={item.url} className={({ isActive }) => isActive ? "current-page-link" : "navbar-link"}>
+                    <NavLink to={item.url} className={({ isActive }) => isActive ? "current-page-link" : item.cName}>
                     {item.title}
                     </NavLink>
                 </li>
@@ -22,7 +22,7 @@ export function getDropDownLinks({onClick}) {
         DropDownLinks.map((item,index)=> {
             return (
                 <li className="navbar-item" key={index}>
-                    <NavLink exact to={item.url} className={({ isActive }) => isActive ? "current-page-link" : "navbar-link"} onClick={onClick}>
+                    <NavLink to={item.url} className={({ isActive }) => isActive ? "current-page-link" : item.cName} onClick={onClick}>
                     {item.title}
                     </NavLink>
                 </li>
@@ -37,13 +37,13 @@ export const SingleLinks = [
     {
         title:"Home",
         url:'/',
-        
+        cName:'navbar-link',
     },
     
     {
         title:"Pearl Market",
         url:'/pearlmarket',
-        
+        cName:'navbar-link',
     },
 
 ]
@@ -52,17 +52,17 @@ export const DropDownLinks = [
     {
         title:"Imperial Cooking",
         url:'/cooking',
-        cName:'navbar-link'
+        cName:'navbar-link',
     },
     {
         title:"Imperial Alchemy",
         url:'/alchemy',
-        cName:'navbar-link'
+        cName:'navbar-link',
     },
     {
         title:"Magical Seed Farming",
         url:'/farming',
-       
+        cName:'navbar-link',
     },
 ]
 
