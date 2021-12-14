@@ -40,7 +40,7 @@ a:visited,.navbar-brand:visited,.current-page-link:visited{
 
 
 a:hover,button:hover {
-  opacity:75%;
+  opacity:0.75;
   filter: alpha(opacity=75);
 }
 
