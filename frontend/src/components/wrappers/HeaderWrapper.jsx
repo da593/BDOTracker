@@ -1,11 +1,11 @@
 import React from 'react';
-import NavBar from '../Header/NavBar';
+import Header from '../Header/Header';
 //container for the header
 const HeaderWrapper = () => {
     return (
         
-        <div className="Header">
-            <NavBar/>
+        <div className="HeaderWrapper">
+            <Header/>
         </div>
         
         );

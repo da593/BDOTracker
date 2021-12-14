@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderWrapper from '../components/wrappers/HeaderWrapper';
 import ContentWrapper from '../components/wrappers/ContentWrapper';
 import FooterWrapper from '../components/wrappers/FooterWrapper';
-
+import SidebarWrapper from '../components/wrappers/SidebarWrapper';
 const PageManager = (props) => {
 
 
@@ -28,6 +28,7 @@ const PageManager = (props) => {
             </>
         </ContentWrapper>
         <FooterWrapper/>
+        <SidebarWrapper/>
         </>
     )  
 }

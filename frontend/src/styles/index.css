@@ -21,10 +21,16 @@ body.dark {
   --buttonColor:#344658;
 }
 
-body,html {
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
   width:100%;
   height:100%;
   background-color:var(--lightBackgroundColor);
+  margin: 0 0 75px;
 }
 
 a:visited,.navbar-brand:visited,.current-page-link:visited{
@@ -32,4 +38,8 @@ a:visited,.navbar-brand:visited,.current-page-link:visited{
 }
 
 
+
+a:hover,button:hover {
+  opacity:75%;
+}
 

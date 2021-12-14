@@ -1,11 +1,16 @@
 import React from 'react';
+import ContactsButton from './ContactsButton';
+import FeedbackButton from './FeedbackButton';
 
-//container for the header
-const Footer = () => {
+//container for the Footer
+const Footer = (props) => {
+
+
     return (
         
         <div className="Footer">
-            <p>s</p>
+            <ContactsButton/>
+            <FeedbackButton/>
         </div>
         
         );

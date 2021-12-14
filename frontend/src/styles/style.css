@@ -1,22 +1,5 @@
-.HeaderWrapper{
-    display:block;
-    position:absolute;
-    width: 100%; 
-}
 
-.ContentWrapper {
-    display:block;
-    position:relative;
-    margin-top:5%;
-}
-
-.FooterWrapper {
-    display:block;
-    position:fixed;
-    width:100%;
-    bottom:0;
-}
-
+/*Top of content wrapper: Style each page title and description*/
 .title,.description {
     color:var(--primaryTextColor);
 }
@@ -34,3 +17,10 @@
     font-weight:400;
     margin:0;
 }
+
+.input-grid {
+    color:var(--primaryTextColor);
+    font-size:40px;
+}
+
+

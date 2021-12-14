@@ -1,16 +1,59 @@
+.HeaderWrapper{
+    position:relative;
+    width: 100%;
+    top:0;
+    z-index:1
+}
+
+.ContentWrapper {
+    display:block;
+    position:relative;
+    margin-top:5%;
+    margin-left:20%;
+    margin-right:20%;
+    margin-bottom:5%;
+}
+
+.FooterWrapper {
+    display:block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow:hidden;
+    
+}
+
+.SidebarWrapper {
+    position:fixed;
+    background-color: transparent;
+    width:20%;
+    height:100%;
+    top:85%;
+}
+
 .Header {  
-    padding:15px 0px;
+    margin-left:20%;
+    margin-right:20%;
+
 }
 
 .Footer {
-    padding:5px 0px;
+    display:flex;
+    justify-content:center;
 }
 
-.Header,.dropdown-menu,.Footer {
+.Sidebar {
+    display:flex;
+    margin-left:5%;
+
+}
+
+.HeaderWrapper,.dropdown-menu,.Footer {
     background-color: var(--darkerBackgroundColor); 
 }
 
-.navbar-brand,.navbar-link,.navbar-dropdown-link,.dropdown-button,.dropdown-icon,.react-toggle-track,.current-page-link {
+.navbar-brand,.navbar-link,.navbar-dropdown-link,.dropdown-button,.dropdown-icon,.react-toggle-track,.current-page-link,.footer-button {
     color:var(--secondaryTextColor);
 }
 
@@ -19,11 +62,8 @@ Flex and justify content by using space-between the 3 alignments (left,center,ri
 */
 .navbar {
     display:flex;
-    margin-left:20%;
-    margin-right:20%;
     justify-content:space-between;
     align-content:center;
-
 }
 
 .navbar-justify-left {
@@ -32,6 +72,8 @@ Flex and justify content by using space-between the 3 alignments (left,center,ri
     font-size:20px;
     font-weight:400;
     padding-left:40px;
+    padding-bottom:15px;
+    padding-top:15px;
 }
 
 .navbar-brand {
@@ -53,9 +95,6 @@ Flex and justify content by using space-between the 3 alignments (left,center,ri
     align-items: stretch; /* Default */
     justify-content: space-between;
     width: 100%;
-    margin: 0;
-    padding: 0;
-
 }
 
 /*display each item as a block
@@ -131,7 +170,6 @@ flex auto calculates equal width for each item
 .current-page-link {
     display: inline-block;
     position: relative;
-    padding-bottom: 3px;
     text-decoration: none;
     font-size:18px;
     font-weight:400;
@@ -157,11 +195,49 @@ flex auto calculates equal width for each item
     animation-duration: 0.5s;
     background-color:var(--secondaryTextColor);
     color:var(--secondaryTextColor);
+    
   }
 
+/*Footer content*/
+.footer  {
+    float: left;
+}
+
+.footer-button {
+    background-color:transparent;
+    border:none;
+    font-size:18px;
+    font-weight:400;
+    margin: 25px 0px;
+    align-self:center;
+    text-align:center;
+    border-right: 2px solid var(--secondaryTextColor);
+}
+
+.footer-button:last-child {
+    border:none;
+}
+
+.footer-button:hover,.side-button:hover {
+    cursor: pointer;
+}
 
 
+.side-button {
+    background-color:var(--darkerBackgroundColor);
+    margin-left:1%;
+    color:var(--secondaryTextColor);
+    font-size:14px;
+    font-weight: 400;
+    padding: 10px 10px;
+    border-radius: 40px;
+    text-decoration:none;
+    text-align:center;
+    border:none;
+}
 
-
+.side-button:hover {
+    opacity:1;
+}
 
 
