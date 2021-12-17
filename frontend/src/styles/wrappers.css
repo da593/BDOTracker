@@ -29,7 +29,7 @@
     background-color: transparent;
     width:20%;
     height:100%;
-    top:85%;
+    top:80%;
 }
 
 .Header {  
@@ -49,12 +49,21 @@
 
 }
 
-.HeaderWrapper,.dropdown-menu,.Footer {
-    background-color: var(--darkerBackgroundColor); 
+.ContentWrapper {
+    background-color:rgb(var(--lighterBackgroundColor))
 }
 
-.navbar-brand,.navbar-link,.navbar-dropdown-link,.dropdown-button,.dropdown-icon,.react-toggle-track,.current-page-link,.footer-button {
-    color:var(--secondaryTextColor);
+.HeaderWrapper,.dropdown-menu,.Footer,.side-button {
+    background-color: rgb(var(--darkerBackgroundColor)); 
+}
+
+.navbar-brand,.navbar-link,.navbar-dropdown-link,.dropdown-button,.dropdown-icon,.react-toggle-track,.current-page-link,.footer-button,.side-button {
+    color: rgb(var(--secondaryTextColor));
+}
+
+.navbar-brand:hover,.navbar-link:hover,.navbar-dropdown-link:hover,.dropdown-button:hover,.dropdown-icon:hover,.react-toggle-track:hover,.current-page-link:hover,.footer-button:hover,.side-button:hover {
+    color:rgba(var(--secondaryTextColor),0.7);
+    cursor:pointer;
 }
 
 /*Forced header to fit navbar with display option
@@ -163,7 +172,7 @@ flex auto calculates equal width for each item
 
 /*Style for the toggle button using !important to override default style*/
 .react-toggle-track {
-    background-color: var(--buttonColor) !important;
+    background-color: rgb(var(--buttonColor)) !important;
 }
 
 /*Style for the current page link (uses a different className)*/
@@ -173,7 +182,7 @@ flex auto calculates equal width for each item
     text-decoration: none;
     font-size:18px;
     font-weight:400;
-    color:var(--secondaryTextColor);
+
   }
   
   @keyframes border {
@@ -193,8 +202,8 @@ flex auto calculates equal width for each item
     animation-fill-mode: forwards; 
     animation-name: border;
     animation-duration: 0.5s;
-    background-color:var(--secondaryTextColor);
-    color:var(--secondaryTextColor);
+    background-color: rgb(var(--secondaryTextColor));
+    color: rgb(var(--secondaryTextColor));
     
   }
 
@@ -211,22 +220,18 @@ flex auto calculates equal width for each item
     margin: 25px 0px;
     align-self:center;
     text-align:center;
-    border-right: 2px solid var(--secondaryTextColor);
+    border-right: 2px solid rgb(var(--secondaryTextColor));
 }
 
 .footer-button:last-child {
     border:none;
 }
 
-.footer-button:hover,.side-button:hover {
-    cursor: pointer;
-}
+
 
 
 .side-button {
-    background-color:var(--darkerBackgroundColor);
     margin-left:1%;
-    color:var(--secondaryTextColor);
     font-size:14px;
     font-weight: 400;
     padding: 10px 10px;
@@ -236,8 +241,6 @@ flex auto calculates equal width for each item
     border:none;
 }
 
-.side-button:hover {
-    opacity:1;
-}
+
 
 

@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
-import {BsCaretDownFill} from "react-icons/bs";
-import {getDropDownLinks} from '../Header/HeaderLinks';
+import DropdownButton from './DropdownButton';
+import DropdownMenu from './DropdownMenu';
+
 
 /*
 Manages the state and style of the dropdown button and menu in the header
@@ -13,15 +14,11 @@ const DropDown = () => {
     }
 
 
-    //Pass onClick attribute as a function call so child can call and update state in parent
+    //Pass handleButtonClick function call so child can call and update state in parent
     return (
         <div className="dropdown-container">
-            <button className="dropdown-button" onClick={handleButtonClick}> 
-                Life skills <BsCaretDownFill className="dropdown-icon"/>
-            </button>
-            <div className="dropdown-menu" style={ isClicked ? {display:"block"} : {display:"none"}} >
-                {getDropDownLinks({handleButtonClick})}
-            </div>
+            <DropdownButton onClick={handleButtonClick}/>
+            <DropdownMenu onClick={handleButtonClick} isClicked={isClicked}/>
         </div>
     )
 

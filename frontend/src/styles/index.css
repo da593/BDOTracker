@@ -4,21 +4,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --lightBackgroundColor:white;
-  --darkerBackgroundColor: #2496ED;
-  --greyBackgroundColor: #D3D4D4;
-  --primaryTextColor:black;
-  --secondaryTextColor: white;
-  --buttonColor:#9CD4F7;
+  --darkerBackgroundColor: 36,150,237;
+  --oppositeBackgroundColor: 15,30,39;
+  --greyBackgroundColor: 211,212,212;
+  --primaryTextColor:0,0,0;
+  --secondaryTextColor: 255,255,255;
+  --buttonColor: 156,212,247;
 }
 
 /*Theme for dark mode*/
 body.dark {
-  --lightBackgroundColor:#031F30;
-  --darkerBackgroundColor: #0F1E27 ;
-  --greyBackgroundColor: #D3D4D4;
-  --primaryTextColor:white;
-  --secondaryTextColor:#9CD4F7;
-  --buttonColor:#344658;
+  --lightBackgroundColor:3,31,48;
+  --darkerBackgroundColor: 15,30,39;
+  --oppositeBackgroundColor: 36,150,237;
+  --greyBackgroundColor: 211,212,212;
+  --primaryTextColor:255,255,255;
+  --secondaryTextColor:156,212,247;
+  --buttonColor:52,70,88;
 }
 
 html {
@@ -29,8 +31,8 @@ html {
 body {
   width:100%;
   height:100%;
-  background-color:var(--lightBackgroundColor);
-  margin: 0 0 75px;
+  background-color:rgb(var(--lightBackgroundColor));
+
 }
 
 a:visited,.navbar-brand:visited,.current-page-link:visited{
@@ -39,8 +41,5 @@ a:visited,.navbar-brand:visited,.current-page-link:visited{
 
 
 
-a:hover,button:hover {
-  opacity:0.75;
-  filter: alpha(opacity=75);
-}
+
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import Footer from '../Footer/Footer'
 //container for the header
-const FooterWrapper = () => {
+const FooterWrapper = ({openPopup}) => {
     return (
         
         <div className="FooterWrapper">
-            <Footer/>
+            <Footer openPopup={openPopup}/>
         </div>
         
         );

@@ -1,7 +1,19 @@
 
 /*Top of content wrapper: Style each page title and description*/
-.title,.description {
-    color:var(--primaryTextColor);
+.popup-header {
+    background-color: rgb(var(--oppositeBackgroundColor));
+}
+
+.title,.description,.input-grid {
+    color: rgb(var(--primaryTextColor));
+}
+
+.close-button {
+    color: rgb(var(--secondaryTextColor));
+}
+
+.close-button:hover {
+    color: rgba(var(--secondaryTextColor),0.7);
 }
 
 .title{
@@ -19,8 +31,106 @@
 }
 
 .input-grid {
-    color:var(--primaryTextColor);
     font-size:40px;
 }
 
+/*Style the popup*/
+.popup-container {
+    display:none;
+    width:100%;
+    height:100%;
+    z-index:1;
+    position:fixed;
+    background-color:rgb(0,0,0,0.4);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.popup-content {
+    width:25%;
+    margin:10% auto;
+}
+
+.top-window {
+    width:100%;
+    text-align:right;
+    
+}
+
+.close-button {
+    background-color:transparent;
+    border-style:none;
+    padding-right:0px;
+    font-size:18px;
+    cursor:pointer;
+    
+}
+
+
+
+.popup-header {
+    padding-top:25px;
+    padding-bottom:15px;
+    color:white;
+    text-align:center;
+    font-size:24px;
+   
+}
+
+.popup-header > p {
+    margin-bottom:0;
+}
+
+.popup-header-description {
+    font-size:18px;
+}
+
+.popup-bottom {
+    background-color:white;
+    
+}
+
+.popup-bottom-list {
+   margin-top:0%;
+   margin-bottom:0%;
+   text-align:center;
+   padding-bottom:25px;
+   padding-left:0px;
+}
+
+.popup-bottom-list > li {
+    color:black;
+    list-style-type:none;
+    font-family:"Roboto",sans-serif;
+    font-weight:bold;
+    padding-top:25px;
+    
+}
+
+.popup-bottom-list > li > a{
+    text-decoration: none;
+    color:rgb(8,102,204);
+    font-weight:700;
+    font-size:18px;
+    padding: 5px 5px;
+}
+
+.popup-bottom-list > li > a:hover,.clipboard-button:hover {
+    box-shadow: inset 0 0 50% 50% rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    background-color:grey;
+    padding: 5px 5px;
+}
+
+.clipboard-button { 
+    background-color:transparent;
+    border-style:none;
+    color:black;
+    font-weight:700;
+    font-size:18px;
+    cursor:pointer;
+    padding: 5px 5px;
+}
 

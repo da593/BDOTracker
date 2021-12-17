@@ -1,11 +1,9 @@
 import React from 'react';
 import HeaderWrapper from '../components/wrappers/HeaderWrapper';
 import ContentWrapper from '../components/wrappers/ContentWrapper';
-import FooterWrapper from '../components/wrappers/FooterWrapper';
-import SidebarWrapper from '../components/wrappers/SidebarWrapper';
+import PopupContainer from '../components/Popups/PopupContainer';
+
 const PageManager = (props) => {
-
-
     return (
         <>
         <HeaderWrapper/>
@@ -27,8 +25,7 @@ const PageManager = (props) => {
             </div>
             </>
         </ContentWrapper>
-        <FooterWrapper/>
-        <SidebarWrapper/>
+        <PopupContainer/>
         </>
     )  
 }

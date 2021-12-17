@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import {React} from 'react';
 
-function ClipboardButton(props) {
-    const [isCopied,setCopied] = useState("")
-
+function ClipboardButton({textToBeCopied}) {
+ 
     function handleClick() {
-      navigator.clipboard.writeText(props.copy);
-      setCopied("Copied!")
+      navigator.clipboard.writeText(textToBeCopied);
+
     }
-  
-    return <button onClick={handleClick} className="clipboard-button">{props.copy} {isCopied}</button>;
+
+    return (
+      <button onClick={handleClick} className="clipboard-button">{textToBeCopied}</button>
+    )
+ 
   }
   
 

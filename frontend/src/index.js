@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import './styles/index.css';
-import './styles/navbar.css';
+import './styles/wrappers.css';
 import './styles/style.css';
 import Home from './pages/Home';
 import PearlMarket from './pages/PearlMarket';

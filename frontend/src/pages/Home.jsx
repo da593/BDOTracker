@@ -4,7 +4,6 @@ import PageLayout from "./PageManager";
 
 function Home() {
    const endpoint = "/home"
-   console.log(endpoint)
    return (
       <>
       <PageLayout

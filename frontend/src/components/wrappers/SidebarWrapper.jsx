@@ -1,11 +1,11 @@
 import React from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 //container for the Sidebar
-const SidebarWrapper = () => {
+const SidebarWrapper = ({openPopup}) => {
     return (
         
         <div className="SidebarWrapper">
-            <Sidebar/>
+            <Sidebar openPopup={openPopup}/>
         </div>
         
         );

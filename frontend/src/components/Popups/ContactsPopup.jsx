@@ -1,4 +1,4 @@
-import {React,useState,useRef} from 'react';
+import {React} from 'react';
 import {BsFillEnvelopeFill} from "react-icons/bs";
 import {BsGithub} from "react-icons/bs";
 import {BsLinkedin} from "react-icons/bs";
@@ -15,7 +15,7 @@ const ContactsPopup = () => {
         popupBottom: 
             <ul className="popup-bottom-list">
                 <li><BsFillEnvelopeFill/>
-                <ClipboardButton copy="dylanau99@gmail.com"/>
+                <ClipboardButton textToBeCopied="dylanau99@gmail.com"/>
                 </li>
                 <li><BsGithub/><a href="https://github.com/da593" target="_blank" rel="noopener noreferrer">&nbsp;My Github</a></li>
                 <li><BsLinkedin/><a href="https://www.linkedin.com/in/dylan-au/" target="_blank" rel="noopener noreferrer">&nbsp;My LinkedIn</a></li>
