@@ -108,6 +108,7 @@
     display:flex;
     justify-content: center;
     
+
 }
 
 .popup-bottom-list > li > a{
@@ -146,7 +147,14 @@
     margin: 0px 0px;
 }
 
-.smile {
+.BsFillEnvelopeFill,.BsGithub,.BsLinkedin {
+    font-size:18px;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    align-self:center;
+}
+
+.smile,.BsLinkedin {
     color: rgb(11, 75, 116);
 }
 

@@ -14,11 +14,11 @@ const ContactsPopup = ({copyMsg,setCopiedStatus}) => {
         popupDescription:"questions? Want to hire me? Let me know!",
         popupBottom: 
             <ul className="popup-bottom-list">
-                <li><BsFillEnvelopeFill/>
+                <li><BsFillEnvelopeFill className='BsFillEnvelopeFill'/>
                 <ClipboardButton textToBeCopied="dylanau99@gmail.com" copyMsg={copyMsg} setCopiedStatus={setCopiedStatus}/>
                 </li>
-                <li><BsGithub/><a href="https://github.com/da593" target="_blank" rel="noopener noreferrer">&nbsp;My Github</a></li>
-                <li><BsLinkedin/><a href="https://www.linkedin.com/in/dylan-au/" target="_blank" rel="noopener noreferrer">&nbsp;My LinkedIn</a></li>
+                <li><BsGithub className="BsGithub"/><a href="https://github.com/da593" target="_blank" rel="noopener noreferrer">&nbsp;My Github</a></li>
+                <li><BsLinkedin className="BsLinkedin"/><a href="https://www.linkedin.com/in/dylan-au/" target="_blank" rel="noopener noreferrer">&nbsp;My LinkedIn</a></li>
             </ul>
         
     }
