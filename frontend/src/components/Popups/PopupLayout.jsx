@@ -9,8 +9,6 @@ const PopupLayout = (props) => {
 
     return (
         <>
-        
-
         <div className="popup-header">
             <p>{props.buttonName}</p>
             <p className="popup-header-description"> <br />{props.popupDescription}</p>
@@ -18,7 +16,6 @@ const PopupLayout = (props) => {
         <div className="popup-bottom">
             {props.popupBottom}
         </div>
-
         </>
     )
 }

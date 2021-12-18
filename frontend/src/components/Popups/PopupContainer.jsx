@@ -7,13 +7,17 @@ import FooterWrapper from '../wrappers/FooterWrapper';
 /*Popup layout maintains the state,style of the popups, and all the buttons that cause a popup to show
 */
 
-const PopupContainer = (props) => {
+const PopupContainer = () => {
 
     const [visible,setVisibility] = useState(false);
     const [popupType,setType] = useState("")
+    const [feedbackType,setFeedback] = useState("")
+    const [copyMsg,setCopiedStatus] = useState("")
 
     const closePopup = () => {
         setVisibility(false)
+        setCopiedStatus("")
+        setFeedback("")
     }
 
     const openPopup = (event) => {
@@ -21,6 +25,11 @@ const PopupContainer = (props) => {
         setVisibility(true)
         
     }
+
+    function setFeedbackType(event) {
+        setFeedback( event.currentTarget.getAttribute("type") )
+    }
+    
 
     return (
         <>
@@ -30,7 +39,7 @@ const PopupContainer = (props) => {
                 <div className="top-window">
                     <button className="close-button" onClick={closePopup}><BsFillXCircleFill /></button>
                 </div>
-                <PopupFactory popupType={popupType}/>
+                <PopupFactory popupType={popupType} copyMsg={copyMsg} setCopiedStatus={setCopiedStatus} feedbackType={feedbackType} setFeedbackType={setFeedbackType}/>
             </div>
         </div>
         <FooterWrapper openPopup={openPopup}/>

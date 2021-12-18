@@ -7,7 +7,7 @@ import ClipboardButton from './ClipboardButton';
 
 /*Implements the content of the popup */
 
-const ContactsPopup = () => {
+const ContactsPopup = ({copyMsg,setCopiedStatus}) => {
   
     let props = {
         buttonName:"Contacts",
@@ -15,7 +15,7 @@ const ContactsPopup = () => {
         popupBottom: 
             <ul className="popup-bottom-list">
                 <li><BsFillEnvelopeFill/>
-                <ClipboardButton textToBeCopied="dylanau99@gmail.com"/>
+                <ClipboardButton textToBeCopied="dylanau99@gmail.com" copyMsg={copyMsg} setCopiedStatus={setCopiedStatus}/>
                 </li>
                 <li><BsGithub/><a href="https://github.com/da593" target="_blank" rel="noopener noreferrer">&nbsp;My Github</a></li>
                 <li><BsLinkedin/><a href="https://www.linkedin.com/in/dylan-au/" target="_blank" rel="noopener noreferrer">&nbsp;My LinkedIn</a></li>
