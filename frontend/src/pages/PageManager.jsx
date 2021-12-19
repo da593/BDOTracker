@@ -4,6 +4,8 @@ import ContentWrapper from '../components/wrappers/ContentWrapper';
 import PopupContainer from '../components/Popups/PopupContainer';
 
 const PageManager = (props) => {
+    
+
     return (
         <>
         <HeaderWrapper/>

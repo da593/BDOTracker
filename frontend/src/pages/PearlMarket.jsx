@@ -1,55 +1,79 @@
-import React,{useState,useEffect} from "react";
-import PageLayout from "./PageManager";
-import {getData} from '../api/apiClient'
+import React,{useState,useEffect,useMemo} from "react";
+import PageManager from "./PageManager";
+import {getData} from '../api/apiClient';
+import PearlMarketTable from '../components/Tables/PearlMarketTable';
 
 
 function PearlMarket() {
-   const [data,setData] = useState(null)
-   const endpoint = "/pearlmarket"
+   const [loadingData,setLoadingData] = useState(true)
+   const columns = useMemo(() => [
+         {
+            Header: "Item Name",
+            accessor: "item_name"
+         },
+         {
+            Header: "Hourly Sale",
+            accessor: "hourly_sale"
+         },
+         {
+            Header: "Daily Sale",
+            accessor: "daily_sale"
+         },
+         {
+            Header: "Weekly Sale",
+            accessor: "weekly_sale"
+         },
+         {
+            Header: "Monthly Sale",
+            accessor: "monthly_sale"
+         },
+         {
+            Header: "Total Trades",
+            accessor: "total_trades"
+         },
 
+      ],[]);
+    
+   const [data,setData] = useState([])
+   const endpoint = "/pearlmarket"
    useEffect(() =>  {
       getData(endpoint).then(function(response) {
          setData(response.data)
-         return(response)
+         setLoadingData(false)
+
       }).catch((error) => {
          console.log(error)
       })
-      },[] )
-   
-   function  showData() {
-      console.log(data)
-   }
 
+      },[] )
+
+
+   
    return (
-      <PageLayout          
+      <PageManager          
       title={"Pearl Market"}
       description={"Track the amount of pearl item sales for various periods to determine what is hot"}
       input={
-         <p onClick={showData}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-         numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-         optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-         obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-         nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-         tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-         quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
-         sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-         recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
-         minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit 
-         quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur 
-         fugiat, temporibus enim commodi iusto libero magni deleniti quod quam 
-         consequuntur! Commodi minima excepturi repudiandae velit hic maxime
-         doloremque. Quaerat provident commodi consectetur veniam similique ad 
-         earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo 
-         fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore 
-         suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
-         modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam 
-         totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam 
-         quasi aliquam eligendi, placeat qui corporis!</p>
+         <form id="input-form">
+               <label>Filter Item Type
+                  <select id="item-type"  name="item-type">
+                        <option value="all">All</option>
+                        <option value="Male Set">Male Apparel (Set)</option>
+                        <option value="Female Set">Female Apparel (Set)</option>
+                        <option value="Male Individual">Male Apparel (Individual)</option>
+                        <option value="Female Individual">Female Apparel (Individual)</option>
+                        <option value="Class Set">Class-based Apparel (set)</option>
+                        <option value="functional">Functional</option>
+                        <option value="mount">Mount</option>
+                        <option value="pet">Pet</option>
+                  </select>
+               </label>
+        </form>
       }
 
       table={
-         <p>Table</p>
+         loadingData ? <p>Loading Please Wait...</p> : <PearlMarketTable columns={columns} data={data}/>
+         
       }
       />
 

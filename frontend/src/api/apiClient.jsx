@@ -30,7 +30,7 @@ axiosClient.interceptors.response.use(
   );
 
 export async function getData(endpoint) {
-  return axiosClient.get(endpoint)
+  return await axiosClient.get(endpoint)
 }
 
 export function addFeedback(endpoint,data) {

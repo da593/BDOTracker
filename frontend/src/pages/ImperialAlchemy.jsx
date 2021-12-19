@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import PageLayout from "./PageManager";
+import PageManager from "./PageManager";
 import {getData} from '../api/apiClient'
 
 function ImperialAlchemy() {
@@ -19,7 +19,7 @@ function ImperialAlchemy() {
    }
 
    return (
-      <PageLayout          
+      <PageManager          
       title={"Imperial Alchemy"}
       description={"Determine imperial delivery profit from various elixirs based on marketplace value or total revenue"}
       input={

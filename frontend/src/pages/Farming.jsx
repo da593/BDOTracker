@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import PageLayout from "./PageManager";
+import PageManager from "./PageManager";
 import {getData} from '../api/apiClient'
 
 
@@ -20,7 +20,7 @@ function Farming() {
    }
    
    return (
-      <PageLayout          
+      <PageManager          
       title={"Magical Seed Farming"}
       description={"Determine marketplace,vendor, and crate profit from harvest/breeding magical crops"}
       input={

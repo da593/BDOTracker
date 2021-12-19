@@ -206,4 +206,20 @@ textarea {
     padding: 100px 0px;
 }
 
+.updates-container {
+    margin-top:5%;
+    margin-left:20%;
+    margin-bottom:5%;
+}
+
+.update-title {
+    color: rgb(var(--primaryTextColor));
+    text-decoration: underline;
+    font-size:18px;
+    font-weight:700;
+}
+
+.update-version,.update-list  {
+    color: rgb(var(--primaryTextColor));
+}
 
