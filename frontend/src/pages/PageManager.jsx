@@ -11,7 +11,7 @@ const PageManager = (props) => {
         <HeaderWrapper/>
         <ContentWrapper>
             <>
-            <div>
+            <div className='title-container'>
                 <p className="title">
                     {props.title}
                 </p>

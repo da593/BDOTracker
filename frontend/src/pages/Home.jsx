@@ -1,18 +1,34 @@
 import React from "react";
-import PageLayout from "./PageManager";
 import UpdateDescription from "../components/Updates/UpdateDescription";
-
+import HeaderWrapper from '../components/wrappers/HeaderWrapper';
+import ContentWrapper from '../components/wrappers/ContentWrapper';
+import PopupContainer from '../components/Popups/PopupContainer';
 function Home() {
    const endpoint = "/home"
    return (
+
+      
       <>
-      <PageLayout
-      title={"Home"}
-      description={<>BDO Tracker is a tool to help Black Desert Online players keep track of various activities including life skill profitability and pearl market sales.<br/>
-      If you have any questions, suggestions, or feedback please let me know!</>}
-      />
+      <HeaderWrapper/>   
+      <div className='home-container'>
+         <p className="title">Home</p>
+         <p className="description">
+         BDO Tracker is a tool to help Black Desert Online players keep track of various activities including life skill profitability and pearl market sales.<br/>
+         If you have any questions, suggestions, or feedback please let me know!
+         </p>
+      </div>
       <div className="updates-container">
          <p className="update-title">Project Updates</p>
+         <UpdateDescription 
+            date="12/22" 
+            version=" 2.05"  
+            updateItem={
+            <>
+               <li> Added style to pearlmarket table</li> 
+               <li> Added pagination to table</li> 
+            </>
+            }
+         /> 
 
          <UpdateDescription 
             date="12/18" 
@@ -276,6 +292,8 @@ function Home() {
             }
          />
       </div>
+      
+      <PopupContainer/>
    </>
    )
 }

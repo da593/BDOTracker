@@ -2,45 +2,29 @@ import React,{useState,useEffect,useMemo} from "react";
 import PageManager from "./PageManager";
 import {getData} from '../api/apiClient';
 import PearlMarketTable from '../components/Tables/PearlMarketTable';
+import { getColumnHeaders } from "../components/Tables/getColumnHeaders";
 
+
+const gradeColorMap =  {
+   1: 'white',
+   2: '#0391c4',
+   3: '#f6c232',
+   4: '#ff8315',
+   // etc 
+ }
 
 function PearlMarket() {
+   const endpoint = "/pearlmarket"
    const [loadingData,setLoadingData] = useState(true)
-   const columns = useMemo(() => [
-         {
-            Header: "Item Name",
-            accessor: "item_name"
-         },
-         {
-            Header: "Hourly Sale",
-            accessor: "hourly_sale"
-         },
-         {
-            Header: "Daily Sale",
-            accessor: "daily_sale"
-         },
-         {
-            Header: "Weekly Sale",
-            accessor: "weekly_sale"
-         },
-         {
-            Header: "Monthly Sale",
-            accessor: "monthly_sale"
-         },
-         {
-            Header: "Total Trades",
-            accessor: "total_trades"
-         },
-
-      ],[]);
+   const columns = useMemo(() => getColumnHeaders(endpoint),[]);
     
    const [data,setData] = useState([])
-   const endpoint = "/pearlmarket"
+
    useEffect(() =>  {
       getData(endpoint).then(function(response) {
          setData(response.data)
          setLoadingData(false)
-
+         
       }).catch((error) => {
          console.log(error)
       })
@@ -72,7 +56,13 @@ function PearlMarket() {
       }
 
       table={
-         loadingData ? <p>Loading Please Wait...</p> : <PearlMarketTable columns={columns} data={data}/>
+         loadingData ? <p>Loading Please Wait...</p> : 
+         <PearlMarketTable
+          columns={columns} 
+          data={data}
+          hiddenColumns={'grade'}
+      
+         />
          
       }
       />

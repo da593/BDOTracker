@@ -4,7 +4,7 @@
     background-color: rgb(var(--oppositeBackgroundColor));
 }
 
-.title,.description,.input-grid {
+.title,.description,.input-grid,.update-title,.update-version,.update-list  {
     color: rgb(var(--primaryTextColor));
 }
 
@@ -206,20 +206,65 @@ textarea {
     padding: 100px 0px;
 }
 
+.home-container {
+    margin:5% 0;
+}
+
 .updates-container {
-    margin-top:5%;
     margin-left:20%;
     margin-bottom:5%;
 }
 
 .update-title {
-    color: rgb(var(--primaryTextColor));
+
     text-decoration: underline;
     font-size:18px;
     font-weight:700;
 }
 
-.update-version,.update-list  {
-    color: rgb(var(--primaryTextColor));
+.title-container {
+    margin-bottom:5%;
 }
 
+.input-grid {
+    font-size:16px;
+    font-weight:700;
+    margin-bottom: 5%;
+}
+
+
+
+.table-background {
+    border-collapse:collapse;
+    background-color:rgb(128,128,128);
+    font-weight: bold;
+    text-align:center;
+    margin:0 auto;
+    width:100%;
+   
+}
+
+.table-header {
+    padding: 15px 15px;
+    background-color: rgb(var(--tableHeaderColor));
+    color: rgb(var(--primaryTextColor));
+    
+}
+
+.even-row {
+    background-color: rgb(var(--tableEvenColor));
+    color:rgb(var(--primaryTextColor));
+    border:solid black 1px;
+}
+
+.odd-row {
+    background-color: rgb(var(--tableOddColor));
+    color:rgb(var(--primaryTextColor));
+    border:solid black 1px;
+}
+
+.pagination {
+    padding: 0.5rem;
+    text-align:left;
+    color:rgb(var(--primaryTextColor));
+  }
