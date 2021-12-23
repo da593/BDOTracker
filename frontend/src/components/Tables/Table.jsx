@@ -1,7 +1,8 @@
 // Table.js
-
 import React from "react";
-import { usePagination, useTable } from "react-table";
+import { useTable,useGlobalFilter,usePagination } from "react-table";
+import SearchFilter from "./SearchFilter";
+
 
 /*The table takes the column header names and the data for each column */
 export default function Table({ columns, data, hiddenColumns}) {
@@ -11,11 +12,9 @@ export default function Table({ columns, data, hiddenColumns}) {
     getTableBodyProps, // table body props from react-table
     headerGroups, // headerGroups, if your table has grouping
     prepareRow, // Prepare the row (this function needs to be called for each row before getting the row props)
-    rows,
     page, // Instead of using 'rows', we'll use page,
     // which has only the rows for the active page
-
-    // The rest of these things are super handy, too ;)
+    // Additional Pagination options
     canPreviousPage,
     canNextPage,
     pageOptions,
@@ -24,7 +23,11 @@ export default function Table({ columns, data, hiddenColumns}) {
     nextPage,
     previousPage,
     setPageSize,
-    state: { pageIndex, pageSize },
+    state,
+    state: { pageIndex, pageSize, globalFilter },
+    visibleColumns,
+    preGlobalFilteredRows,
+    setGlobalFilter,
   } = useTable(
     {
     columns,
@@ -35,7 +38,8 @@ export default function Table({ columns, data, hiddenColumns}) {
       pageSize:10,
     },
   },
-    usePagination
+    useGlobalFilter,
+    usePagination,
     )
  
 /*
@@ -61,6 +65,12 @@ else if (data.grade == 4) {
   */
   return (
     <>
+    
+    <SearchFilter
+        preGlobalFilteredRows={preGlobalFilteredRows}
+        globalFilter={state.globalFilter}
+        setGlobalFilter={setGlobalFilter}
+    />
     <table {...getTableProps()} className="table-background">
     <thead>
       {// Loop over the header rows
@@ -92,8 +102,7 @@ else if (data.grade == 4) {
         return (
           // Apply the row props
           <tr {...row.getRowProps()}
-          className = {row.index % 2 === 0 ? "even-row" : "odd-row"}
-          
+          className = "row"
           >
             {// Loop over the rows cells
             row.cells.map((cell,index) => {
@@ -116,50 +125,50 @@ else if (data.grade == 4) {
       })}
     </tbody>
   </table>
-        <div className="pagination">
-        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {'<<'}
-        </button>{' '}
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          {'<'}
-        </button>{' '}
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-          {'>'}
-        </button>{' '}
-        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {'>>'}
-        </button>{' '}
-        <span>
-          Page{' '}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>{' '}
-        </span>
-        <span>
-          | Go to page:{' '}
-          <input
-            type="number"
-            defaultValue={pageIndex + 1}
-            onChange={e => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0
-              gotoPage(page)
-            }}
-            style={{ width: '100px' }}
-          />
-        </span>{' '}
-        <select
-          value={pageSize}
-          onChange={e => {
-            setPageSize(Number(e.target.value))
-          }}
-        >
-          {[10, 20, 30, 40, 50].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
+  <div className="pagination">
+  <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+    {'<<'}
+  </button>{' '}
+  <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+    {'<'}
+  </button>{' '}
+  <button onClick={() => nextPage()} disabled={!canNextPage}>
+    {'>'}
+  </button>{' '}
+  <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+    {'>>'}
+  </button>{' '}
+  <span>
+    Page{' '}
+    <strong>
+      {pageIndex + 1} of {pageOptions.length}
+    </strong>{' '}
+  </span>
+  <span>
+    | Go to page:{' '}
+    <input
+      type="number"
+      defaultValue={pageIndex + 1}
+      onChange={e => {
+        const page = e.target.value ? Number(e.target.value) - 1 : 0
+        gotoPage(page)
+      }}
+      style={{ width: '100px' }}
+    />
+  </span>{' '}
+  <select
+    value={pageSize}
+    onChange={e => {
+      setPageSize(Number(e.target.value))
+    }}
+  >
+    {[10, 20, 30, 40, 50].map(pageSize => (
+      <option key={pageSize} value={pageSize}>
+        Show {pageSize}
+      </option>
+    ))}
+  </select>
+</div>
   </>
   );
 }

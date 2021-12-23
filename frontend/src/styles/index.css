@@ -11,8 +11,9 @@ body {
   --secondaryTextColor: 255,255,255;
   --buttonColor: 156,212,247;
   --tableHeaderColor: 222,222,222;
-  --tableEvenColor: 256,256,256;
-  --tableOddColor:222,222,222;
+  --tableRowColor: 256,256,256;
+  --tableSearchColor:156,156,156;
+  --tableUpdateColor:126,126,126;
 }
 
 /*Theme for dark mode*/
@@ -25,8 +26,9 @@ body.dark {
   --secondaryTextColor:156,212,247;
   --buttonColor:52,70,88;
   --tableHeaderColor: 32,32,32;
-  --tableEvenColor: 64,64,64;
-  --tableOddColor:32,32,32;
+  --tableRowColor: 64,64,64;
+  --tableSearchColor:24,24,24;
+  --tableUpdateColor:8,8,8
 }
 
 html {

@@ -1,9 +1,9 @@
 import React from "react";
 import UpdateDescription from "../components/Updates/UpdateDescription";
 import HeaderWrapper from '../components/wrappers/HeaderWrapper';
-import ContentWrapper from '../components/wrappers/ContentWrapper';
 import PopupContainer from '../components/Popups/PopupContainer';
 function Home() {
+
    const endpoint = "/home"
    return (
 
@@ -16,11 +16,23 @@ function Home() {
          BDO Tracker is a tool to help Black Desert Online players keep track of various activities including life skill profitability and pearl market sales.<br/>
          If you have any questions, suggestions, or feedback please let me know!
          </p>
+         <h2 style={{textAlign:"center", color:"red",}}>Currently being refactored!!!</h2>
       </div>
       <div className="updates-container">
          <p className="update-title">Project Updates</p>
          <UpdateDescription 
             date="12/22" 
+            version=" 2.10"  
+            updateItem={
+            <>
+               <li> Added tables to all required pages</li> 
+               <li> Added search filter</li> 
+               <li> Added ability to get updated data on demand</li> 
+            </>
+            }
+         /> 
+         <UpdateDescription 
+            date="12/21" 
             version=" 2.05"  
             updateItem={
             <>
