@@ -10,9 +10,9 @@ body {
   --primaryTextColor:0,0,0;
   --secondaryTextColor: 255,255,255;
   --buttonColor: 156,212,247;
-  --tableUpdateColor:36,150,170;
-  --tableSearchColor:36,150,190;
-  --tableHeaderColor: 36,150,237;
+  --tableUpdateColor:36,150,237;
+  --tableSearchColor:61, 165, 245;
+  --tableHeaderColor: 82, 168, 235;
   --tableRowColor: 92,92,120;
 
   
