@@ -56,45 +56,13 @@ class FarmingView(BaseView):
     def __init__(self):
         self.model = FarmingItem
         self.serializer_class = FarmingSerializer
-        self.fruit = FruitItem
-        self.fruitSerializer_class = FruitSerializer
+
+class FruitView(BaseView):
+    def __init__(self):
+        self.model = FruitItem
+        self.serializer_class = FruitSerializer 
     
-    # Override get method to include two models that need to be serialize
-    def get(self,request):
-            queryset = self.model.objects.all()
-            farming_serializer = self.serializer_class(queryset,many=True)
-            fruit_serializer = self.fruitSerializer_class(queryset,many=True)
-            data = farming_serializer.data + fruit_serializer.data
-            return Response(data)
 
-def getFarmingPage(request):
-    crop = FarmingItem.objects.values('item_name','base_price','in_stock','grade','perfect_growth_minutes','fertilizer_growth_minutes','slots','seed_price','fruit')
-    serializer = json.dumps(list(crop),cls=DjangoJSONEncoder)
-    crops = json.loads(serializer)
-
-    fruit = FruitItem.objects.values('item_name','base_price')
-    serializer = json.dumps(list(fruit),cls=DjangoJSONEncoder)
-    fruits = json.loads(serializer)
-
-    fodder = FruitItem.objects.filter(item_type="farming").values("item_name","base_price")
-    serializer = json.dumps(list(fodder),cls=DjangoJSONEncoder)
-    fodders = json.loads(serializer)
-    
-    bsp = FruitItem.objects.filter(item_name="Black Stone Powder").values("item_name","base_price")
-    serializer = json.dumps(list(bsp),cls=DjangoJSONEncoder)
-    bsps = json.loads(serializer)
-    if (request.method == "POST"):
-        feedbackForm = FeedbackForm()
-        feedback_data = json.load(request)['post_data']
-        feedbackForm.feedback_type = feedback_data['type']
-        feedbackForm.feedback = feedback_data['feedback']
-        feedbackForm.save()
-        return HttpResponse()
-    elif request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return JsonResponse({'crop':crops,'fruit':fruits,"stonetail":fodders,"bsp":bsps})
-
-    else:
-        return render(request,'farming.html',{'crop':crops,'fruit':fruits,"stonetail":fodders,"bsp":bsps})
 
 
 

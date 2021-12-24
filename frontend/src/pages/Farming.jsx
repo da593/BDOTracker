@@ -7,7 +7,6 @@ function Farming() {
 
    const endpoint="/farming"
    
-   
    return (
       <PageManager          
       title={"Magical Seed Farming"}

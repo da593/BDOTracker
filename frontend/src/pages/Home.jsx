@@ -21,6 +21,16 @@ function Home() {
       <div className="updates-container">
          <p className="update-title">Project Updates</p>
          <UpdateDescription 
+            date="12/24" 
+            version=" 2.11"  
+            updateItem={
+            <>
+               <li>Added color code for item grade and mastery</li>
+               <li>Add ability to sort columns</li>
+            </>
+            }
+         /> 
+         <UpdateDescription 
             date="12/22" 
             version=" 2.10"  
             updateItem={

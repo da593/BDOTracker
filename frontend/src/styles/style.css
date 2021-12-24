@@ -1,10 +1,12 @@
 
+
+
 /*Top of content wrapper: Style each page title and description*/
 .popup-header {
     background-color: rgb(var(--oppositeBackgroundColor));
 }
 
-.title,.description,.input-grid,.update-title,.update-version,.update-list  {
+.title,.description,.input-grid,.update-title,.update-version,.update-list,.table-header,.update-button,.search-bar,.search-input,.pagination,.table-update-container,.row  {
     color: rgb(var(--primaryTextColor));
 }
 
@@ -216,7 +218,6 @@ textarea {
 }
 
 .update-title {
-
     text-decoration: underline;
     font-size:18px;
     font-weight:700;
@@ -244,26 +245,30 @@ textarea {
    
 }
 
+.table-group-header {
+    background-color: rgb(var(--tableHeaderColor));
+     border-left: solid black 1px;
+    border-right:solid black 1px;
+}
+
 .table-header {
     padding: 15px 15px;
-    background-color: rgb(var(--tableHeaderColor));
-    color: rgb(var(--primaryTextColor));
-    
+    white-space: nowrap;
 }
 
 .row {
     background-color: rgb(var(--tableRowColor));
-    color:rgb(var(--primaryTextColor));
     border:solid black 1px;
 }
 
 .table-update-container {
     width:100%;
     background-color: rgb(var(--tableUpdateColor));
-    color:rgb(var(--primaryTextColor));
     font-weight:500;
     padding:15px 0px;
-    border: solid black 1px;
+    border-top: solid black 1px;
+    border-right:solid black 1px;
+    border-left:solid black 1px;
     box-sizing: border-box;
 }
 
@@ -271,20 +276,18 @@ textarea {
     background-color:transparent;
     border:none;
     float:right;
-    color:rgb(var(--primaryTextColor));
     font-size:24px;
     cursor:pointer;
     margin-right:15px;
 }
 
-
-.search-bar {
-    color:rgb(var(--primaryTextColor));
+.search-bar, .search-input {
     background-color:rgb(var(--tableSearchColor));
-    border:solid black 1px;
 }
 
-
+.search-bar {
+    border:solid black 1px;
+}
 
 .search-input {
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" fill="white" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>');
@@ -296,9 +299,7 @@ textarea {
     padding-bottom:15px;
     padding-left:30px;
     box-sizing: border-box;
-    background-color: rgb(var(--tableSearchColor));
     border:none;
-    color:rgb(var(--primaryTextColor));
     font-size:16px;
 }
 
@@ -309,5 +310,4 @@ textarea {
 .pagination {
     padding: 0.5rem;
     text-align:left;
-    color:rgb(var(--primaryTextColor));
   }

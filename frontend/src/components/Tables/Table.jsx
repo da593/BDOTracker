@@ -1,11 +1,21 @@
 // Table.js
 import React from "react";
-import { useTable,useGlobalFilter,usePagination } from "react-table";
+import { useTable,useGlobalFilter,usePagination, useSortBy } from "react-table";
 import SearchFilter from "./SearchFilter";
-
+import {BsFillCaretDownSquareFill} from 'react-icons/bs'
+import {BsFillCaretUpSquareFill} from 'react-icons/bs'
+// Create a default prop getter
+const defaultPropGetter = () => ({})
 
 /*The table takes the column header names and the data for each column */
-export default function Table({ columns, data, hiddenColumns}) {
+export default function Table({
+   columns, 
+   data, 
+   getHeaderGroupProps = defaultPropGetter,
+   getHeaderProps = defaultPropGetter,
+   getRowProps = defaultPropGetter,
+   getCellProps = defaultPropGetter,
+  }) {
   // Use the useTable Hook to send the columns and data to build the table
   const {
     getTableProps, // table props from react-table
@@ -24,8 +34,8 @@ export default function Table({ columns, data, hiddenColumns}) {
     previousPage,
     setPageSize,
     state,
-    state: { pageIndex, pageSize, globalFilter },
-    visibleColumns,
+    state: { pageIndex, pageSize },
+  
     preGlobalFilteredRows,
     setGlobalFilter,
   } = useTable(
@@ -34,11 +44,15 @@ export default function Table({ columns, data, hiddenColumns}) {
     data,
     initialState: {
       pageIndex: 0,
-      hiddenColumns: hiddenColumns,
       pageSize:10,
+      hiddenColumns: columns.map(column => {
+        if (column.show === false) return column.accessor || column.id;
+    }),
+      
     },
   },
     useGlobalFilter,
+    useSortBy,
     usePagination,
     )
  
@@ -76,18 +90,30 @@ else if (data.grade == 4) {
       {// Loop over the header rows
       headerGroups.map(headerGroup => (
         // Apply the header row props
-        <tr {...headerGroup.getHeaderGroupProps()}
-        style= {{
-          border: "1px solid black",
-        }}
-        >
-
+        <tr {...headerGroup.getHeaderGroupProps(
+          getHeaderGroupProps(headerGroup)
+          )}>
           {// Loop over the headers in each row
           headerGroup.headers.map(column => (
             // Apply the header cell props
-            <th {...column.getHeaderProps()} className="table-header">
+            <th {...column.getHeaderProps(
+              [
+                column.getSortByToggleProps(),
+                getHeaderProps(column),
+              ],
+             
+              
+              
+            )}>
               {// Render the header
               column.render('Header')}
+                <span style={{paddingLeft:"5px"}}> 
+                  {column.isSorted
+                    ? column.isSortedDesc
+                      ?<BsFillCaretDownSquareFill/>
+                      :<BsFillCaretUpSquareFill/>
+                    : ''}
+                </span>
             </th>
           ))}
         </tr>
@@ -101,18 +127,19 @@ else if (data.grade == 4) {
         prepareRow(row)
         return (
           // Apply the row props
-          <tr {...row.getRowProps()}
-          className = "row"
+          <tr {...row.getRowProps(
+            getRowProps(row)
+          )}
+          
           >
             {// Loop over the rows cells
             row.cells.map((cell,index) => {
               // Apply the cell props
               return (
-                <td {...cell.getCellProps()}
-                style={{
-                  padding:"15px 15px",
-                  
-                }}
+                <td {...cell.getCellProps(
+                  getCellProps(cell)
+                )}
+                
                 >
                   
                   {// Render the cell contents
@@ -125,6 +152,7 @@ else if (data.grade == 4) {
       })}
     </tbody>
   </table>
+  
   <div className="pagination">
   <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
     {'<<'}

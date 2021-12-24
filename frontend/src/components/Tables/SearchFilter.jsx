@@ -1,6 +1,6 @@
 import {React,useState} from "react";
 import { useAsyncDebounce } from "react-table";
-import {BsSearch} from 'react-icons/bs'
+
 
 export default function SearchFilter({
     preGlobalFilteredRows,

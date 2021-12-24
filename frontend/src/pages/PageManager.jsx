@@ -18,7 +18,7 @@ const PageManager = (props) => {
     const [isDisabled,setDisable] = useState(false)
 
     //Get react-table headers and accessors
-    const columns = useMemo(() => getColumnHeaders(props.endpoint),[]);
+    const columns = useMemo(() => getColumnHeaders(props.endpoint),[props.endpoint]);
     //get data on render
     useEffect(() =>  {
        getData(props.endpoint).then(function(response) {
@@ -30,7 +30,7 @@ const PageManager = (props) => {
           console.log(error)
        })
  
-       },[])
+       },[props.endpoint])
 
     //update data on button click
     function updateData() {
@@ -41,7 +41,6 @@ const PageManager = (props) => {
             formatTime()
             setDisable(true)
             setTimeout(() => setDisable(false), 60000);
-
        }).catch((error) => {
           console.log(error)
        })
@@ -83,7 +82,21 @@ const PageManager = (props) => {
                 <Table
                 columns={columns} 
                 data={data}
-                hiddenColumns={'grade'}
+                getHeaderGroupProps= {headerGroup => ({
+                
+                    className: "table-group-header" 
+                })}
+                getHeaderProps={column => ({
+                    className:"table-header",
+                })}
+                getRowProps={row => ({
+                    className:"row",
+                })}
+                getCellProps={cellInfo => ({
+                style: {
+                    padding:"15px 15px",
+                },
+                })}
                 />
             </div>
             </>
