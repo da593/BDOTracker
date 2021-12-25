@@ -209,7 +209,7 @@ export function getColumnHeaders(url) {
 function getItemGradeColor(grade) {
    switch (grade) {
       case 1:
-         return "#b3ff7a"
+         return "#7cb84f"
       case 2:
          return "#0391c4"
       case 3:
@@ -225,7 +225,7 @@ function getItemGradeColor(grade) {
 function getMasteryColor(mastery) {
    switch (mastery) {
       case "apprentice":
-         return "#b3ff7a"
+         return "#7cb84f"
       case "skilled":
          return "#0391c4"
       case "professional":

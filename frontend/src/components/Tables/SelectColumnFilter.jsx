@@ -50,7 +50,7 @@ export function SelectColumnFilter({
           }}
         >
           <option value="0" className="option-list">All</option>
-          <option value="1" style={{color:"#b3ff7a"}}>Apprentice</option>
+          <option value="1" style={{color:"#7cb84f"}}>Apprentice</option>
           <option value="2" style={{color:"#0391c4"}}>Skilled</option>
           <option value="3" style={{color:"#f6c232"}}>Professional</option>
           <option value="4" style={{color:"#d42626"}}>Artisan</option>
