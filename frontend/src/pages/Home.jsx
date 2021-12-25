@@ -25,6 +25,16 @@ function Home() {
             version=" 2.11"  
             updateItem={
             <>
+               <li>Completed Pearl Market table</li>
+               
+            </>
+            }
+         /> 
+         <UpdateDescription 
+            date="12/23" 
+            version=" 2.11"  
+            updateItem={
+            <>
                <li>Added color code for item grade and mastery</li>
                <li>Add ability to sort columns</li>
             </>

@@ -6,7 +6,7 @@
     background-color: rgb(var(--oppositeBackgroundColor));
 }
 
-.title,.description,.input-grid,.update-title,.update-version,.update-list,.table-header,.update-button,.search-bar,.search-input,.pagination,.table-update-container,.row  {
+.title,.description,.input-grid,.update-title,.update-version,.update-list,.table-header,.update-button,.search-bar,.search-input,.pagination,.table-update-container,.table-group-header,.row  {
     color: rgb(var(--primaryTextColor));
 }
 
@@ -247,13 +247,14 @@ textarea {
 
 .table-group-header {
     background-color: rgb(var(--tableHeaderColor));
-     border-left: solid black 1px;
+    border-left: solid black 1px;
     border-right:solid black 1px;
+    
 }
 
 .table-header {
-    padding: 15px 15px;
-    white-space: nowrap;
+   
+    padding: 15px 0px;
 }
 
 .row {
@@ -311,3 +312,16 @@ textarea {
     padding: 0.5rem;
     text-align:left;
   }
+
+.column-filter {
+    margin-top:5px;
+    
+}
+
+option {
+    background-color: rgb(var(--tableHeaderColor));
+}
+
+.option-list {
+    color:rgb(var(--primaryTextColor));
+}

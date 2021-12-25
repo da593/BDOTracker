@@ -1,13 +1,19 @@
+import {React} from "react";
+import { filterMastery, SelectColumnFilter, SelectMasteryFilter } from "./SelectColumnFilter";
+import {MinimumValueFilter} from './MinimumValueFilter';
 const pearlMarketHeaders = [
    {
       Header: "Item Type",
       accessor:"item_type",
-      show: false,
+      Filter: SelectColumnFilter,
+      filter: 'includes',
+      disableSortBy: true,
    },
    {
       Header: "Item Grade",
       accessor:"grade",
       show: false,
+      disableFilters: true,
    },
    {
       Header: "Item Name",
@@ -18,34 +24,40 @@ const pearlMarketHeaders = [
             {row.original.item_name}
          </div>
       );
-      }
+      },
+      disableFilters: true,
    },
    {
       Header: "Hourly Sale (1h)" ,
       accessor: "hourly_sale",
+      disableFilters: true,
    },
    {
       Header: "Daily Sale (1D)",
-      accessor: "daily_sale"
+      accessor: "daily_sale",
+      disableFilters: true,
    },
    {
       Header: "Weekly Sale (7D)",
-      accessor: "weekly_sale"
+      accessor: "weekly_sale",
+      disableFilters: true,
    },
    {
       Header: "Monthly Sale (30D)",
-      accessor: "monthly_sale"
+      accessor: "monthly_sale",
+      disableFilters: true,
    },
    {
       Header: "Total Trades",
-      accessor: "total_trades"
+      accessor: "total_trades",
+      disableFilters: true,
 
    },
  ]
 
  const imperialHeaders = [
    {
-      Header: "Box",
+      Header: "Mastery Required",
       accessor: "profession_level",
       Cell: ({cell,value}) => {
          return (
@@ -53,51 +65,67 @@ const pearlMarketHeaders = [
              {cell.value}
            </div>
          );
-       }
+       },
+       Filter: SelectMasteryFilter,
+       filter: filterMastery,
+       disableSortBy: true,
    },
+   
    {
       Header: "Item Grade",
       accessor:"grade",
       show: false,
   },
    {
-      Header: "Item Name",
+      Header: "Item Name & Qty.",
       accessor: "item_name",
       Cell: ({row}) => {
          return (
            <div style={{ color: getItemGradeColor(row.original.grade)}}>
-             {row.original.item_name}
+             {row.original.item_name} {"x"}{row.original.quantity}
            </div>
          );
-       }
+       },
+       disableFilters: true,
+       
    },
+
    {
       Header: "In Stock",
-      accessor: "in_stock"
+      accessor: "in_stock",
+      Filter: MinimumValueFilter,
+      filter:  'between',
+      
    },
    {
       Header: "Price",
       accessor: "base_price",
+      disableFilters: true,
    },
    {
       Header: "Total Item Required",
-      accessor: ""
+      accessor: "",
+      disableFilters: true,
    },
    {
       Header: "Profit Per Box",
-      accessor: ""
+      accessor: "",
+      disableFilters: true,
    },
    {
       Header: "Total Profit",
-      accessor: ""
+      accessor: "",
+      disableFilters: true,
    },
    {
       Header: "Revenue Per Box",
-      accessor: ""
+      accessor: "",
+      disableFilters: true,
    },
    {
       Header: "Total Revenue",
-      accessor: ""
+      accessor: "",
+      disableFilters: true,
    },
 ]
 
@@ -107,6 +135,7 @@ const farmingHeaders = [
       Header: "Item Grade",
       accessor:"grade",
       show: false,
+      disableFilters:true,
    },
    {
       Header: "Crop",
@@ -117,36 +146,44 @@ const farmingHeaders = [
              {row.original.item_name}
            </div>
          );
-       }
+       },
+       disableFilters: true,
    },
    {
       Header: "Fruit",
       accessor: "fruit",
+      disableFilters: true,
    },
    {
       Header: "Growth time",
       accessor: "",
+      disableFilters: true,
    },
    {
       Header: "Harvest per Day",
       accessor: "",
+      disableFilters: true,
    },
    {
       Header: "Crop in Stock",
-      accessor: "in_stock"
+      accessor: "in_stock",
+      disableFilters: true,
    },
 
    {
       Header: "Market",
-      accessor: ""
+      accessor: "",
+      disableFilters: true,
    },
    {
       Header: "Vendor",
-      accessor: ""
+      accessor: "",
+      disableFilters: true,
    },
    {
       Header: "Crate",
-      accessor: ""
+      accessor: "",
+      disableFilters: true,
    },
 ]
 
@@ -172,7 +209,7 @@ export function getColumnHeaders(url) {
 function getItemGradeColor(grade) {
    switch (grade) {
       case 1:
-         return "white"
+         return "#b3ff7a"
       case 2:
          return "#0391c4"
       case 3:
@@ -204,3 +241,7 @@ function getMasteryColor(mastery) {
    }
    
 }
+
+
+
+

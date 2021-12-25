@@ -2,7 +2,7 @@ import {React,useState} from "react";
 import { useAsyncDebounce } from "react-table";
 
 
-export default function SearchFilter({
+export default function GlobalSearchFilter({
     preGlobalFilteredRows,
     globalFilter,
     setGlobalFilter,

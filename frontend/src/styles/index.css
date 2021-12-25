@@ -13,7 +13,7 @@ body {
   --tableUpdateColor:36,150,237;
   --tableSearchColor:61, 165, 245;
   --tableHeaderColor: 82, 168, 235;
-  --tableRowColor: 92,92,120;
+  --tableRowColor: 256,256,256;
 
   
 }
@@ -49,6 +49,16 @@ a:visited,.navbar-brand:visited,.current-page-link:visited{
 }
 
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 

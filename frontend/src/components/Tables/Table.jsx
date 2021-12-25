@@ -1,11 +1,15 @@
 // Table.js
 import React from "react";
-import { useTable,useGlobalFilter,usePagination, useSortBy } from "react-table";
-import SearchFilter from "./SearchFilter";
+import {useTable,useFilters,useGlobalFilter,usePagination, useSortBy } from "react-table";
+import GlobalSearchFilter from "./GlobalSearchFilter";
 import {BsFillCaretDownSquareFill} from 'react-icons/bs'
 import {BsFillCaretUpSquareFill} from 'react-icons/bs'
+import { DefaultColumnFilter } from "./DefaultColumnFilter";
+
+
 // Create a default prop getter
 const defaultPropGetter = () => ({})
+// Define a default UI for filtering
 
 /*The table takes the column header names and the data for each column */
 export default function Table({
@@ -16,6 +20,14 @@ export default function Table({
    getRowProps = defaultPropGetter,
    getCellProps = defaultPropGetter,
   }) {
+  
+  const defaultColumn = React.useMemo(
+    () => ({
+      // Let's set up our default Filter UI
+      Filter: DefaultColumnFilter,
+    }),
+    []
+  )
   // Use the useTable Hook to send the columns and data to build the table
   const {
     getTableProps, // table props from react-table
@@ -34,14 +46,14 @@ export default function Table({
     previousPage,
     setPageSize,
     state,
-    state: { pageIndex, pageSize },
-  
+    state: { pageIndex, pageSize},
     preGlobalFilteredRows,
     setGlobalFilter,
   } = useTable(
     {
     columns,
     data,
+    defaultColumn, // Be sure to pass the defaultColumn option
     initialState: {
       pageIndex: 0,
       pageSize:10,
@@ -51,27 +63,12 @@ export default function Table({
       
     },
   },
-    useGlobalFilter,
-    useSortBy,
-    usePagination,
+  useFilters,
+  useGlobalFilter,
+  useSortBy,
+  usePagination,
     )
  
-/*
-let color = "white";
-if (data.grade == 1) {
-    color = '#b3ff7a';
-}
-else if (data.grade == 2) {
-    color = '#0391c4';      
-}
-else if (data.grade == 3) {
-    color = '#f6c232';      
-}
-else if (data.grade == 4) {
-    color = '#ff8315';      
-}
-*/
-
 
   /* 
     Render the UI for your table
@@ -80,10 +77,10 @@ else if (data.grade == 4) {
   return (
     <>
     
-    <SearchFilter
-        preGlobalFilteredRows={preGlobalFilteredRows}
-        globalFilter={state.globalFilter}
-        setGlobalFilter={setGlobalFilter}
+    <GlobalSearchFilter
+      preGlobalFilteredRows={preGlobalFilteredRows}
+      globalFilter={state.globalFilter}
+      setGlobalFilter={setGlobalFilter}
     />
     <table {...getTableProps()} className="table-background">
     <thead>
@@ -97,23 +94,18 @@ else if (data.grade == 4) {
           headerGroup.headers.map(column => (
             // Apply the header cell props
             <th {...column.getHeaderProps(
-              [
-                column.getSortByToggleProps(),
                 getHeaderProps(column),
-              ],
-             
-              
-              
             )}>
-              {// Render the header
-              column.render('Header')}
-                <span style={{paddingLeft:"5px"}}> 
-                  {column.isSorted
-                    ? column.isSortedDesc
-                      ?<BsFillCaretDownSquareFill/>
-                      :<BsFillCaretUpSquareFill/>
-                    : ''}
-                </span>
+              <span {...column.getSortByToggleProps()}> 
+              {column.render('Header')}
+                {column.isSorted
+                  ? column.isSortedDesc
+                    ?<BsFillCaretDownSquareFill style={{marginLeft:"5px"}}/>
+                    :<BsFillCaretUpSquareFill style={{marginLeft:"5px"}}/>
+                  : ''}
+              </span>
+              
+              <div className="column-filter">{column.canFilter ? column.render('Filter') : null}</div>
             </th>
           ))}
         </tr>
