@@ -1,8 +1,7 @@
 import {React,useMemo} from 'react';
 import {BsFillInfoCircleFill} from 'react-icons/bs';
 import ReactTooltip from 'react-tooltip';
-// This is a custom filter UI for selecting
-// a unique option from a list
+// Custom Select filter based on column values. Used in pearl market item type headers.
 export function SelectColumnFilter({
     column: { filterValue, setFilter, preFilteredRows, id },
   }) {
@@ -36,6 +35,8 @@ export function SelectColumnFilter({
     )
   }
 
+
+  //Custom Select filter for profession required column in imperial headers
   export function SelectProfessionFilter({
     column: { filterValue, setFilter},
   }) {
@@ -50,7 +51,6 @@ export function SelectColumnFilter({
             setFilter(e.target.value || undefined)
           }}
         >
-          <option value="0" style={{color:"#000000"}}>All</option>
           <option value="1" style={{color:"#7cb84f"}}>Apprentice</option>
           <option value="2" style={{color:"#0391c4"}}>Skilled</option>
           <option value="3" style={{color:"#f6c232"}}>Professional</option>
@@ -65,7 +65,7 @@ export function SelectColumnFilter({
 
   
 
-  // Define a custom filter filter function!
+  // filter lower profession boxes based on selected profession
   export function filterProfession(rows, id, filterValue) {
     const mastery =   {
         "apprentice":"1",
@@ -75,13 +75,15 @@ export function SelectColumnFilter({
         "master":"5",
         "guru":"6",
       }
-    return rows.filter(row => {
+    return  rows.filter(row => {
       const rowValue = row.values[id]
-      if (filterValue === "0") {
-          return rowValue
+      if (filterValue <= mastery[rowValue]) {
+        return rowValue
       }
-      else if (filterValue <= mastery[rowValue]) {
-          return rowValue
+      else {
+        return ""
       }
+    
     })
+    
   }

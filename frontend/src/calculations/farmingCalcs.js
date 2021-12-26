@@ -1,6 +1,6 @@
 
 export function calculateFarmingData(crop_data,fruit_data,inputValues) {
-
+   
     for (let i=0;i<crop_data.length;i++) {
 
         if (inputValues.fertilizer ==='yes') {

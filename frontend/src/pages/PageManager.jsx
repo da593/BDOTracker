@@ -10,12 +10,13 @@ import { getColumnHeaders } from "../components/Tables/getColumnHeaders";
 import InputFactory from "../components/Input/InputFactory";
 import {calculateImperialData} from '../calculations/imperialCalcs'
 import {calculateFarmingData} from '../calculations/farmingCalcs'
-import { useCallback } from "react";
 import { getFarmingInitialValues, getImperialInitialValues } from "../components/Input/InitialValues";
+
 
 const PageManager = (props) => {
     //Manage data state and requests
     const [data,setData] = useState([])
+    const [fruitData,setFruitData] = useState([])
     const [loadingData,setLoadingData] = useState(true)
     const [time,setTime] = useState("")
     const [isDisabled,setDisable] = useState(false)
@@ -24,9 +25,9 @@ const PageManager = (props) => {
 
     //Get react-table headers and accessors
     const columns = useMemo(() => getColumnHeaders(props.endpoint),[props.endpoint]);
-
+ 
     //update data on button click
-    const  updateData = useCallback( async () => {
+    const  updateData =  async () => {
         setLoadingData(true)
         getData(props.endpoint).then(function(response) {
             switch (props.endpoint) {
@@ -40,9 +41,11 @@ const PageManager = (props) => {
                     setData(calculateImperialData(props.endpoint,response.data,imperialInitVal))
                     break;
                 case "/farming":
-                    getData("/fruit").then(function(fruit){
-                        setData(calculateFarmingData(response.data,fruit.data,farmingInitVal))
+                    getData("/fruit").then(function(fruitResponse){
+                        setFruitData(fruitResponse.data)
+                        
                     })
+                    setData(calculateFarmingData(response.data,fruitData,farmingInitVal))
                     break;
                 default:
                     <div>Error</div>
@@ -56,17 +59,19 @@ const PageManager = (props) => {
        }).catch((error) => {
           console.log(error)
        })
-    })
+    }
 
-    //get data on render
+    //get data on load
     useEffect(() =>  {
        updateData()
+     
        return () => {
            setData([])
        }
        },[])
 
-
+      
+    
 
     function formatTime() {
         var moment = require('moment-timezone');
@@ -74,17 +79,16 @@ const PageManager = (props) => {
         setTime(moment.tz(timezone).format('hh:mm:ss A'))
     }
 
-    function recalculateData(mastery,cp){
+    function recalculateData(values){
         switch (props.endpoint) {
             case "/cooking":
-                setData(calculateImperialData(props.endpoint,data,mastery,cp))
-               
+                setData(calculateImperialData(props.endpoint,data,values))
                 break;
             case "/alchemy":
-                setData(calculateImperialData(props.endpoint,data,mastery,cp))
+                setData(calculateImperialData(props.endpoint,data,values))
                 break;
             case "/farming":
-                console.log(calculateFarmingData(data))
+                setData(calculateFarmingData(data,fruitData,values))
                 break;
             default:
                 return <div>Error</div>

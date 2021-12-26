@@ -59,10 +59,9 @@ export default function Table({
 
       pageIndex: 0,
       pageSize:10,
-      hiddenColumns: columns.map(column => {
-        if (column.show === false) return column.accessor || column.id;
-      
-    }),
+      hiddenColumns: columns
+      .filter(col => col.show === false)
+      .map(col => col.accessor),
     sortBy: [
       {
         id:"weekly_sale",

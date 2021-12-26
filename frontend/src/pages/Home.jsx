@@ -32,7 +32,7 @@ function Home() {
          /> 
          <UpdateDescription 
             date="12/24" 
-            version=" 2.11"  
+            version=" 2.12"  
             updateItem={
             <>
                <li>Completed Pearl Market table</li>

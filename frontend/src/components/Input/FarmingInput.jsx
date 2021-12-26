@@ -1,4 +1,4 @@
-import {React,useState} from 'react';
+import {React,useState,useEffect} from 'react';
 import InputGroup from './InputGroup';
 import {getRegex, validateNumber, validateRange} from './validation';
 import {BsFillInfoCircleFill} from 'react-icons/bs';
@@ -9,6 +9,10 @@ import { getFarmingInitialValues } from './InitialValues';
 
 const FarmingInput = ({recalculateData}) => {
     const [values,setValues] = useState(getFarmingInitialValues)
+
+    useEffect(() => {
+        recalculateData(values)
+    },[values,recalculateData])
 
     //Checks if the inputted value follows its validation criteria (regex & range)
     function validate(event) {

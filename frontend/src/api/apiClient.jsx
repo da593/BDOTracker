@@ -8,7 +8,7 @@ const axiosClient = axios.create({
     headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': process.env.NODE_ENV === "development" ? 'Token' + " " +  process.env.REACT_APP_LOCAL_TOKEN : 'Token' + " " + process.env.REACT_APP_AUTH_KEY,
+    'Authorization': process.env.NODE_ENV === "development" ? process.env.REACT_APP_LOCAL_TOKEN : process.env.REACT_APP_AUTH_KEY,
     },
 })
 

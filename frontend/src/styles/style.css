@@ -335,6 +335,7 @@ option {
 .input-group {
     display:inline-block;
     padding-right:25px;
+    text-align: left;
 }
 
 .input-row {
@@ -344,6 +345,7 @@ option {
 
 label {
     font-weight:700;
+   
 }
 
 .input-container {
