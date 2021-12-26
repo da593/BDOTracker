@@ -29,33 +29,37 @@ const PageManager = (props) => {
     //update data on button click
     const  updateData =  async () => {
         setLoadingData(true)
+        
         getData(props.endpoint).then(function(response) {
             switch (props.endpoint) {
                 case "/pearlmarket":
-                    setData(response.data)
-                    break;
+                    return setData(response.data)
+                
                 case "/cooking":
-                    setData(calculateImperialData(props.endpoint,response.data,imperialInitVal))
-                    break;
+                    return setData(calculateImperialData(props.endpoint,response.data,imperialInitVal))
+                    
                 case "/alchemy":
-                    setData(calculateImperialData(props.endpoint,response.data,imperialInitVal))
-                    break;
+                    return setData(calculateImperialData(props.endpoint,response.data,imperialInitVal))
+                    
+                    
                 case "/farming":
-                    getData("/fruit").then(function(fruitResponse){
+                    return getData("/fruit").then(function(fruitResponse){
                         setFruitData(fruitResponse.data)
-                        
-                    })
-                    setData(calculateFarmingData(response.data,fruitData,farmingInitVal))
-                    break;
+                        return fruitResponse
+                    }).then((function(fruitResponse) {
+                        return setData(calculateFarmingData(response.data,fruitResponse.data,farmingInitVal))
+                    }))
+                    
                 default:
                     <div>Error</div>
                   
             }
-            
-            setLoadingData(false)
-            formatTime()
-            setDisable(true)
-            setTimeout(() => setDisable(false), 60000);
+      
+       }).then(function(){
+        setLoadingData(false)
+        formatTime()
+        setDisable(true)
+        setTimeout(() => setDisable(false), 60000);
        }).catch((error) => {
           console.log(error)
        })
@@ -64,10 +68,7 @@ const PageManager = (props) => {
     //get data on load
     useEffect(() =>  {
        updateData()
-     
-       return () => {
-           setData([])
-       }
+       
        },[])
 
       
@@ -82,13 +83,16 @@ const PageManager = (props) => {
     function recalculateData(values){
         switch (props.endpoint) {
             case "/cooking":
-                setData(calculateImperialData(props.endpoint,data,values))
+                //console.log(values)
+                //setData(calculateImperialData(props.endpoint,data,values))
                 break;
             case "/alchemy":
-                setData(calculateImperialData(props.endpoint,data,values))
+                //console.log("s")
+                //setData(calculateImperialData(props.endpoint,data,values))
                 break;
             case "/farming":
-                setData(calculateFarmingData(data,fruitData,values))
+                //console.log("values")
+                //setData(calculateFarmingData(data,fruitData,values))
                 break;
             default:
                 return <div>Error</div>

@@ -34,3 +34,4 @@ export function validateRange(value,min,max) {
         return value
     }
 }
+

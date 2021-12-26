@@ -1,17 +1,16 @@
 
-import {React,useState,useEffect} from 'react';
+import {React,useState,useEffect,useRef} from 'react';
 import { getImperialInitialValues } from './InitialValues';
 import InputGroup from './InputGroup';
 import {getRegex, validateNumber, validateRange} from './validation';
 
 
-
 const ImperialInput = ({recalculateData}) => {
     const [values,setValues] = useState(getImperialInitialValues)
-
-    useEffect(() => {
-        recalculateData(values)
-    },[values,recalculateData])
+  
+        
+        
+  
 
     //Checks if the inputted value follows its validation criteria (regex & range)
     function validate(event) {
@@ -32,6 +31,7 @@ const ImperialInput = ({recalculateData}) => {
                 ...values,
                 [name]: value,
               });
+
         }
     }
 

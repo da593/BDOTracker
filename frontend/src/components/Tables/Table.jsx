@@ -59,7 +59,7 @@ export default function Table({
 
       pageIndex: 0,
       pageSize:10,
-      hiddenColumns: columns
+      hiddenColumns:  columns
       .filter(col => col.show === false)
       .map(col => col.accessor),
     sortBy: [

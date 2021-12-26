@@ -1,6 +1,9 @@
 
 export function calculateFarmingData(crop_data,fruit_data,inputValues) {
-   
+    console.log(crop_data,fruit_data,inputValues)
+    var bspValue = findFruitValue("Black Stone Powder",fruit_data)
+    var stonetailValue = findFruitValue("Stonetail Fodder",fruit_data)
+    var tax = calculateTax(inputValues.fame,inputValues.vp,inputValues.ring)
     for (let i=0;i<crop_data.length;i++) {
 
         if (inputValues.fertilizer ==='yes') {
@@ -11,15 +14,12 @@ export function calculateFarmingData(crop_data,fruit_data,inputValues) {
         }
         
 
-        var tax = calculateTax(inputValues.fame,inputValues.vp,inputValues.ring)
         var fruitValue = findFruitValue(crop_data[i]['fruit'],fruit_data)
-        var stonetailValue = findFruitValue("Stonetail Fodder",fruit_data)
         crop_data[i]['harvest_day'] = Math.min(inputValues.cycle, Math.floor(inputValues.hours * 60/ crop_data[i]['growth_time']) )
         crop_data[i]['market'] = calculateMarketProfit(crop_data[i]['slots'],stonetailValue,fruitValue,crop_data[i]['base_price'], crop_data[i]['harvest_day'],tax,inputValues.slots)
         crop_data[i]['vendor'] = calculateVendorProfit(crop_data[i]['slots'],stonetailValue,fruitValue,crop_data[i]['seed_price'], crop_data[i]['harvest_day'],tax,inputValues.slots)
         
         //Crate calculations
-        var bspValue = findFruitValue("Black Stone Powder",fruit_data)
         var crateBase = findCrateBase(crop_data[i]['item_name'])
         
         if (crateBase <= 0) {
@@ -34,8 +34,6 @@ export function calculateFarmingData(crop_data,fruit_data,inputValues) {
         }
         
     }
-    //console.log(crop_data)
-  
     return crop_data
 }
 
@@ -187,7 +185,6 @@ function calculateCrateProfit(cropSlot,fodderValue,fruitValue,crateValue,totalCy
 
 
 function findFruitValue(name,fruitData) {
-    
     for (let i=0;i<fruitData.length;i++) {
         
         if (fruitData[i]['item_name'].toUpperCase() === name.toUpperCase()) {
