@@ -1,4 +1,7 @@
 import {React,useMemo} from 'react';
+import {BsFillInfoCircleFill} from 'react-icons/bs';
+import ReactTooltip from 'react-tooltip';
+
 // This is a custom UI to filter rows with values less than the input
 export function MinimumValueFilter({
     column: { filterValue = [], preFilteredRows, setFilter, id },
@@ -12,7 +15,9 @@ export function MinimumValueFilter({
     }, [id, preFilteredRows])
   
     return (
-      
+      <div>
+        <BsFillInfoCircleFill data-tip="Hide items that have less items on the market than your inputted amount" style={{fontSize:"16px",paddingRight:"5px"}}/> 
+        <ReactTooltip textColor="rgb(0,0,0)" backgroundColor='rgb(256,256,256)'  border borderColor='rgb(0,0,0)' effect="solid"/>
         <input
           value={filterValue[0] || ''}
           type="number"
@@ -25,7 +30,7 @@ export function MinimumValueFilter({
             width:"70px",
           }}
         />
-      
+      </div>
     )
   }
 

@@ -319,9 +319,46 @@ textarea {
 }
 
 option {
-    background-color: rgb(var(--tableHeaderColor));
+    background-color: rgb(233,235,238);
 }
 
 .option-list {
-    color:rgb(var(--primaryTextColor));
+    color:rgb(0,0,0);
 }
+
+.input-grid {
+    text-align: center;
+    margin-left:10%;
+    margin-right:10%;
+}
+
+.input-group {
+    display:inline-block;
+    padding-right:25px;
+}
+
+.input-row {
+    text-align:left;
+    margin-left: 15%;
+}
+
+label {
+    font-weight:700;
+}
+
+.input-container {
+    width:200px;
+    margin-bottom:20px;
+}
+
+.input-container > input, .input-container > select, .trade-profession > input   {
+    width:150px;
+    padding: 5px 5px;
+}
+
+
+.trade-profession {
+    display:flex;
+       
+}
+

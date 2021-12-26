@@ -1,6 +1,7 @@
 import {React} from "react";
-import { filterMastery, SelectColumnFilter, SelectMasteryFilter } from "./SelectColumnFilter";
+import { filterProfession, SelectColumnFilter, SelectProfessionFilter } from "./SelectColumnFilter";
 import {MinimumValueFilter} from './MinimumValueFilter';
+
 const pearlMarketHeaders = [
    {
       Header: "Item Type",
@@ -23,7 +24,7 @@ const pearlMarketHeaders = [
          <div style={{ color: getItemGradeColor(row.original.grade)}}>
             {row.original.item_name}
          </div>
-      );
+         );
       },
       disableFilters: true,
    },
@@ -39,6 +40,7 @@ const pearlMarketHeaders = [
    },
    {
       Header: "Weekly Sale (7D)",
+      id:"weekly_sale",
       accessor: "weekly_sale",
       disableFilters: true,
    },
@@ -57,17 +59,17 @@ const pearlMarketHeaders = [
 
  const imperialHeaders = [
    {
-      Header: "Mastery Required",
+      Header: "Profession Required",
       accessor: "profession_level",
-      Cell: ({cell,value}) => {
+      Cell: ({cell}) => {
          return (
-           <div style={{ color: getMasteryColor(cell.value)}}>
+           <div style={{ color: getProfessionColor(cell.value)}}>
              {cell.value}
            </div>
          );
        },
-       Filter: SelectMasteryFilter,
-       filter: filterMastery,
+       Filter: SelectProfessionFilter,
+       filter: filterProfession,
        disableSortBy: true,
    },
    
@@ -103,29 +105,65 @@ const pearlMarketHeaders = [
       disableFilters: true,
    },
    {
-      Header: "Total Item Required",
-      accessor: "",
+      Header: "Total Qty.",
+      accessor: "total_quantity",
       disableFilters: true,
+      toolTip: "Total amount of items needed to make all the boxes available at your CP",
    },
    {
       Header: "Profit Per Box",
-      accessor: "",
+      accessor: "profit_box",
+      Cell: ({cell}) => {
+         return (
+           <div style={{ color: profitColor(cell.value)}}>
+             {"$"}{cell.value.toLocaleString({maximumFractionDigits:0})}
+           </div>
+         );
+       },
       disableFilters: true,
+      sortType: 'basic',
+      sortDescFirst: true,
    },
    {
       Header: "Total Profit",
-      accessor: "",
+      id:"total_profit",
+      accessor: "total_profit",
+      Cell: ({cell}) => {
+         return (
+           <div style={{ color: profitColor(cell.value)}}>
+             {"$"}{cell.value.toLocaleString({maximumFractionDigits:0})}
+           </div>
+         );
+       },
       disableFilters: true,
+      sortType: 'basic',
+      sortDescFirst: true,
    },
    {
       Header: "Revenue Per Box",
-      accessor: "",
+      accessor: "revenue_box",
+      Cell: ({cell}) => {
+         return (
+           <div style={{ color: profitColor(cell.value)}}>
+             {"$"}{cell.value.toLocaleString({maximumFractionDigits:0})}
+           </div>
+         );
+       },
       disableFilters: true,
+      sortDescFirst: true,
    },
    {
       Header: "Total Revenue",
-      accessor: "",
+      accessor: "total_revenue",
+      Cell: ({cell}) => {
+         return (
+           <div style={{ color: profitColor(cell.value)}}>
+             {"$"}{cell.value.toLocaleString({maximumFractionDigits:0})}
+           </div>
+         );
+       },
       disableFilters: true,
+      sortDescFirst: true,
    },
 ]
 
@@ -155,35 +193,66 @@ const farmingHeaders = [
       disableFilters: true,
    },
    {
-      Header: "Growth time",
-      accessor: "",
+      Header: "Growth time (min)",
+      accessor: "growth_time",
       disableFilters: true,
+      toolTip:"Growth time based on perfect time (perfect environnment for crop) or fertilzer used time"
    },
    {
       Header: "Harvest per Day",
-      accessor: "",
+      accessor: "harvest_day",
+      sortDescFirst: true,
       disableFilters: true,
    },
    {
       Header: "Crop in Stock",
       accessor: "in_stock",
       disableFilters: true,
+      toolTip: "Amount of crops on the marketplace"
    },
 
    {
       Header: "Market",
-      accessor: "",
+      id:"market",
+      accessor: "market",
+      Cell: ({cell}) => {
+         return (
+           <div style={{ color: profitColor(cell.value)}}>
+             {"$"}{cell.value.toLocaleString({maximumFractionDigits:0})}
+           </div>
+         );
+       },
       disableFilters: true,
+      sortDescFirst: true,
+      toolTip: "Calculated based on selling harvested crops, stonetail fodder and fruits to marketplace"
    },
    {
       Header: "Vendor",
-      accessor: "",
+      accessor: "vendor",
+      Cell: ({cell}) => {
+         return (
+           <div style={{ color: profitColor(cell.value)}}>
+             {"$"}{cell.value.toLocaleString({maximumFractionDigits:0})}
+           </div>
+         );
+       },
       disableFilters: true,
+      sortDescFirst: true,
+      toolTip: "Calculated based on selling excess magical seeds to vendor and selling stonetail fodder and fruits to marketplace"
    },
    {
       Header: "Crate",
-      accessor: "",
+      accessor: "crate",
+      Cell: ({cell}) => {
+         return (
+           <div style={{ color: profitColor(cell.value)}}>
+             {"$"}{cell.value.toLocaleString({maximumFractionDigits:0})}
+           </div>
+         );
+       },
       disableFilters: true,
+      sortDescFirst: true,
+      toolTip: "Calculated based on trading crates produced from harvested crops and selling stonetail fodder and fruits to marketplace"
    },
 ]
 
@@ -222,8 +291,8 @@ function getItemGradeColor(grade) {
 
 }
 
-function getMasteryColor(mastery) {
-   switch (mastery) {
+function getProfessionColor(profession) {
+   switch (profession) {
       case "apprentice":
          return "#7cb84f"
       case "skilled":
@@ -242,6 +311,17 @@ function getMasteryColor(mastery) {
    
 }
 
+function profitColor(value) {
+   if (value > 0) {
+      return "green"
+   }
+   else if (value < 0 ) {
+      return "red"
+   }
+   else {
+      return "white"
+   }
+}
 
 
 

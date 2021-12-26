@@ -1,6 +1,6 @@
 import React from "react";
 import PageManager from "./PageManager";
-
+import FarmingInput from "../components/Input/FarmingInput";
 
 
 function Farming() {
@@ -10,10 +10,10 @@ function Farming() {
    return (
       <PageManager          
       title={"Magical Seed Farming"}
-      description={"Determine marketplace,vendor, and crate profit from harvest/breeding magical crops"}
+      description={"Determine marketplace,vendor, and crate profit from harvesting/breeding magical crops"}
       endpoint={endpoint}
       input={
-         <p>Input</p>
+         <FarmingInput/>
       }
       />     
    )

@@ -5,7 +5,8 @@ import GlobalSearchFilter from "./GlobalSearchFilter";
 import {BsFillCaretDownSquareFill} from 'react-icons/bs'
 import {BsFillCaretUpSquareFill} from 'react-icons/bs'
 import { DefaultColumnFilter } from "./DefaultColumnFilter";
-
+import {BsFillInfoCircleFill} from 'react-icons/bs';
+import ReactTooltip from 'react-tooltip';
 
 // Create a default prop getter
 const defaultPropGetter = () => ({})
@@ -55,12 +56,27 @@ export default function Table({
     data,
     defaultColumn, // Be sure to pass the defaultColumn option
     initialState: {
+
       pageIndex: 0,
       pageSize:10,
       hiddenColumns: columns.map(column => {
         if (column.show === false) return column.accessor || column.id;
-    }),
       
+    }),
+    sortBy: [
+      {
+        id:"weekly_sale",
+        desc:true,
+      },
+      {
+        id:"total_profit",
+        desc:true,
+      },
+      {
+        id:"market",
+        desc:true,
+      },
+    ],
     },
   },
   useFilters,
@@ -91,20 +107,26 @@ export default function Table({
           getHeaderGroupProps(headerGroup)
           )}>
           {// Loop over the headers in each row
-          headerGroup.headers.map(column => (
+          headerGroup.headers.map((column,index) => (
             // Apply the header cell props
             <th {...column.getHeaderProps(
                 getHeaderProps(column),
             )}>
               <span {...column.getSortByToggleProps()}> 
+              
+              {headerGroup.headers[index].toolTip && (
+                  <span><BsFillInfoCircleFill data-tip={headerGroup.headers[index].toolTip} style={{fontSize:"16px",paddingRight:"5px"}}/> 
+                  <ReactTooltip textColor="rgb(0,0,0)" backgroundColor='rgb(256,256,256)'  border borderColor='rgb(0,0,0)' effect="solid"/></span>
+              )}
               {column.render('Header')}
                 {column.isSorted
                   ? column.isSortedDesc
                     ?<BsFillCaretDownSquareFill style={{marginLeft:"5px"}}/>
                     :<BsFillCaretUpSquareFill style={{marginLeft:"5px"}}/>
                   : ''}
+
               </span>
-              
+                  
               <div className="column-filter">{column.canFilter ? column.render('Filter') : null}</div>
             </th>
           ))}

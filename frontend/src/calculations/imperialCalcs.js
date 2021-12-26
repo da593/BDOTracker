@@ -1,14 +1,15 @@
+
 //Calculate quantity, revenue, and profit and is added to JSON data field to be rendered into the table
 //data is an array of JSON objects
-function calculateAdditionalData(type,mydata=JSON.parse(document.getElementById('item_data').textContent)) {
+export function calculateImperialData(type,mydata,inputValues) {
    
     for (let i =0; i<mydata.length; i++) {
-        mydata[i]['total_quantity'] = mydata[i].quantity * Math.floor(document.getElementById("cp").value / 2)
-        var mastery = Math.floor(document.getElementById("mastery").value / 50) * 50
-        var revenueBox = calcRevenue(type,mastery,mydata[i].profession_level)
+        mydata[i]['total_quantity'] = mydata[i].quantity * Math.floor(inputValues.cp / 2)
+        var masteryRounded = Math.floor(inputValues.mastery / 50) * 50
+        var revenueBox = calcRevenue(type,masteryRounded,mydata[i].profession_level)
         var profitBox = revenueBox - mydata[i].quantity * mydata[i].base_price
-        var totalProfit = profitBox * Math.floor(document.getElementById("cp").value / 2)
-        var totalRevenue = revenueBox * Math.floor(document.getElementById("cp").value / 2)
+        var totalProfit = profitBox * Math.floor(inputValues.cp / 2)
+        var totalRevenue = revenueBox * Math.floor(inputValues.cp / 2)
         mydata[i]['profit_box'] = profitBox
         mydata[i]['revenue_box'] = revenueBox
         mydata[i]['total_profit'] = totalProfit
@@ -67,11 +68,11 @@ function calcRevenue(type,mastery,profession_level) {
     ]
     
     var imperialIncrease = 0
-    if (type === "cooking"){
+    if (type === "/cooking"){
         imperialIncrease = masteryValues[mastery/50][mastery].cooking
         
     }
-    else if (type ==="alchemy") {
+    else if (type ==="/alchemy") {
         imperialIncrease = masteryValues[mastery/50][mastery].alchemy
     }
     

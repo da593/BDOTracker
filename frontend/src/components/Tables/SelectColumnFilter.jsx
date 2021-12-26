@@ -1,6 +1,6 @@
 import {React,useMemo} from 'react';
-import Tooltip from '../Tooltips/Tooltip';
 import {BsFillInfoCircleFill} from 'react-icons/bs';
+import ReactTooltip from 'react-tooltip';
 // This is a custom filter UI for selecting
 // a unique option from a list
 export function SelectColumnFilter({
@@ -25,7 +25,7 @@ export function SelectColumnFilter({
           setFilter(e.target.value || undefined)
         }}
       >
-        <option value="" style={{color:"#fff"}}>All</option>
+        <option value="" style={{color:"#000000"}}>All</option>
         {options.map((option, i) => (
           <option key={i} value={option} className='option-list'>
             {option}
@@ -36,20 +36,21 @@ export function SelectColumnFilter({
     )
   }
 
-  export function SelectMasteryFilter({
+  export function SelectProfessionFilter({
     column: { filterValue, setFilter},
   }) {
-
-  
     // Render a multi-select box
     return (
+      <div>
+        <BsFillInfoCircleFill data-tip="Select the minimum profession level required you want to see." style={{fontSize:"16px",paddingRight:"5px"}}/> 
+        <ReactTooltip textColor="rgb(0,0,0)" backgroundColor='rgb(256,256,256)'  border borderColor='rgb(0,0,0)' effect="solid"/>
         <select
           value={filterValue}
           onChange={e => {
             setFilter(e.target.value || undefined)
           }}
         >
-          <option value="0" className="option-list">All</option>
+          <option value="0" style={{color:"#000000"}}>All</option>
           <option value="1" style={{color:"#7cb84f"}}>Apprentice</option>
           <option value="2" style={{color:"#0391c4"}}>Skilled</option>
           <option value="3" style={{color:"#f6c232"}}>Professional</option>
@@ -57,11 +58,15 @@ export function SelectColumnFilter({
           <option value="5" style={{color:"#ad3495"}}>Master</option>
           <option value="6" style={{color:"#ff8315"}}>guru</option>
         </select>
+      </div>
     )
   }
 
+
+  
+
   // Define a custom filter filter function!
-  export function filterMastery(rows, id, filterValue) {
+  export function filterProfession(rows, id, filterValue) {
     const mastery =   {
         "apprentice":"1",
         "skilled":"2",
@@ -75,7 +80,7 @@ export function SelectColumnFilter({
       if (filterValue === "0") {
           return rowValue
       }
-      else if (filterValue >= mastery[rowValue]) {
+      else if (filterValue <= mastery[rowValue]) {
           return rowValue
       }
     })
