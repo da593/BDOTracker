@@ -43,10 +43,10 @@ const PageManager = (props) => {
                     getData("/fruit").then(function(fruit){
                         setData(calculateFarmingData(response.data,fruit.data,farmingInitVal))
                     })
-                   
                     break;
                 default:
                     <div>Error</div>
+                  
             }
             
             setLoadingData(false)

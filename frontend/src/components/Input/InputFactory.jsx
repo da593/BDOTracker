@@ -13,7 +13,7 @@ const InputFactory = ({type,recalculateData}) => {
         case "/farming":
             return <FarmingInput recalculateData={recalculateData}/>
         default:
-            return <div>Error</div>
+            return <div></div>
     }
 
 }

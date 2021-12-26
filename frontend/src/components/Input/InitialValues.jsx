@@ -19,7 +19,7 @@ export function getFarmingInitialValues() {
         hours:16,
         cycle:4,
         slots:100,
-        fertilizer: "yes",
+        fertilizer: "no",
       };
     return initialValues
 }
