@@ -15,6 +15,7 @@ import { getFarmingInitialValues, getImperialInitialValues } from "../components
 
 const PageManager = (props) => {
     //Manage data state and requests
+    //Array object does not change so state does not change
     const [data,setData] = useState([])
     const [fruitData,setFruitData] = useState([])
     const [loadingData,setLoadingData] = useState(true)
@@ -33,13 +34,13 @@ const PageManager = (props) => {
         getData(props.endpoint).then(function(response) {
             switch (props.endpoint) {
                 case "/pearlmarket":
-                    return setData(response.data)
+                    return setData([...response.data])
                 
                 case "/cooking":
-                    return setData(calculateImperialData(props.endpoint,response.data,imperialInitVal))
+                    return setData([...calculateImperialData(props.endpoint,response.data,imperialInitVal)])
                     
                 case "/alchemy":
-                    return setData(calculateImperialData(props.endpoint,response.data,imperialInitVal))
+                    return setData([...calculateImperialData(props.endpoint,response.data,imperialInitVal)])
                     
                     
                 case "/farming":
@@ -47,7 +48,7 @@ const PageManager = (props) => {
                         setFruitData(fruitResponse.data)
                         return fruitResponse
                     }).then((function(fruitResponse) {
-                        return setData(calculateFarmingData(response.data,fruitResponse.data,farmingInitVal))
+                        return setData([...calculateFarmingData(response.data,fruitResponse.data,farmingInitVal)])
                     }))
                     
                 default:
@@ -59,7 +60,7 @@ const PageManager = (props) => {
         setLoadingData(false)
         formatTime()
         setDisable(true)
-        setTimeout(() => setDisable(false), 60000);
+        setTimeout(() => setDisable(false), 5);
        }).catch((error) => {
           console.log(error)
        })
@@ -68,32 +69,29 @@ const PageManager = (props) => {
     //get data on load
     useEffect(() =>  {
        updateData()
-       
-       },[])
+       return () => {
+           setData([])
+           setFruitData([])
+       }
+    },[])
 
       
     
-
     function formatTime() {
         var moment = require('moment-timezone');
         var timezone = moment.tz.guess()
         setTime(moment.tz(timezone).format('hh:mm:ss A'))
     }
 
+    //Recalculate data with new input vales when input changes
     function recalculateData(values){
         switch (props.endpoint) {
             case "/cooking":
-                //console.log(values)
-                //setData(calculateImperialData(props.endpoint,data,values))
-                break;
+                return setData([...calculateImperialData(props.endpoint,data,values)])
             case "/alchemy":
-                //console.log("s")
-                //setData(calculateImperialData(props.endpoint,data,values))
-                break;
+                return setData([...calculateImperialData(props.endpoint,data,values)])
             case "/farming":
-                //console.log("values")
-                //setData(calculateFarmingData(data,fruitData,values))
-                break;
+                return setData([...calculateFarmingData(data,fruitData,values)])
             default:
                 return <div>Error</div>
             }

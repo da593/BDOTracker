@@ -1,49 +1,12 @@
-import {React,useState,useEffect,useRef} from 'react';
+import {React} from 'react';
 import InputGroup from './InputGroup';
-import {getRegex, validateNumber, validateRange} from './validation';
+import { validateNumber, validateRange, validateProfessionNumber} from './validation';
 import {BsFillInfoCircleFill} from 'react-icons/bs';
 import ReactTooltip from 'react-tooltip';
-import { getFarmingInitialValues } from './InitialValues';
 
 
-const FarmingInput = ({recalculateData}) => {
-    const [values,setValues] = useState(getFarmingInitialValues)
-   
-
-    //Checks if the inputted value follows its validation criteria (regex & range)
-    function validate(event) {
-        
-        let {value,name,min,max} = event.target;
-        //Use getAttribute to get custom attribute
-        let type = event.target.getAttribute('typeof')
-        
-        //convert input string to number
-        value = +value
-        min = +min
-        max = +max
-
-        //If inputted value follows the regex and is in the range, set the new inputted value and update calculated values
-        if ( validateNumber(value,getRegex(type)) === true) {
-            value = validateRange(value,min,max)
-            setValues({
-                ...values,
-                [name]: value,
-              });
-        }
-      
-    }
-
-    function validateProfessionLevel(event) {}
-
-    function changeSelect(event) {
-        let {value,name} = event.target;
-        setValues({
-            ...values,
-            [name]: value,
-          });
-          
-    }
-
+const FarmingInput = ({recalculateData,setValue,values,setProfessionalLevel}) => {
+    
 
     return (
         <div className="input-grid">
@@ -51,7 +14,7 @@ const FarmingInput = ({recalculateData}) => {
             <InputGroup 
                 label="Origin Town"
                 input= {
-                    <select name="origin" value={values.origin} onChange={changeSelect}>
+                    <select name="origin" value={values.origin} onChange={e => setValue( e.target.name,e.target.value)}>
                         <option value="grana">Grana</option>
                         <option value="old-wisdom-tree">Old Wisdom Tree</option>
                     </select>
@@ -66,7 +29,7 @@ const FarmingInput = ({recalculateData}) => {
                 }
                 label="Crates Per Task"
                 input= {
-                    <select name="cratesPerTask" value={values.cratesPerTask} onChange={changeSelect}>
+                    <select name="cratesPerTask" value={values.cratesPerTask} onChange={e => setValue( e.target.name,e.target.value)}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="4" >4</option>
@@ -80,10 +43,10 @@ const FarmingInput = ({recalculateData}) => {
                         <ReactTooltip textColor="rgb(0,0,0)" backgroundColor='rgb(256,256,256)'  border borderColor='rgb(0,0,0)' effect="solid"/>
                     </>
                 }
-                label="Profession Level"
+                label="Trade Profession Level"
                 input= {
                     <div className="trade-profession">
-                        <select typeof="profession-select" name="pSelect" value={values.pSelect} onChange={validateProfessionLevel}>
+                        <select name="pSelect" value={values.pSelect} onChange={e => setProfessionalLevel(e.target.value,validateProfessionNumber(values.pLevel,e.target.value))}>
                             <option value="1">Beginner</option>
                             <option value="2">Apprentice</option>
                             <option value="3">Skilled</option>
@@ -93,12 +56,12 @@ const FarmingInput = ({recalculateData}) => {
                             <option value="7">Guru</option>
                         </select>
                         <input
-                            typeof="profession-level"
+                           
                             name="pLevel"
-                            min={1}
-                            max={50}
+                            typeof="integer"
                             value={values.pLevel}
-                            onChange={validateProfessionLevel}
+                            onBlur={e=> (e.target.value === "0") ? setValue(e.target.name,1) : "" }
+                            onChange={e => validateNumber(e.target.value, e.target.getAttribute('typeof')) ? setProfessionalLevel(values.pSelect,validateProfessionNumber(e.target.value,values.pSelect)) :  "" }
                         >
                         </input>
                     </div>
@@ -121,7 +84,7 @@ const FarmingInput = ({recalculateData}) => {
                     min={0}
                     max={10000}
                     value={values.fame}
-                    onChange={validate}
+                    onChange={e=> validateNumber(e.target.value, e.target.getAttribute('typeof')) ? setValue(e.target.name,validateRange(e.target.value,e.target.min,e.target.max)) : ""}
                     
                     />
                 }
@@ -129,7 +92,7 @@ const FarmingInput = ({recalculateData}) => {
             <InputGroup 
                 label="Value Pack"
                 input= {
-                    <select name="vp" value={values.vp} onChange={changeSelect}>
+                    <select name="vp" value={values.vp} onChange={e => setValue( e.target.name,e.target.value)}>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                     </select>
@@ -138,7 +101,7 @@ const FarmingInput = ({recalculateData}) => {
             <InputGroup 
                 label="Merchant Ring"
                 input= {
-                    <select name="ring" value={values.ring} onChange={changeSelect}>
+                    <select name="ring" value={values.ring} onChange={e => setValue( e.target.name,e.target.value)}>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                     </select>
@@ -155,7 +118,7 @@ const FarmingInput = ({recalculateData}) => {
                     min={0}
                     max={24}
                     value={values.hours}
-                    onChange={validate}
+                    onChange={e=> validateNumber(e.target.value, e.target.getAttribute('typeof')) ? setValue(e.target.name,validateRange(e.target.value,e.target.min,e.target.max)) : ""}
                     
                     />
                 }
@@ -172,10 +135,10 @@ const FarmingInput = ({recalculateData}) => {
                     <input 
                     typeof="integer"
                     name="cycle"
-                    min={1}
+                    min={0}
                     max={8}
                     value={values.cycle}
-                    onChange={validate}
+                    onChange={e=> validateNumber(e.target.value, e.target.getAttribute('typeof')) ? setValue(e.target.name,validateRange(e.target.value,e.target.min,e.target.max)) : ""}
                    
                     />
                 }
@@ -189,7 +152,7 @@ const FarmingInput = ({recalculateData}) => {
                     min={0}
                     max={100}
                     value={values.slots}
-                    onChange={validate}
+                    onChange={e=> validateNumber(e.target.value, e.target.getAttribute('typeof')) ? setValue(e.target.name,validateRange(e.target.value,e.target.min,e.target.max)) : ""}
                    
                     />
                 }
@@ -197,7 +160,7 @@ const FarmingInput = ({recalculateData}) => {
             <InputGroup 
                 label="Fertilzer Used"
                 input= {
-                    <select name="fertilizer" value={values.fertilizer} onChange={changeSelect}>
+                    <select name="fertilizer" value={values.fertilizer} onChange={e=> setValue(e.target.name,e.target.value)}>
                         <option value="yes">Yes</option>
                         <option value="no" >No</option>
                     </select>

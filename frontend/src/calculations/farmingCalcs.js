@@ -1,6 +1,5 @@
 
 export function calculateFarmingData(crop_data,fruit_data,inputValues) {
-    console.log(crop_data,fruit_data,inputValues)
     var bspValue = findFruitValue("Black Stone Powder",fruit_data)
     var stonetailValue = findFruitValue("Stonetail Fodder",fruit_data)
     var tax = calculateTax(inputValues.fame,inputValues.vp,inputValues.ring)
@@ -42,8 +41,9 @@ export function calculateFarmingData(crop_data,fruit_data,inputValues) {
 
 function calculateTax(fame,vp,ring) {
 
-    
-    
+    //Convert to input string to numbers
+    fame = +fame
+
     var afterSaleBonuses = 1
 
     if (fame >= 1000 && fame <=3999){
@@ -105,7 +105,7 @@ function calculateReturnsPerCycle(totalSeeds,slots,harvestBool) {
 }
 
 function calculateCrateValue(bsp,crateBase,cratesPerTask,origin,pLevel,pSelect) {
-
+    
     const transportCost = 20000000
     const cpCost = 200000
     const cpInvest = 5
@@ -119,7 +119,10 @@ function calculateCrateValue(bsp,crateBase,cratesPerTask,origin,pLevel,pSelect) 
     else if (origin === "old-wisdom-tree") {
         distanceBonus = 1.0407
     }
-   
+    
+    //Convert to input string to numbers
+    pLevel = +pLevel
+    pSelect = +pSelect
     var tradeLevel = parseInt(pLevel)
     
     if (tradeLevel === 0) {
@@ -161,6 +164,7 @@ function calculateCrateValue(bsp,crateBase,cratesPerTask,origin,pLevel,pSelect) 
 }
 
 function calculateMarketProfit(cropSlot,fodderValue,fruitValue,cropValue,totalCycles,tax,slots) {
+
     let returns = calculateReturnsPerCycle(Math.floor(slots/cropSlot),cropSlot,"true")
     let market = (fodderValue * returns.totalFodder + fruitValue * returns.totalFruits + cropValue * returns.totalCrops) * totalCycles * tax
 

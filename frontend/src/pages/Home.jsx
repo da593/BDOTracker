@@ -21,12 +21,23 @@ function Home() {
       <div className="updates-container">
          <p className="update-title">Project Updates</p>
          <UpdateDescription 
+            date="12/27" 
+            version=" 2.30"  
+            updateItem={
+            <>
+               <li>Project finalized</li>
+               <li>Table data changes on input change</li>
+            </>
+            }
+         /> 
+         <UpdateDescription 
             date="12/25" 
             version=" 2.20"  
             updateItem={
             <>
                <li>Added all input fields</li>
-               <li>Added inital value calculations</li>
+               <li>Validate all input fields</li>
+               <li>Added calculations base on inputs</li>
             </>
             }
          /> 

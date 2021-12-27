@@ -1,4 +1,18 @@
 
+export function getInitialValues(type) {
+  switch (type) {
+    case ("/cooking"):
+      return getImperialInitialValues()
+    case ("/alchemy"):
+      return getImperialInitialValues()
+    case ("/farming"):
+      return getFarmingInitialValues()
+    default:
+      return ""
+    }
+  }
+
+
 export function getImperialInitialValues(){
     const initialValues = {
         mastery:400,
@@ -12,7 +26,7 @@ export function getFarmingInitialValues() {
         origin:"grana",
         cratesPerTask:4,
         pSelect:7,
-        pLevel:25,
+        pLevel:10,
         fame:4000,
         vp:"yes",
         ring:"no",
