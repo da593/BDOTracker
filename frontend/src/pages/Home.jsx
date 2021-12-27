@@ -16,7 +16,7 @@ function Home() {
          BDO Tracker is a tool to help Black Desert Online players keep track of various activities including life skill profitability and pearl market sales.<br/>
          If you have any questions, suggestions, or feedback please let me know!
          </p>
-         <h2 style={{textAlign:"center", color:"red",}}>Currently being refactored!!!</h2>
+         
       </div>
       <div className="updates-container">
          <p className="update-title">Project Updates</p>
