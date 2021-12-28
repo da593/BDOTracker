@@ -1,10 +1,21 @@
-# BDOTracker
-This app is used to determine the most profitable items to turn in for various popular life skill activities. This will help users optimize their daily income. The website is currently hosted at: https://bdotracker.netlify.app/.
+![Gif](https://github.com/da593/img/blob/main/BDOTracker.gif)
 
 
-![image](https://user-images.githubusercontent.com/60017078/147526274-ed1e72bb-30ce-418b-ba67-1e5f6056d87a.png)
+
+### Visit https://bdotracker.netlify.app/ for a live demonstration of the website! 
+
+
+# Features
+* Quickly estimate your profits base on your inputs
+* Interactive table to easily view the profitability of each item (using [react-table](https://github.com/tannerlinsley/react-table))
+* Uses updated item information from a live api to accurately reflect the marketplace values
 
 
 # Architecture
-This website is built using a monolithic layered architecture due to the simplicity of the application. The system is setup to decouple the frontend, server backend, and database to allow developers to update and deploy each one individually without needing to take down the whole application.
+This website is built using a monolithic layered architecture due to the simplicity of the application. The architecture is setup to decouple the frontend, server backend, and database to allow developers to update and deploy each one individually without needing to take down the whole application. The architectural design for each service are shown in the frontend and project folders:
+* [Frontend](/frontend/README.md)
+* [Backend](/project/README.md)
+
+
+<br/>A diagram below is shown to showcase the overall design of the website and how each framework interact. 
 
