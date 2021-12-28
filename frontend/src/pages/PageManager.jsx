@@ -60,7 +60,7 @@ const PageManager = (props) => {
         setLoadingData(false)
         formatTime()
         setDisable(true)
-        setTimeout(() => setDisable(false), 5);
+        setTimeout(() => setDisable(false), 60000);
        }).catch((error) => {
           console.log(error)
        })
