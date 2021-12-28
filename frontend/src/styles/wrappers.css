@@ -34,7 +34,6 @@
 
 .Header {  
     margin-left:20%;
-    margin-right:20%;
 
 }
 
@@ -242,5 +241,7 @@ flex auto calculates equal width for each item
 }
 
 
-
-
+.platform {
+    color:rgb(var(--secondaryTextColor));
+    padding-right:2%;
+}

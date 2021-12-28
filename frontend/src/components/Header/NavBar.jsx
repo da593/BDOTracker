@@ -24,7 +24,9 @@ const NavBar = () => {
             <div className="navbar-justify-right">
                 <ToggleDarkMode/>
             </div>
-            
+            <div className="platform">
+                <h1 >PC-NA</h1>
+            </div>
         </div>
         );
     }
