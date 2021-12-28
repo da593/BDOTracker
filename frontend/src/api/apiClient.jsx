@@ -4,7 +4,7 @@ import axios from 'axios';
 Setup base URL and headers of the request
 */
 const axiosClient = axios.create({
-    baseURL:process.env.NODE_ENV === "development" ? process.env.REACT_APP_LOCAL_API : process.env.REACT_APP_PROD_API ,
+    baseURL: process.env.NODE_ENV === "development" ? process.env.REACT_APP_LOCAL_API : process.env.REACT_APP_PROD_API ,
     headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
@@ -29,12 +29,14 @@ axiosClient.interceptors.response.use(
     }
   );
 
+//GET Method
 export async function getData(endpoint) {
   return await axiosClient.get(endpoint)
 }
 
-export function addFeedback(endpoint,data) {
-  return axiosClient.post(endpoint,)
+//POST Method
+export function addFeedback(data) {
+  return axiosClient.post("/cooking",data)
 }
 
 

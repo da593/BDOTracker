@@ -10,7 +10,8 @@ from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated 
-# Set the post requests for all views
+
+# Set the base HTTP methods for all views
 class BaseView(APIView):
     permission_classes = (IsAuthenticated,) 
     def __init__(self):
@@ -27,11 +28,11 @@ class BaseView(APIView):
             serializer =self.serializer_class(queryset,many=True)
             return Response(serializer.data)
 
-    # Add feedback from user to feedback database on PO
+    # Add feedback from user to feedback database on POST
     def post(self,request):
         serializer = FeedbackSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

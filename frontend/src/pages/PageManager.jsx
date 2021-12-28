@@ -15,7 +15,7 @@ import { getFarmingInitialValues, getImperialInitialValues } from "../components
 
 const PageManager = (props) => {
     //Manage data state and requests
-    //Array object does not change so state does not change
+    //Array object reference remains the same with hooks. Must change array by using spread operator to create new array with data to trigger re-render
     const [data,setData] = useState([])
     const [fruitData,setFruitData] = useState([])
     const [loadingData,setLoadingData] = useState(true)

@@ -4,7 +4,7 @@ import {BsArrow90DegLeft} from 'react-icons/bs'
 const BackButton = ({setFeedbackType}) => {
     return (
         <div className="bottom-window">
-            <button className="back-button" type="feedback" onClick={setFeedbackType}><BsArrow90DegLeft/></button>
+            <button className="back-button" onClick={ () => setFeedbackType("feedback")}><BsArrow90DegLeft/></button>
         </div>
         
     )

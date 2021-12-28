@@ -33,8 +33,7 @@ function calculateFarmingData(crop_data=JSON.parse(document.getElementById('crop
         }
         
     }
-    //console.log(crop_data)
-  
+
     return crop_data
 }
 

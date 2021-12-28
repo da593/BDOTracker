@@ -26,8 +26,8 @@ const PopupContainer = () => {
         
     }
 
-    function setFeedbackType(event) {
-        setFeedback( event.currentTarget.getAttribute("type") )
+    function setFeedbackType(type) {
+        setFeedback( type)
     }
     
 

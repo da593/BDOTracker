@@ -29,6 +29,11 @@ class FruitSerializer(serializers.ModelSerializer):
         fields = ('item_name','base_price')
 
 class FeedbackSerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        instance.feedback_type = validated_data.get('feedback_type', instance.feedback_type)
+        instance.feedback = validated_data.get('feedback', instance.feedback)
+        instance.save()
+        return instance
     class Meta:
         model = FeedbackForm
         fields = ('submission_id','feedback_type','feedback')

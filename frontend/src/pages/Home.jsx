@@ -22,11 +22,12 @@ function Home() {
          <p className="update-title">Project Updates</p>
          <UpdateDescription 
             date="12/27" 
-            version=" 2.30"  
+            version=" 2.21"  
             updateItem={
             <>
-               <li>Project finalized</li>
+               <li>Website is fully functional</li>
                <li>Table data changes on input change</li>
+               <li>Feedback forms are functional</li>
             </>
             }
          /> 

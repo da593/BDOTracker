@@ -364,3 +364,19 @@ label {
        
 }
 
+textarea {
+    font-size:16px;
+    font-family:"Open Sans","sans-serif";
+    color:rgb(0,0,0);
+}
+
+textarea::placeholder{
+    color:rgb(72,72,72);
+}
+
+.text-length {
+    color:rgb(72,72,72);
+    font-weight:700;
+    margin-left:10%;
+    margin-right:10%;
+}
