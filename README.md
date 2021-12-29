@@ -17,5 +17,6 @@ This website is built using a monolithic layered architecture due to the simplic
 * [Backend](/project/README.md)
 
 
-<br/>A diagram below is shown to showcase the overall design of the website and how each framework interact. 
+<br/>A diagram below is shown to showcase the overall design of the website and how each framework interact:
 
+![Stack Architecture](https://github.com/da593/img/blob/main/stackArchitecture.drawio.png)
