@@ -12,13 +12,10 @@
 
 
 # Architecture
-This website is built using a monolithic layered architecture due to the simplicity of the application. The architecture is setup to decouple the frontend, server backend, and database to allow developers to update and deploy each one individually without needing to take down the whole application. The architectural design for each service are shown in the frontend and project folders:
+This website is built using a monolithic layered architecture due to the simplicity of the application. The architecture is setup to decouple the frontend, server backend, and database to allow developers to update and deploy each one individually without needing to take down the whole application. The design for each service are shown in the frontend and project folders:
 * [Frontend](/frontend/README.md)
 * [Backend](/project/README.md)
 
 
 <br/>A diagram below is shown to showcase the overall design of the website and how each framework interact:
-
-
-
-<img src="https://github.com/da593/img/blob/main/stackArchitecture.drawio.png" alt="Stack Architecture" width="960px"/>
+<img src="https://github.com/da593/img/blob/main/stackArchitecture.drawio.png" alt="Stack Architecture" width="960px" height=""/>

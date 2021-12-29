@@ -52,10 +52,9 @@ const PageManager = (props) => {
                     }))
                     
                 default:
-                    <div>Error</div>
-                  
+                    <div>Error</div>     
             }
-      
+        //Update UI state
        }).then(function(){
         setLoadingData(false)
         formatTime()
@@ -91,6 +90,7 @@ const PageManager = (props) => {
             case "/alchemy":
                 return setData([...calculateImperialData(props.endpoint,data,values)])
             case "/farming":
+                
                 return setData([...calculateFarmingData(data,fruitData,values)])
             default:
                 return <div>Error</div>
