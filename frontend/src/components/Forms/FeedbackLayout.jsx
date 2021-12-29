@@ -25,6 +25,7 @@ const FeedbackLayout = ({setFeedbackType,prompt,feedbackType}) => {
         }   
     }
 
+
     function checkLength() {
         var withoutSpace = text.replace(/ /g,"");
         if (withoutSpace.length < 10 || withoutSpace.length > 500) {

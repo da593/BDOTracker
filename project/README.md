@@ -1,3 +1,5 @@
+# Code Design
+
 # API 
 
 A token-based authentication is required to interact with the backend because it is limited to 40 requests per minute so only users interacting with my website should access the data.
