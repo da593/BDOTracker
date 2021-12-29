@@ -1,4 +1,4 @@
-![Gif](https://imgur.com/BEKS4dk)
+![Gif](https://postimg.cc/yJwbwVm0)
 
 
 
@@ -18,4 +18,4 @@ This website is built using a monolithic layered architecture due to the simplic
 
 
 <br/>A diagram below is shown to showcase the overall design of the website and how each framework interact:
-<img src="https://imgur.com/a/E3LQkY0" alt="Stack Architecture" width="960px" height=""/>
+<img src="https://postimg.cc/XrYm51NB" alt="Stack Architecture" width="960px" height=""/>
