@@ -1,4 +1,4 @@
-![Gif](https://postimg.cc/yJwbwVm0)
+[![BDOTracker.gif](https://i.postimg.cc/SssbYRj1/BDOTracker.gif)](https://postimg.cc/yJwbwVm0)
 
 
 
@@ -18,4 +18,4 @@ This website is built using a monolithic layered architecture due to the simplic
 
 
 <br/>A diagram below is shown to showcase the overall design of the website and how each framework interact:
-<img src="https://postimg.cc/XrYm51NB" alt="Stack Architecture" width="960px" height=""/>
+[![stack-Architecture-drawio.png](https://i.postimg.cc/rw1kv7vj/stack-Architecture-drawio.png)](https://postimg.cc/XrYm51NB)
