@@ -56,27 +56,32 @@ export default function Table({
     data,
     defaultColumn, // Be sure to pass the defaultColumn option
     initialState: {
-
       pageIndex: 0,
       pageSize:10,
       hiddenColumns:  columns
       .filter(col => col.show === false)
       .map(col => col.accessor),
-    sortBy: [
-      {
-        id:"weekly_sale",
-        desc:true,
+      filters: [
+        {
+          id: "profession_level",
+          value: "5"
+        }
+      ],
+      sortBy: [
+        {
+          id:"weekly_sale",
+          desc:true,
+        },
+        {
+          id:"total_profit",
+          desc:true,
+        },
+        {
+          id:"market",
+          desc:true,
+        },
+      ],
       },
-      {
-        id:"total_profit",
-        desc:true,
-      },
-      {
-        id:"market",
-        desc:true,
-      },
-    ],
-    },
   },
   useFilters,
   useGlobalFilter,

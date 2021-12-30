@@ -4,8 +4,8 @@ import { validateNumber, validateRange, validateProfessionNumber} from './valida
 import {BsFillInfoCircleFill} from 'react-icons/bs';
 import ReactTooltip from 'react-tooltip';
 
-
-const FarmingInput = ({recalculateData,setValue,values,setProfessionalLevel}) => {
+/*Returns all inputs needed for the Farming page */
+const FarmingInput = ({setValue,values,setProfessionalLevel}) => {
     
 
     return (

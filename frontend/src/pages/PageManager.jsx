@@ -10,8 +10,8 @@ import { getColumnHeaders } from "../components/Tables/getColumnHeaders";
 import InputFactory from "../components/Input/InputFactory";
 import {calculateImperialData} from '../calculations/imperialCalcs'
 import {calculateFarmingData} from '../calculations/farmingCalcs'
-import { getFarmingInitialValues, getImperialInitialValues } from "../components/Input/InitialValues";
-
+import { getDefaultValues } from "../components/Input/InitialValues";
+import { useLocalStorage } from "../components/Input/useLocalStorage";
 
 const PageManager = (props) => {
     //Manage data state and requests
@@ -21,12 +21,15 @@ const PageManager = (props) => {
     const [loadingData,setLoadingData] = useState(true)
     const [time,setTime] = useState("")
     const [isDisabled,setDisable] = useState(false)
-    const imperialInitVal =getImperialInitialValues()
-    const farmingInitVal = getFarmingInitialValues()
 
+    //Manage the input values and use local storage to save inputs if user reloads page. 
+    //Data INTO local storage should be stringified and data FROM local storage should be parsed
+    const [inputValues,setInputValues] = useLocalStorage(props.endpoint,JSON.stringify(getDefaultValues(props.endpoint)))
+    
+    
     //Get react-table headers and accessors
     const columns = useMemo(() => getColumnHeaders(props.endpoint),[props.endpoint]);
- 
+   
     //update data on button click
     const  updateData =  async () => {
         setLoadingData(true)
@@ -35,20 +38,16 @@ const PageManager = (props) => {
             switch (props.endpoint) {
                 case "/pearlmarket":
                     return setData([...response.data])
-                
                 case "/cooking":
-                    return setData([...calculateImperialData(props.endpoint,response.data,imperialInitVal)])
-                    
+                    return setData([...calculateImperialData(props.endpoint,response.data,inputValues)])
                 case "/alchemy":
-                    return setData([...calculateImperialData(props.endpoint,response.data,imperialInitVal)])
-                    
-                    
+                    return setData([...calculateImperialData(props.endpoint,response.data,inputValues)])
                 case "/farming":
                     return getData("/fruit").then(function(fruitResponse){
                         setFruitData(fruitResponse.data)
                         return fruitResponse
                     }).then((function(fruitResponse) {
-                        return setData([...calculateFarmingData(response.data,fruitResponse.data,farmingInitVal)])
+                        return setData([...calculateFarmingData(response.data,fruitResponse.data,inputValues)])
                     }))
                     
                 default:
@@ -74,6 +73,12 @@ const PageManager = (props) => {
        }
     },[])
 
+    //re-renders page with new calculated data when input fields change
+    useEffect(() =>  {
+        recalculateData()
+        
+     },[inputValues])
+
       
     
     function formatTime() {
@@ -82,16 +87,16 @@ const PageManager = (props) => {
         setTime(moment.tz(timezone).format('hh:mm:ss A'))
     }
 
-    //Recalculate data with new input vales when input changes
-    function recalculateData(values){
+    //Recalculate data with the new input value
+    function recalculateData(){
         switch (props.endpoint) {
             case "/cooking":
-                return setData([...calculateImperialData(props.endpoint,data,values)])
+                return setData([...calculateImperialData(props.endpoint,data,inputValues)])
             case "/alchemy":
-                return setData([...calculateImperialData(props.endpoint,data,values)])
+                return setData([...calculateImperialData(props.endpoint,data,inputValues)])
             case "/farming":
                 
-                return setData([...calculateFarmingData(data,fruitData,values)])
+                return setData([...calculateFarmingData(data,fruitData,inputValues)])
             default:
                 return <div>Error</div>
             }
@@ -111,7 +116,7 @@ const PageManager = (props) => {
                 </p>
             </div>
             
-            <InputFactory type={props.endpoint} recalculateData={recalculateData}/>
+            <InputFactory type={props.endpoint} recalculateData={recalculateData} inputValues={inputValues} setInputValues={setInputValues}/>
             
             <div className="table-update-container">
                 <BsFillCircleFill style={{color: loadingData ? "yellow" : "green",padding:"0px 15px"}}/>

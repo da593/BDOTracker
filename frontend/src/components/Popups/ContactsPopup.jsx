@@ -6,7 +6,6 @@ import PopupLayout from './PopupLayout';
 import ClipboardButton from './ClipboardButton';
 
 /*Implements the content of the popup */
-
 const ContactsPopup = ({copyMsg,setCopiedStatus}) => {
   
     let props = {

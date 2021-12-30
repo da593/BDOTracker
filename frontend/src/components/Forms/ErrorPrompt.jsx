@@ -1,5 +1,6 @@
 import {React} from 'react';
 
+//Display an error if something went wrong when submtting feedback.
 const ErrorPrompt = () => {
     return (
         

@@ -1,7 +1,7 @@
 import {React,useState} from "react";
 import { useAsyncDebounce } from "react-table";
 
-
+//Add a search filter to find any record in the table that matches the input
 export default function GlobalSearchFilter({
     preGlobalFilteredRows,
     globalFilter,

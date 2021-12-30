@@ -4,9 +4,9 @@ import PopupFactory from './PopupFactory';
 import SidebarWrapper from '../wrappers/SidebarWrapper';
 import FooterWrapper from '../wrappers/FooterWrapper';
 
-/*Popup layout maintains the state,style of the popups, and all the buttons that cause a popup to show
+/*
+Popup Containers maintains the state and all the buttons that cause a popup to show
 */
-
 const PopupContainer = () => {
 
     const [visible,setVisibility] = useState(false);
@@ -33,7 +33,6 @@ const PopupContainer = () => {
 
     return (
         <>
-        
         <div className="popup-container" style={{ display: visible ? 'block' : 'none' }}>
             <div className="popup-content">
                 <div className="top-window">

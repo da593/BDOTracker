@@ -4,9 +4,6 @@ import FeedbackFactory from '../Forms/FeedbackFactory';
 
 /*Implements the content of the popup */
 const FeedbackPopup = ({feedbackType,setFeedbackType}) => {
-
-
-
     let defaultProps = {
         buttonName:"Feedback",
         popupDescription:"Have a suggestion? Want to give feedback? Let me know!",

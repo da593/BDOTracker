@@ -2,7 +2,7 @@ import {React,useMemo} from 'react';
 import {BsFillInfoCircleFill} from 'react-icons/bs';
 import ReactTooltip from 'react-tooltip';
 
-// This is a custom UI to filter rows with values less than the input
+// This is a custom UI to filter rows with values less than the input. Filter item quantity on the marketplace
 export function MinimumValueFilter({
     column: { filterValue = [], preFilteredRows, setFilter, id },
   }) {

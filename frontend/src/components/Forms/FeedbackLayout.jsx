@@ -61,7 +61,7 @@ const FeedbackLayout = ({setFeedbackType,prompt,feedbackType}) => {
                 />
             </div>
             <div className="text-length">
-                <p>{getLength()} characters {isDisabled ? "\(10-500 characters only!\)" : ""}</p> 
+                <p>{getLength()} characters {isDisabled ? "(10-500 characters only!)" : ""}</p> 
             </div>
             <button className="submit-button"  onClick={() => postData()} disabled={isDisabled}>Submit</button>
         </div>

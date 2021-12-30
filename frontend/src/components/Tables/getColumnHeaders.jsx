@@ -2,6 +2,10 @@ import {React} from "react";
 import { filterProfession, SelectColumnFilter, SelectProfessionFilter } from "./SelectColumnFilter";
 import {MinimumValueFilter} from './MinimumValueFilter';
 
+/*
+Headers determines how the data will be structured in the table, the style, and if its filterable/sortable.
+ */
+
 const pearlMarketHeaders = [
    {
       Header: "Item Type",
@@ -60,6 +64,7 @@ const pearlMarketHeaders = [
  const imperialHeaders = [
    {
       Header: "Profession Required",
+      id: "profession_level",
       accessor: "profession_level",
       Cell: ({cell}) => {
          return (
@@ -258,7 +263,7 @@ const farmingHeaders = [
 
 
 
-
+// Return the type of data to use base on page user is on
 export function getColumnHeaders(url) {
    switch (url) {
       case "/pearlmarket":
@@ -275,6 +280,8 @@ export function getColumnHeaders(url) {
 
 }
 
+
+//Color item name base on grade
 function getItemGradeColor(grade) {
    switch (grade) {
       case 1:
@@ -291,6 +298,8 @@ function getItemGradeColor(grade) {
 
 }
 
+
+//Color profession text base on its own level
 function getProfessionColor(profession) {
    switch (profession) {
       case "apprentice":
@@ -311,6 +320,8 @@ function getProfessionColor(profession) {
    
 }
 
+
+//Color money values whether it is positive or negative
 function profitColor(value) {
    if (value > 0) {
       return "green"

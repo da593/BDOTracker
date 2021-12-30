@@ -4,6 +4,7 @@ import createPersistedState from 'use-persisted-state';
 
 const useColorSchemeState = createPersistedState('colorScheme');
 
+//Utilize function to change css theme via media query. Everytime the button state changes, force a re-render which renders the corresponding theme
 export function ColorSchemeState() {
 
     const systemPrefersDark = useMediaQuery(

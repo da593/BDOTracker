@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../Header/NavBar';
 
-//container for the Footer
+//container for the Header
 const Header = () => {
 
 

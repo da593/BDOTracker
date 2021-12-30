@@ -1,5 +1,6 @@
 import {React} from 'react';
 
+/*Copies given props text and alerts user it has been copied on click */
 function ClipboardButton({textToBeCopied,copyMsg,setCopiedStatus}) {
   
     function handleClick() {

@@ -1,23 +1,22 @@
 import {React,useState,useRef,useEffect} from 'react';
-import { getInitialValues } from './InitialValues';
 import ImperialInput from './ImperialInput';
 import FarmingInput from './FarmingInput';
 
-/*If PopupLayout is visible by button click, return the corresponding Popup component */
-const InputFactory = ({type,recalculateData}) => {
-    const [values,setValues] = useState(getInitialValues(type))
+/*Returns type of input component base on page and also re-renders the page whenever an input field is change  */
+const InputFactory = ({type,recalculateData,inputValues,setInputValues}) => {
+    const [values,setValues] = useState(JSON.parse(inputValues))
     var didMount = useRef(false)
-        
-    //Call recalculateData when input changes to recalculate data and to re-render the data props of the table component
+    
+    //re-render when input value changes and update the new input values. To set the input values, they must be stringified for local storage
     useEffect(()=>{
         if (didMount.current) {
-            recalculateData(values)
+            setInputValues(JSON.stringify(values))
+            
         }
         else{
             didMount.current = true
         }
     },[values])
-
 
 
     function setValue(name,value) {

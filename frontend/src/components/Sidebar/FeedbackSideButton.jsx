@@ -1,8 +1,7 @@
 import React from 'react';
 
 
-//Child component: When the DropDownButton is clicked, the DropDownMenu state is changed
-
+//Hovering button on the side of the page
 const FeedbackSideButton = ({ openPopup}) => {
   
     return (

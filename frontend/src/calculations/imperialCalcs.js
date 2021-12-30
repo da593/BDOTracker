@@ -2,7 +2,7 @@
 //Calculate quantity, revenue, and profit and is added to JSON data field to be rendered into the table
 //data is an array of JSON objects
 export function calculateImperialData(type,mydata,inputValues) {
-   
+    inputValues = JSON.parse(inputValues)
     for (let i =0; i<mydata.length; i++) {
         mydata[i]['total_quantity'] = mydata[i].quantity * Math.floor(inputValues.cp / 2)
         var masteryRounded = Math.floor(inputValues.mastery / 50) * 50

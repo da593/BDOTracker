@@ -3,6 +3,7 @@ import {BsFillLightbulbFill} from 'react-icons/bs'
 import {BsFillEmojiSmileFill} from 'react-icons/bs'
 import {BsFillExclamationCircleFill} from 'react-icons/bs'
 
+//The initial menu when user clicks on the feedback buttons
 const DefaultFeedback = ({setFeedbackType}) => {
 
     return (

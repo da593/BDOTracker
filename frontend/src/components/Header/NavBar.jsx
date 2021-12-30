@@ -4,6 +4,7 @@ import ToggleDarkMode from '../CustomLightModeButton/ToggleDarkMode';
 import DropDown from '../CustomDropDown/Dropdown';
 import { NavLink
  } from 'react-router-dom';
+ 
 //Navigation Bar component and the structure and style
 const NavBar = () => {
     return (

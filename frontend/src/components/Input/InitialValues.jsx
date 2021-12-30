@@ -1,40 +1,49 @@
 
-export function getInitialValues(type) {
+export function getDefaultValues(type) {
   switch (type) {
     case ("/cooking"):
-      return getImperialInitialValues()
+      return getCookingDefaultValues()
     case ("/alchemy"):
-      return getImperialInitialValues()
+      return getAlchemyDefaultValues()
     case ("/farming"):
-      return getFarmingInitialValues()
+      return getFarmingDefaultValues()
     default:
       return ""
     }
   }
 
 
-export function getImperialInitialValues(){
-    const initialValues = {
-        mastery:400,
-        cp:300,
+export function getCookingDefaultValues(){
+    const defaultValues = {
+        "mastery":400,
+        "cp":300,
       };
-      return initialValues
+      
+      return defaultValues
 }
 
-export function getFarmingInitialValues() {
-    const initialValues = {
-        origin:"grana",
-        cratesPerTask:4,
-        pSelect:7,
-        pLevel:10,
-        fame:4000,
-        vp:"yes",
-        ring:"no",
-        hours:16,
-        cycle:4,
-        slots:100,
-        fertilizer: "no",
+export function getAlchemyDefaultValues(){
+  const defaultValues = {
+      "mastery":400,
+      "cp":300,
+    };
+    return defaultValues
+}
+
+export function getFarmingDefaultValues() {
+    const defaultValues = {
+        "origin":"grana",
+        "cratesPerTask":4,
+        "pSelect":7,
+        "pLevel":10,
+        "fame":4000,
+        "vp":"yes",
+        "ring":"no",
+        "hours":16,
+        "cycle":4,
+        "slots":100,
+        "fertilizer": "no",
       };
-    return initialValues
+    return defaultValues
 }
 

@@ -1,12 +1,10 @@
 import React from 'react';
 
-/*Popup layout maintains the state,style of the popups, and all the buttons that cause a popup to show
+/*
+Popup layout maintains the style of the popups
 */
 
 const PopupLayout = (props) => {
-
-
-
     return (
         <>
         <div className="popup-header">

@@ -4,7 +4,6 @@ import HeaderWrapper from '../components/wrappers/HeaderWrapper';
 import PopupContainer from '../components/Popups/PopupContainer';
 function Home() {
 
-   const endpoint = "/home"
    return (
 
       

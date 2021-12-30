@@ -1,5 +1,8 @@
-
+//Calculate market, crate, and vendor profit and is added to JSON data field to be rendered into the table
+//data is an array of JSON objects
 export function calculateFarmingData(crop_data,fruit_data,inputValues) {
+    inputValues = JSON.parse(inputValues)
+    
     var bspValue = findFruitValue("Black Stone Powder",fruit_data)
     var stonetailValue = findFruitValue("Stonetail Fodder",fruit_data)
     var tax = calculateTax(inputValues.fame,inputValues.vp,inputValues.ring)
@@ -38,7 +41,7 @@ export function calculateFarmingData(crop_data,fruit_data,inputValues) {
 
 
 
-
+//Calcualte tax base on family fame, value pack, and merchant ring
 function calculateTax(fame,vp,ring) {
 
     //Convert to input string to numbers
@@ -66,6 +69,7 @@ function calculateTax(fame,vp,ring) {
     }
     return 0.65 * afterSaleBonuses
 }
+
 
 function calculateReturnsPerCycle(totalSeeds,slots,harvestBool) {
     const seedRate = 1.55

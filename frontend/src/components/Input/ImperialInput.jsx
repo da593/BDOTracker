@@ -4,12 +4,9 @@ import {React} from 'react';
 import InputGroup from './InputGroup';
 import {validateNumber, validateRange} from './validation';
 
-
-const ImperialInput = ({recalculateData,setValue,values}) => {
+/*Returns all inputs needed for the Cooking & alchemy page */
+const ImperialInput = ({setValue,values}) => {
   
-
-        
-
     return (
         <div className="input-grid">
             <InputGroup 

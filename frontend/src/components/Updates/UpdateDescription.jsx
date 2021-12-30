@@ -1,5 +1,6 @@
 import {React} from 'react';
 
+//Structure for the home page update list
 const UpdateDescription = (props) => {
     return (
         <>

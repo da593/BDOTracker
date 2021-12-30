@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-/*axiosClient handles GET and POST requests and responses 
+/*
 Setup base URL and headers of the request
 */
 const axiosClient = axios.create({
@@ -13,7 +13,15 @@ const axiosClient = axios.create({
 })
 
 
+//GET Method
+export async function getData(endpoint) {
+  return await axiosClient.get(endpoint)
+}
 
+//POST Method
+export function addFeedback(data) {
+  return axiosClient.post("/cooking",data)
+}
 
 // Response interceptor
 axiosClient.interceptors.response.use(
@@ -28,17 +36,6 @@ axiosClient.interceptors.response.use(
       return Promise.reject(error);
     }
   );
-
-//GET Method
-export async function getData(endpoint) {
-  return await axiosClient.get(endpoint)
-}
-
-//POST Method
-export function addFeedback(data) {
-  return axiosClient.post("/cooking",data)
-}
-
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
