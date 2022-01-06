@@ -1,5 +1,5 @@
 import {React} from 'react';
-import DefaultFeedback from './DefaultFeedback';
+import DefaultMenu from './DefaultMenu';
 import LikeFeedback from './LikeFeedback';
 import SuggestionFeedback from './SuggestionFeedback'
 import ProblemFeedback from './ProblemFeedback';
@@ -19,11 +19,11 @@ const FeedbackFactory = ({feedbackType, setFeedbackType}) => {
         case "submit":
             return <SubmitPrompt/>
         case "feedback":
-            return <DefaultFeedback setFeedbackType={setFeedbackType}/>
+            return <DefaultMenu setFeedbackType={setFeedbackType}/>
         case "error":
             return <ErrorPrompt/>
         default:
-            return <DefaultFeedback  setFeedbackType={setFeedbackType}/>
+            return <DefaultMenu  setFeedbackType={setFeedbackType}/>
     }
 
 }
