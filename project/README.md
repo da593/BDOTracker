@@ -1,5 +1,6 @@
-# Code Design
-
+# Django + REST Framework
+The design of the backend using Django and REST framework is shown below: <br/>
+[![Backend-drawio.png](https://i.postimg.cc/PrNhhRgR/Backend-drawio.png)](https://postimg.cc/2Vpg728Q)
 # API 
 
 A token-based authentication is required to interact with the backend because it is limited to 40 requests per minute so only users interacting with my website should access the data.
@@ -74,6 +75,5 @@ A token-based authentication is required to interact with the backend because it
         'feedback': 'I like this website!,
         'time': '2021-12-27 22:40:12',
     },
-    ...
 ]
 ```
