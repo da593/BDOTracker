@@ -2,7 +2,7 @@
 # node image
 FROM node:13.12.0-alpine
 
-WORKDIR /frontend
+WORKDIR /code
 
 # Copy package.json files into container's work directory
 COPY package.json package.json
@@ -13,7 +13,7 @@ RUN npm ci
 RUN npm install react-scripts -g
 
 # Copy the entire frontend folder into container's workdir
-COPY . .
+COPY . ./code
 
 #command to start container
 CMD ["npm", "start"]

@@ -21,7 +21,6 @@ services:
   django-mysql:
     build: 
       context: project
-      dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
@@ -39,15 +38,18 @@ services:
   frontend:
     build: 
       context: frontend
-      dockerfile: Dockerfile
+      target: development
     restart: always
     ports:
       - 3000:3000
-    # Enable hot reloading for react to update frontend with code changes
+    volumes:
+      - ./frontend/src:/code/src
+      - /code/node_modules
+    env_file:
+      - ./frontend/.env.dev
     environment:
       CHOKIDAR_USEPOLLING: "true"
-    stdin_open: true
-      
+
 # Create a volume for the database to be stored 
 volumes:
   marketplace-data:
