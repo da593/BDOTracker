@@ -8,6 +8,7 @@ services:
     # Create a volume named marketplace-data and store them in Docker virtual hard drive (typically /var/lib/docker/volumes)
     volumes:
       - marketplace-data:/var/lib/mysql
+      - ./fakesqldata:/docker-entrypoint-initdb.d
     env_file:
       - ./project/.env.dev
       
