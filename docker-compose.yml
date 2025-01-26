@@ -8,10 +8,16 @@ services:
     # Create a volume named marketplace-data and store them in Docker virtual hard drive (typically /var/lib/docker/volumes)
     volumes:
       - marketplace-data:/var/lib/mysql
-      - ./fakesqldata:/docker-entrypoint-initdb.d
+      - ./fakesqldata:/docker-entrypoint-initdb.d #mount SQL data to entrypoint to be executed on container startup
     env_file:
       - ./project/.env.dev
-      
+    #MYSQL DB takes time to init, provide healthcheck to services that need to connect to MYSQL first before it can come up
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -h localhost -u root -p$$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
   django-mysql:
     build: 
       context: project
@@ -25,7 +31,9 @@ services:
     env_file:
       - ./project/.env.dev
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
+        restart: true
 
 
   frontend:
@@ -39,8 +47,6 @@ services:
     environment:
       CHOKIDAR_USEPOLLING: "true"
     stdin_open: true
-    depends_on:
-      - django-mysql
       
 # Create a volume for the database to be stored 
 volumes:
