@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import environ
+from django.core.management.utils import get_random_secret_key
 
 env = environ.Env()
 
@@ -25,10 +26,15 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env.dev'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-SECRET_KEY = env("SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
+
+if (DEBUG == "False"):
+    SECRET_KEY = env("SECRET_KEY")
+else:
+    SECRET_KEY=get_random_secret_key()
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','mysql']
 
