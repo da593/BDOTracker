@@ -1,4 +1,3 @@
-version: "3.8"
 
 # Define services
 services:
@@ -11,13 +10,11 @@ services:
       - marketplace-data:/var/lib/mysql
     env_file:
       - ./project/.env.dev
-    ports:
-      - "33061:3306"
+      
   django-mysql:
     build: 
-      context: ./project
+      context: project
       dockerfile: Dockerfile
-
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
@@ -32,22 +29,18 @@ services:
 
   frontend:
     build: 
-      context: ./frontend
+      context: frontend
       dockerfile: Dockerfile
     restart: always
-    command: npm run start
     ports:
       - 3000:3000
-    # Create a volume in the working directory to update when code changes
-    volumes:
-      - ./frontend:/frontend
     # Enable hot reloading for react to update frontend with code changes
     environment:
       CHOKIDAR_USEPOLLING: "true"
     stdin_open: true
     depends_on:
       - django-mysql
+      
 # Create a volume for the database to be stored 
 volumes:
   marketplace-data:
-
