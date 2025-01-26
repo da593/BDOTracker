@@ -10,10 +10,19 @@ from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated 
+from pathlib import Path
+import os
+import environ
 
 # Set the base HTTP methods for all views
 class BaseView(APIView):
-    permission_classes = (IsAuthenticated,) 
+    env = environ.Env()
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    environ.Env.read_env(os.path.join(BASE_DIR, '.env.dev'))
+    DEBUG = env("DEBUG")
+    if (DEBUG == "False"):
+        permission_classes = (IsAuthenticated,)
+
     def __init__(self):
         
         self.model = None
